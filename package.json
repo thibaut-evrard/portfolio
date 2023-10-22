@@ -1,0 +1,15 @@
+{
+    "name": "portfolio",
+    "version": "1.0.0",
+    "description": "making my portfolio opensource",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "cd portfolio-front && npm run lint"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "husky": "^8.0.3"
+    }
+}
