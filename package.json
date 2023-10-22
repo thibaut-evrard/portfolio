@@ -5,7 +5,8 @@
     "main": "index.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "lint": "cd portfolio-front && npm run lint"
+        "lint": "cd portfolio-front && npm run lint",
+        "serve-front": "cd portfolio-front && npm run dev"
     },
     "author": "",
     "license": "ISC",
