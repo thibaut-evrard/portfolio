@@ -11,6 +11,8 @@
     "author": "",
     "license": "ISC",
     "dependencies": {
+        "@react-three/drei": "^9.88.4",
+        "babel-plugin-styled-components": "^2.1.4",
         "husky": "^8.0.3",
         "three": "^0.157.0"
     }
