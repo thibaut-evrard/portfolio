@@ -17,7 +17,7 @@ import {useSmoothScroll} from '@/hooks/page/useSmoothScroll';
 const Landing = () => {
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const {scrollYProgress, scrollY} = useScroll({
+    const {scrollYProgress} = useScroll({
         target: containerRef,
         offset: ['start start', 'end start'],
     });

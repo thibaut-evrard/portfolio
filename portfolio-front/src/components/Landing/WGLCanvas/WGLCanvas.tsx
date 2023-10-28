@@ -21,7 +21,7 @@ const WGLCanvas: FC<IWGLCanvas> = ({onReady = () => undefined, progress}) => {
         >
             <Environment files={content.assets.hdri} />
             <PointerCamera progress={progress} />
-            <BackgroundTexture path={content.assets.background} />
+            {/* <BackgroundTexture path={content.assets.background} /> */}
             <Scene text3d={content.assets.title3d} />
         </Canvas>
     );

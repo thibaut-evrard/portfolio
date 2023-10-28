@@ -96,14 +96,16 @@ float map(float value, float min1, float max1, float min2, float max2) {
 }
 
 vec3 bubbleGradient(vec3 normal, vec2 uv, float time) {
-    float noiseBias = noise(vec3(normal.x * 5., normal.y * 5. + time, normal.z * 5. + time)) * .3;
-    float thickness = 1. - (normal.y * 0.5 + 0.5);
-    float fresnel = 1. - abs(pow(normal.z, 3.));
+    float noiseBias = noise(vec3(normal.x * 5., normal.y * 5. + time, normal.z * 5. + time)) * .2;
+    float thickness = 1. - (normal.y * 0.5 + 0.5) * uv.y;
+    float fresnel = 1. - abs(pow(normal.z, 1.));
 
-    float hueVal = fresnel + thickness + noiseBias;
-    vec3 col = hsv2rgb(vec3(1. - hueVal, 1., 1.));
+    float hueBias = time / 5.;
+    float hueVal = (fresnel + thickness * noiseBias + hueBias) / 2.;
+    // float hueVal = fresnel;
+    vec3 col = hsv2rgb(vec3(1. - hueVal, .5, 1.));
 
-    return col * map(fresnel, 0.2, 1., 0., .7);
+    return col * map(fresnel, 0.2, 1., 0., .7) / 1.;
 }
 
 vec4 applyBlur(sampler2D blurSampler, vec2 baseCoords) {
@@ -170,9 +172,9 @@ void main() {
         transmissionColor = applyBlur(customTransmissionSampler, refractionCoords);
     #endif
 
-    // vec3 col = transmissionColor.rgb - gradient;
-    // vec3 col = transmissionColor.rgb - gradient * fresnel;
-    vec3 col = transmissionColor.rgb - gradient + totalSpecular;
+    vec3 baseCol = vec3(.0,.0,.0);
+    vec3 col = baseCol + transmissionColor.rgb + (gradient / 2.) + totalSpecular;
+    // vec3 col = gradient;
     float alpha = 1.;
 
     gl_FragColor = vec4(col,alpha);
