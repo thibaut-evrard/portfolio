@@ -1,0 +1,67 @@
+import {GroupProps, useFrame, useThree} from '@react-three/fiber';
+import {Group, Mesh, Material, Texture, Vector2} from 'three';
+import {MeshBubbleMaterial} from 'src/wgl/materials/bubble/MeshBubbleMaterial';
+import {ReactNode, useContext, useRef} from 'react';
+import {LayerContext} from '../Scene';
+import {ILetter} from './Letter.types';
+import {useNoisyMovement} from '@/hooks/bubbles/useNoisyMovement';
+import {useMousePosition} from '@/hooks/mouse/useMousePosition';
+import {lerp} from 'three/src/math/MathUtils.js';
+import Simplex from 'ts-perlin-simplex';
+
+interface PropsInterface extends GroupProps {
+    children?: ReactNode;
+    animate?: boolean;
+    text?: string;
+}
+
+const simplex = new Simplex.SimplexNoise();
+
+function Letter({geometry, ...props}: ILetter) {
+    const {transmissionMap, blur} = useContext(LayerContext);
+    const objRef = useRef(new Group());
+    const materialRef = useRef(new Material());
+    const {gl} = useThree();
+    const rendererSize = new Vector2();
+    gl.getSize(rendererSize);
+
+    const pos = props.position ? (props.position as number[]) : [0, 0, 0];
+    const targetPosition = useNoisyMovement(pos);
+
+    const mousePos = useMousePosition();
+
+    useFrame(({clock}) => {
+        const {x, y, z} = targetPosition.current;
+        objRef.current.position.set(x, y, z);
+    });
+
+    if (blur) {
+        materialRef.current.defines = {
+            BLUR: blur,
+        };
+    }
+
+    return (
+        <group {...props} ref={objRef}>
+            <mesh>
+                <bufferGeometry {...geometry} attach={'geometry'} />
+                <MeshBubbleMaterial
+                    ref={materialRef}
+                    roughness={0.0}
+                    reflectivity={0.9}
+                    transparent={true}
+                    depthWrite={false}
+                    deformSpeed={0.7}
+                    deformIntensity={0.2}
+                    rendererSize={rendererSize}
+                    customTransmissionSampler={transmissionMap}
+                    blur={blur}
+                    blurKernelSize={10}
+                />
+            </mesh>
+            {/* <TextPlane text={props.text as string} /> */}
+        </group>
+    );
+}
+
+export default Letter;
