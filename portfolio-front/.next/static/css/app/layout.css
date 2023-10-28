@@ -1,0 +1,31 @@
+/*!********************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[12].oneOf[12].use[3]!./src/styles/globals.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************/
+@font-face {
+    font-family: open-sans;
+    src: url(/fonts/WorkSans-VariableFont_wght.ttf);
+}
+
+* {
+    font-family: open-sans;
+    font-weight: 500;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 500;
+}
+
