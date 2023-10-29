@@ -8,13 +8,20 @@ import {
     useAnimationFrame,
 } from 'framer-motion';
 import {lerp} from 'three/src/math/MathUtils.js';
+import {SmoothScrollContext} from './SmoothScroll.context';
 
 const SmoothScroll: FC<PropsWithChildren> = ({children}) => {
     const [height, setHeight] = useState<number>(0);
+    const [screensCount, setScreensCount] = useState<number>(0);
     const ref = useRef<HTMLDivElement>(null);
 
     const {scrollYProgress} = useScroll();
     const smoothProgress = useMotionValue(0);
+    const screensProgress = useTransform(
+        smoothProgress,
+        [0, 1],
+        [0, -screensCount]
+    );
     const translateY = useTransform(smoothProgress, [0, 1], [0, -height]);
 
     useAnimationFrame(() => {
@@ -24,7 +31,10 @@ const SmoothScroll: FC<PropsWithChildren> = ({children}) => {
     });
 
     const handleOnResize = () => {
-        setHeight(ref.current?.offsetHeight || 0);
+        if (!ref.current) return;
+        const height = ref.current.offsetHeight - window.innerHeight;
+        setHeight(ref.current.offsetHeight - window.innerHeight);
+        setScreensCount(height / window.innerHeight);
     };
 
     useEffect(() => {
@@ -36,14 +46,16 @@ const SmoothScroll: FC<PropsWithChildren> = ({children}) => {
     }, []);
 
     return (
-        <>
+        <SmoothScrollContext.Provider
+            value={{progress: translateY, screensProgress: screensProgress}}
+        >
             <div style={{height: height}} />
             <FakeScrollWrapper>
                 <ContentContainer ref={ref} style={{translateY}}>
                     {children}
                 </ContentContainer>
             </FakeScrollWrapper>
-        </>
+        </SmoothScrollContext.Provider>
     );
 };
 

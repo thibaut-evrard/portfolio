@@ -7,7 +7,6 @@ export const FakeScrollWrapper = styled.div({
     width: '100%',
     height: '100%',
     overflow: 'hidden',
-    border: '1px solid red',
 });
 
 export const ContentContainer = styled(motion.div)({

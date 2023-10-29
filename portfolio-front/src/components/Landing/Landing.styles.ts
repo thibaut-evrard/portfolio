@@ -1,6 +1,7 @@
+import {motion} from 'framer-motion';
 import styled from 'styled-components';
 
-export const ScrollContainer = styled.div({
+export const ScrollContainer = styled(motion.div)({
     width: '100%',
     height: '300vh',
     display: 'flex',
@@ -8,7 +9,7 @@ export const ScrollContainer = styled.div({
     color: 'white',
 });
 
-export const CanvasContainer = styled.div({
+export const CanvasContainer = styled(motion.div)({
     position: 'sticky',
     top: 0,
     width: '100%',
