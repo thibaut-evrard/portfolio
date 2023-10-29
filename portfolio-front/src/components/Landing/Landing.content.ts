@@ -1,6 +1,6 @@
 export const content = {
     assets: {
-        background: 'assets/textures/bg2.png',
+        background: 'assets/textures/background.png',
         hdri: 'assets/textures/rainforest_trail_1k.exr',
         title3d: 'assets/3d/tibo.glb',
     },

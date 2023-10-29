@@ -1,14 +1,14 @@
 'use client';
 import Landing from '@/components/Landing/Landing';
-import {TestSection} from '@/components/TestSection/TestSection.styles';
+import Projects from '@/components/Projects/Projects';
+import {BLACK} from '@/constants/style';
 
 const Home = () => {
     return (
-        <>
+        <div style={{backgroundColor: BLACK}}>
             <Landing />
-            <TestSection />
-            <TestSection />
-        </>
+            <Projects />
+        </div>
     );
     //return <Construction />;
 };

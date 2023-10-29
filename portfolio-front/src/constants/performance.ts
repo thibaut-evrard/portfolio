@@ -1,1 +1,1 @@
-export const LOW_POWER_MODE = true;
+export const LOW_POWER_MODE = false;
