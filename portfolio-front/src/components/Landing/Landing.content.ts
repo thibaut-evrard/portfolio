@@ -1,7 +1,7 @@
 export const content = {
     assets: {
-        background: 'assets/textures/background.png',
-        hdri: 'assets/textures/syferfontein_0d_clear_puresky_1k.hdr',
+        background: 'assets/textures/bg2.png',
+        hdri: 'assets/textures/rainforest_trail_1k.exr',
         title3d: 'assets/3d/tibo.glb',
     },
     intro: {

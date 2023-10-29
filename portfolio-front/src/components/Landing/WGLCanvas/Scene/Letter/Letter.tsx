@@ -5,8 +5,6 @@ import {ReactNode, useContext, useRef} from 'react';
 import {LayerContext} from '../Scene';
 import {ILetter} from './Letter.types';
 import {useNoisyMovement} from '@/hooks/bubbles/useNoisyMovement';
-import {useMousePosition} from '@/hooks/mouse/useMousePosition';
-import {lerp} from 'three/src/math/MathUtils.js';
 import Simplex from 'ts-perlin-simplex';
 
 interface PropsInterface extends GroupProps {
@@ -28,8 +26,6 @@ function Letter({geometry, ...props}: ILetter) {
     const pos = props.position ? (props.position as number[]) : [0, 0, 0];
     const targetPosition = useNoisyMovement(pos);
 
-    const mousePos = useMousePosition();
-
     useFrame(({clock}) => {
         const {x, y, z} = targetPosition.current;
         objRef.current.position.set(x, y, z);
@@ -47,7 +43,7 @@ function Letter({geometry, ...props}: ILetter) {
                 <bufferGeometry {...geometry} attach={'geometry'} />
                 <MeshBubbleMaterial
                     ref={materialRef}
-                    roughness={0.0}
+                    roughness={0.3}
                     reflectivity={0.9}
                     transparent={true}
                     depthWrite={false}

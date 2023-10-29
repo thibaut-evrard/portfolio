@@ -1,7 +1,7 @@
 import {FC, createContext, useRef} from 'react';
 import {WebGLRenderTarget, Group, Texture} from 'three';
 import {useCustomRenderer} from '@/hooks/bubbles/useCustomRenderer';
-import {useGLTF, useTexture} from '@react-three/drei';
+import {useGLTF} from '@react-three/drei';
 import {ILetterAssets, IScene} from './Scene.types';
 import Letter from './Letter/Letter';
 

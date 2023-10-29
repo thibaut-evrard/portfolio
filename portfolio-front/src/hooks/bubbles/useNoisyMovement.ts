@@ -1,9 +1,8 @@
 import {useFrame} from '@react-three/fiber';
-import {RefObject, useRef} from 'react';
-import {Group, Vector3} from 'three';
+import {useRef} from 'react';
+import {Vector3} from 'three';
 import Simplex from 'ts-perlin-simplex';
 import {INoisyMovementOptions} from './useNoisyMovement.types';
-import {useMousePosition} from '../mouse/useMousePosition';
 
 const simplex = new Simplex.SimplexNoise();
 
