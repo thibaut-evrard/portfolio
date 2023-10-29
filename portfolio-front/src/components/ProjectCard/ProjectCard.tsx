@@ -1,3 +1,4 @@
+import {content} from './ProjectCard.content';
 import {
     BackgroundImage,
     Container,
@@ -9,9 +10,14 @@ const ProjectCard = () => {
         <Container>
             <ContentContainer>
                 <h3>Project Name</h3>
-                <button>see more</button>
+                <button>{content.view}</button>
             </ContentContainer>
-            <BackgroundImage src='/assets/cards/hero.jpg' fill alt='hero' />
+            <BackgroundImage
+                src='/assets/cards/bananaz.png'
+                width={window.innerWidth}
+                height={700}
+                alt='hero'
+            />
         </Container>
     );
 };

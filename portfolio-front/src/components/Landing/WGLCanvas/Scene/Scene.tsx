@@ -31,7 +31,7 @@ const Scene: FC<IScene> = ({text3d}) => {
                         value={{
                             layer: 'foreground',
                             transmissionMap: transmissionRt.current.texture,
-                            blur: 1.8,
+                            blur: 3,
                         }}
                     >
                         <group rotation={[1.5, 0, 0]} scale={[2, 2, 2]}>

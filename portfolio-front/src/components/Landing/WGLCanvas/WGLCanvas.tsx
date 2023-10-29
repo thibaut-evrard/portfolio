@@ -12,7 +12,7 @@ import {LOW_POWER_MODE} from '@/constants/performance';
 const WGLCanvas: FC<IWGLCanvas> = ({progress}) => {
     return (
         <Canvas
-            dpr={LOW_POWER_MODE ? 0.5 : window.devicePixelRatio}
+            dpr={LOW_POWER_MODE ? 0.5 : 1}
             gl={{
                 alpha: false,
                 outputEncoding: LinearEncoding,

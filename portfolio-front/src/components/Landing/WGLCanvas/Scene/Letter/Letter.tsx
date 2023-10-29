@@ -43,7 +43,7 @@ function Letter({geometry, ...props}: ILetter) {
                     rendererSize={rendererSize}
                     customTransmissionSampler={transmissionMap}
                     blur={blur}
-                    blurKernelSize={10}
+                    blurKernelSize={8}
                 />
             </mesh>
             {/* <TextPlane text={props.text as string} /> */}
