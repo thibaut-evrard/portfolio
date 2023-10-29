@@ -1,14 +1,14 @@
 'use client';
 import Landing from '@/components/Landing/Landing';
 import Projects from '@/components/Projects/Projects';
-import {BLACK} from '@/constants/style';
+import SmoothScroll from '@/components/SmoothScroll/SmoothScroll';
 
 const Home = () => {
     return (
-        <div style={{backgroundColor: BLACK}}>
+        <SmoothScroll>
             <Landing />
             <Projects />
-        </div>
+        </SmoothScroll>
     );
     //return <Construction />;
 };

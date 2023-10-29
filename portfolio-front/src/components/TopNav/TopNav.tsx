@@ -1,6 +1,7 @@
 'use client';
-import {Caption, Container} from './TopNav.styles';
+import {Container} from './TopNav.styles';
 import {content} from './TopNav.content';
+import {Caption} from '../Atoms/Caption';
 
 const TopNav = () => {
     return (
