@@ -1,11 +1,9 @@
 import {FC, createContext, useRef} from 'react';
-import {WebGLRenderTarget, Group, Texture} from 'three';
+import {Group, Texture} from 'three';
 import {useCustomRenderer} from '@/hooks/bubbles/useCustomRenderer';
 import {useGLTF} from '@react-three/drei';
 import {ILetterAssets, IScene} from './Scene.types';
 import Letter from './Letter/Letter';
-
-const baseRt = new WebGLRenderTarget(0, 0);
 
 export const LayerContext = createContext({
     layer: undefined as 'foreground' | 'background' | undefined,

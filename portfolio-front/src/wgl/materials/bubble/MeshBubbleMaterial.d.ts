@@ -3,21 +3,26 @@ import {
     MeshStandardMaterial,
     MeshStandardMaterialParameters,
     Texture,
-    Vector2
+    Vector2,
 } from 'three';
-declare type BubbleMaterialType = JSX.IntrinsicElements['meshStandardMaterial'] & {
-    time?: number;
-    distort?: number;
-    radius?: number;
-    backgroundTexture?: Texture;
-};
+
+/* eslint-disable */
+declare type BubbleMaterialType =
+    JSX.IntrinsicElements['meshStandardMaterial'] & {
+        time?: number;
+        distort?: number;
+        radius?: number;
+        backgroundTexture?: Texture;
+    };
 declare global {
-    namespace JSX {
+    namespace global.JSX {
         interface IntrinsicElements {
             distortMaterialImpl: BubbleMaterialType;
         }
     }
 }
+/* eslint enable */
+
 export declare const MeshBubbleMaterial: React.ForwardRefExoticComponent<
     Pick<
         import('@react-three/fiber').ExtendedColors<

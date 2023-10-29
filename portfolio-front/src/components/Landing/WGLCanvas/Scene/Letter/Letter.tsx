@@ -1,19 +1,10 @@
-import {GroupProps, useFrame, useThree} from '@react-three/fiber';
-import {Group, Mesh, Material, Texture, Vector2} from 'three';
+import {useFrame, useThree} from '@react-three/fiber';
+import {Group, Material, Vector2} from 'three';
 import {MeshBubbleMaterial} from 'src/wgl/materials/bubble/MeshBubbleMaterial';
-import {ReactNode, useContext, useRef} from 'react';
+import {useContext, useRef} from 'react';
 import {LayerContext} from '../Scene';
 import {ILetter} from './Letter.types';
 import {useNoisyMovement} from '@/hooks/bubbles/useNoisyMovement';
-import Simplex from 'ts-perlin-simplex';
-
-interface PropsInterface extends GroupProps {
-    children?: ReactNode;
-    animate?: boolean;
-    text?: string;
-}
-
-const simplex = new Simplex.SimplexNoise();
 
 function Letter({geometry, ...props}: ILetter) {
     const {transmissionMap, blur} = useContext(LayerContext);
@@ -26,7 +17,7 @@ function Letter({geometry, ...props}: ILetter) {
     const pos = props.position ? (props.position as number[]) : [0, 0, 0];
     const targetPosition = useNoisyMovement(pos);
 
-    useFrame(({clock}) => {
+    useFrame(() => {
         const {x, y, z} = targetPosition.current;
         objRef.current.position.set(x, y, z);
     });

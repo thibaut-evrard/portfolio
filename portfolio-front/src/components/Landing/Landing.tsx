@@ -1,14 +1,5 @@
-import {
-    HTMLMotionProps,
-    useMotionValueEvent,
-    useScroll,
-    useTransform,
-} from 'framer-motion';
-import {
-    CanvasContainer,
-    ContentContainer,
-    ScrollContainer,
-} from './Landing.styles';
+import {useScroll} from 'framer-motion';
+import {CanvasContainer, ScrollContainer} from './Landing.styles';
 import WGLCanvas from './WGLCanvas/WGLCanvas';
 import {useRef} from 'react';
 import ContentSlide from './ContentSlide/ContentSlide';

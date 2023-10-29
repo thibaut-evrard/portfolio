@@ -1,11 +1,6 @@
-import {FC, PropsWithChildren, useRef} from 'react';
+import {FC} from 'react';
 import {Container, Wrapper} from './ContentSlide.styles';
-import {
-    motion,
-    useMotionValueEvent,
-    useScroll,
-    useTransform,
-} from 'framer-motion';
+import {motion, useTransform} from 'framer-motion';
 import {content} from '../Landing.content';
 import {IContentSlide} from './ContentSlide.types';
 
