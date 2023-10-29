@@ -1,34 +1,20 @@
-import {
-    HTMLMotionProps,
-    useMotionValueEvent,
-    useScroll,
-    useTransform,
-} from 'framer-motion';
-import {
-    CanvasContainer,
-    ContentContainer,
-    ScrollContainer,
-} from './Landing.styles';
+import {useTransform} from 'framer-motion';
+import {CanvasContainer, ScrollContainer} from './Landing.styles';
 import WGLCanvas from './WGLCanvas/WGLCanvas';
-import {useRef} from 'react';
+import {useContext} from 'react';
 import ContentSlide from './ContentSlide/ContentSlide';
-import {useSmoothScroll} from '@/hooks/page/useSmoothScroll';
+import {SmoothScrollContext} from '../SmoothScroll/SmoothScroll.context';
 
 const Landing = () => {
-    const containerRef = useRef<HTMLDivElement>(null);
-
-    const {scrollYProgress} = useScroll({
-        target: containerRef,
-        offset: ['start start', 'end start'],
-    });
-
-    const introProgress = useSmoothScroll(scrollYProgress);
+    const {screensProgress} = useContext(SmoothScrollContext);
+    const translateY = useTransform(screensProgress, [0, -2], ['0%', '200%']);
+    const progress = useTransform(screensProgress, [0, -2], [0, 1]);
 
     return (
-        <ScrollContainer key={1} ref={containerRef}>
-            <CanvasContainer>
-                <ContentSlide progress={introProgress} />
-                <WGLCanvas progress={introProgress} />
+        <ScrollContainer key={1}>
+            <CanvasContainer style={{translateY}}>
+                <ContentSlide progress={progress} />
+                <WGLCanvas progress={progress} />
             </CanvasContainer>
         </ScrollContainer>
     );

@@ -13,9 +13,7 @@ export const Container = styled(motion.div)({
 });
 
 export const Wrapper = styled(motion.div)({
-    padding: 50,
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'end',
     alignItems: 'center',
 });

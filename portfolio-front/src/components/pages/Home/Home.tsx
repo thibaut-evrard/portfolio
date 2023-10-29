@@ -1,9 +1,15 @@
 'use client';
-import Construction from '@/components/Construction/Construction';
 import Landing from '@/components/Landing/Landing';
+import {TestSection} from '@/components/TestSection/TestSection.styles';
 
 const Home = () => {
-    return <Landing />;
+    return (
+        <>
+            <Landing />
+            <TestSection />
+            <TestSection />
+        </>
+    );
     //return <Construction />;
 };
 
