@@ -1,7 +1,7 @@
 import {Canvas} from '@react-three/fiber';
 import {Environment} from '@react-three/drei';
 import {NoToneMapping, LinearEncoding} from 'three';
-// import BackgroundTexture from 'src/components/wgl/BackgroundTexture/BackgroundTexture';
+import BackgroundTexture from 'src/components/wgl/BackgroundTexture/BackgroundTexture';
 import {FC} from 'react';
 import Scene from './Scene/Scene';
 import {content} from '../Landing.content';
@@ -19,9 +19,9 @@ const WGLCanvas: FC<IWGLCanvas> = ({progress}) => {
                 toneMapping: NoToneMapping,
             }}
         >
+            <BackgroundTexture path={content.assets.background} />
             <Environment files={content.assets.hdri} />
             <PointerCamera progress={progress} />
-            {/* <BackgroundTexture path={content.assets.background} /> */}
             <Scene text3d={content.assets.title3d} />
         </Canvas>
     );
