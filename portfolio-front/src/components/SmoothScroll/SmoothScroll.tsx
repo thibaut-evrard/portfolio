@@ -11,7 +11,7 @@ import {lerp} from 'three/src/math/MathUtils.js';
 import {SmoothScrollContext} from './SmoothScroll.context';
 
 const SmoothScroll: FC<PropsWithChildren> = ({children}) => {
-    const [height, setHeight] = useState<number>(0);
+    const [height, setHeight] = useState<number>(window.innerHeight * 2);
     const [screensCount, setScreensCount] = useState<number>(0);
     const ref = useRef<HTMLDivElement>(null);
 

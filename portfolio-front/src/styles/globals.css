@@ -1,11 +1,12 @@
 @font-face {
-    font-family: open-sans;
+    font-family: work-sans;
     src: url(/fonts/WorkSans-VariableFont_wght.ttf);
 }
 
 * {
-    font-family: open-sans;
-    font-weight: 500;
+    box-sizing: border-box;
+    font-family: work-sans;
+    font-smooth: always;
 }
 
 html,
