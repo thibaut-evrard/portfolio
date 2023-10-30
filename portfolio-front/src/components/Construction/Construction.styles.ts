@@ -23,7 +23,7 @@ export const SceneWrapper = styled.div({
 export const ContentOverlay = styled(motion.div)({
     zIndex: 1,
     textAlign: 'center',
-    width: '100%',
+    width: '90%',
     h4: {
         color: ORANGE,
     },

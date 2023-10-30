@@ -1,6 +1,7 @@
 import {LIGHT_GREY, WHITE} from '@/constants/style';
 import styled from 'styled-components';
 import ReactMarkdown from 'react-markdown';
+import {MOBILE_BREAKPOINT} from '@/constants/devices';
 
 export const Container = styled.div({
     height: 'fit-content',
@@ -9,18 +10,27 @@ export const Container = styled.div({
 
     display: 'flex',
     flexDirection: 'column',
-    padding: '150px 120px 80px 120px',
+    padding: '150rem 120rem 80rem 120rem',
+
     color: WHITE,
+
+    [MOBILE_BREAKPOINT]: {
+        padding: '150rem 40rem 80rem 40rem',
+    },
 });
 
 export const ProjectDescription = styled.div({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: '80px',
+    gap: '80rem',
 
     width: '100%',
     height: 'fit-content',
+
+    [MOBILE_BREAKPOINT]: {
+        gap: '10rem',
+    },
 });
 
 export const Section = styled.div({
