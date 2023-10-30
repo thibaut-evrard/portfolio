@@ -1,19 +1,24 @@
+import {FC} from 'react';
+import {IProjectContent} from '../Projects/Projects.types';
 import {content} from './ProjectCard.content';
 import {
     BackgroundImage,
     Container,
     ContentContainer,
 } from './ProjectCard.styles';
+import Link from 'next/link';
 
-const ProjectCard = () => {
+const ProjectCard: FC<IProjectContent> = (props) => {
     return (
         <Container>
             <ContentContainer>
-                <h3>Project Name</h3>
-                <button>{content.view}</button>
+                <h3>{props.title}</h3>
+                <Link href={`${props.slug}`}>
+                    <button>{content.view}</button>
+                </Link>
             </ContentContainer>
             <BackgroundImage
-                src='/assets/cards/bananaz.png'
+                src={props.thumbnail}
                 width={window.innerWidth}
                 height={700}
                 alt='hero'

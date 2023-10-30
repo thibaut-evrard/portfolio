@@ -5,4 +5,6 @@ export interface IProjectContent {
     description: string;
     role: string;
     tools: string;
+    thumbnail: string;
+    slug: string;
 }

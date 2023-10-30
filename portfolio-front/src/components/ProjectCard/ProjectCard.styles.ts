@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export const Container = styled.div({
     position: 'relative',
     width: '100%',
-    height: 600,
+    aspectRatio: '16/9',
     borderRadius: BORDER_RADIUS,
     marginBottom: '48px',
 });

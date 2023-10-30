@@ -1,15 +1,17 @@
-import {ORANGE, WHITE} from '@/constants/style';
+import {BLACK, ORANGE, WHITE} from '@/constants/style';
 import {motion} from 'framer-motion';
 import styled from 'styled-components';
 
 export const Container = styled(motion.div)({
     position: 'relative',
+
     width: '100%',
     height: '100%',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: WHITE,
+    backgroundColor: BLACK,
+    color: WHITE,
 });
 
 export const SceneWrapper = styled.div({
@@ -21,7 +23,8 @@ export const SceneWrapper = styled.div({
 export const ContentOverlay = styled(motion.div)({
     zIndex: 1,
     textAlign: 'center',
-    h1: {
+    width: '100%',
+    h4: {
         color: ORANGE,
     },
 });
