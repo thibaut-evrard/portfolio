@@ -5,11 +5,13 @@ import {IProjectContent} from '@/components/Projects/Projects.types';
 import {Container, ProjectDescription, Section} from './Project.styles';
 import {Caption} from '@/components/Atoms/Caption';
 import Carousel from '@/components/Carousel/Carousel';
+import BackButton from '@/components/BackButton/BackButton';
 
 const Project: FC<IProjectContent> = (props) => {
     console.log(props);
     return (
         <Container>
+            <BackButton />
             <h2>{props.title}</h2>
             {/* <Caption>{props.year}</Caption> */}
             <Carousel media={props.media} />

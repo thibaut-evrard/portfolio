@@ -17,7 +17,11 @@ const dummyProject: IProjectContent = {
         - Creation of a custom HDRP depth-blur shader
         - Creation of custom force field algorithm
     `,
-    media: ['/assets/cards/bananaz.png'],
+    media: [
+        '/assets/cards/fruits.mp4',
+        '/assets/cards/bananaz.png',
+        '/assets/cards/bananaz.png',
+    ],
 };
 
 const ProjectPage = () => {
