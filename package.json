@@ -1,0 +1,20 @@
+{
+    "name": "portfolio",
+    "version": "1.0.0",
+    "description": "making my portfolio opensource",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "cd portfolio-front && npm run lint",
+        "serve-front": "cd portfolio-front && npm run dev",
+        "install-all": "npm i & cd portfolio-front && npm i"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@react-three/drei": "^9.88.4",
+        "babel-plugin-styled-components": "^2.1.4",
+        "husky": "^8.0.3",
+        "three": "^0.157.0"
+    }
+}
