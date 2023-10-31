@@ -28,7 +28,3 @@ export const ContentOverlay = styled(motion.div)({
         color: ORANGE,
     },
 });
-
-export const Spacer = styled.div({
-    height: '120px',
-});

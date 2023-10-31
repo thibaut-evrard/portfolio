@@ -1,11 +1,6 @@
 'use client';
 
-import {
-    Container,
-    ContentOverlay,
-    SceneWrapper,
-    Spacer,
-} from './Construction.styles';
+import {Container, ContentOverlay, SceneWrapper} from './Construction.styles';
 import Scene from './Scene/Scene';
 import {Canvas} from '@react-three/fiber';
 import {content} from './Construction.content';
@@ -14,6 +9,7 @@ import {useMousePosition} from '@/hooks/mouse/useMousePosition';
 import {lerp} from 'three/src/math/MathUtils.js';
 import {ContainerAnimation, TextAnimation} from './Construction.animations';
 import Rambling from './Rambling/Rambling';
+import {Spacer} from '../Atoms/Spacer';
 
 const Construction = () => {
     const tx = useMotionValue(0);
@@ -30,7 +26,7 @@ const Construction = () => {
         <Container {...ContainerAnimation}>
             <ContentOverlay style={{translateX: tx, translateY: ty}}>
                 <motion.h4 {...TextAnimation}>{content.title}</motion.h4>
-                <Spacer />
+                <Spacer height={'120px'} />
                 <motion.p {...TextAnimation}>{content.description}</motion.p>
                 <Rambling {...TextAnimation} />
             </ContentOverlay>
