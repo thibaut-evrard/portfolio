@@ -11,7 +11,6 @@ const Home = () => {
             <Projects />
         </SmoothScroll>
     );
-    //return <Construction />;
 };
 
 export default Home;

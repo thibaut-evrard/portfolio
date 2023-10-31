@@ -17,7 +17,12 @@ const ProjectCard: FC<IProjectContent> = (props) => {
                     <button>{content.view}</button>
                 </Link>
             </ContentContainer>
-            <BackgroundImage src={props.thumbnail} fill alt='hero' />
+            <BackgroundImage
+                src={props.thumbnail}
+                fill
+                alt='hero'
+                loading='eager'
+            />
         </Container>
     );
 };

@@ -46,6 +46,7 @@ const Carousel: FC<ICarousel> = ({media}) => {
                                 controls
                                 onPan={onPan}
                                 onPanEnd={onPanEnd}
+                                playsInline
                             />
                         </MediaItemContainer>
                     ))}
