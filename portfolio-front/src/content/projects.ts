@@ -3,7 +3,7 @@ import {IProjectContent} from '@/components/Projects/Projects.types';
 export const ProjectsContent: any = {
     project_a: {
         slug: 'project_a',
-        title: 'My project',
+        title: 'Blurry Bananas',
         year: '2022',
         description: `A little experiment made at work in-between projects.  
         The starting point of this was a deep dive into custom Unity HDRP shaders, ( this led to creating the depth blur effect you can see on the further away fruits ).  

@@ -7,7 +7,8 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "cd portfolio-front && npm run lint",
         "serve-front": "cd portfolio-front && npm run dev",
-        "install-all": "npm i & cd portfolio-front && npm i"
+        "install-all": "npm i & cd portfolio-front && npm i",
+        "deploy-front": "git subtree push --prefix portfolio-front https://git.heroku.com/amphi-front-dev.git master"
     },
     "author": "",
     "license": "ISC",
