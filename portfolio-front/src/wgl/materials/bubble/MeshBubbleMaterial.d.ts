@@ -1,10 +1,10 @@
 import * as React from 'react';
-import {
-    MeshStandardMaterial,
-    MeshStandardMaterialParameters,
-    Texture,
-    Vector2,
-} from 'three';
+// import {
+//     MeshStandardMaterial,
+//     MeshStandardMaterialParameters,
+//     Texture,
+//     Vector2,
+// } from 'three';
 
 /* eslint-disable */
 declare type BubbleMaterialType =
@@ -23,40 +23,43 @@ declare global {
 }
 /* eslint enable */
 
-export declare const MeshBubbleMaterial: React.ForwardRefExoticComponent<
-    Pick<
-        import('@react-three/fiber').ExtendedColors<
-            import('@react-three/fiber').Overwrite<
-                Partial<MeshStandardMaterial>,
-                import('@react-three/fiber').NodeProps<
-                    MeshStandardMaterial,
-                    [MeshStandardMaterialParameters]
-                >
-            >
-        > & {
-            time?: number | undefined;
-            deformSpeed?: number | undefined;
-            deformIntensity: number | undefined;
-            customTransmissionSampler: Texture | undefined | null;
-            rendererSize: Vector2 | undefined | null;
-            blur: number;
-            blurKernelSize: number;
-        } & {
-            speed?: number | undefined;
-            factor?: number | undefined;
-        },
-        | 'attach'
-        | 'args'
-        | 'children'
-        | 'key'
-        | 'onUpdate'
-        | 'time'
-        | keyof MeshStandardMaterial
-        | 'radius'
-        | 'speed'
-        | 'distort'
-        | 'factor'
-    > &
-        React.RefAttributes<unknown>
->;
+export declare const MeshBubbleMaterial: React.ForwardRefExoticComponent<any>;
+//     Pick<
+//         import('@react-three/fiber').ExtendedColors<
+//             import('@react-three/fiber').Overwrite<
+//                 Partial<MeshStandardMaterial>,
+//                 import('@react-three/fiber').NodeProps<
+//                     MeshStandardMaterial,
+//                     [MeshStandardMaterialParameters]
+//                 >
+//             >
+//         > & {
+//             ref: any;
+//             reflectivity: any;
+//             time?: number | undefined;
+//             roughness: any;
+//             deformSpeed?: number | undefined;
+//             deformIntensity: number | undefined;
+//             customTransmissionSampler: Texture | undefined | null;
+//             rendererSize: Vector2 | undefined | null;
+//             blur: number;
+//             blurKernelSize: number;
+//         } & {
+//             speed?: number | undefined;
+//             factor?: number | undefined;
+//         },
+//         | 'attach'
+//         | 'args'
+//         | 'children'
+//         | 'key'
+//         | 'onUpdate'
+//         | 'time'
+//         | keyof MeshStandardMaterial
+//         | 'radius'
+//         | 'speed'
+//         | 'distort'
+//         | 'factor'
+//     > &
+//         React.RefAttributes<unknown>
+// >;
 export {};

@@ -3,7 +3,7 @@ import Project from '@/components/pages/Project/Project';
 import {ProjectsContent} from '@/content/projects';
 import {notFound} from 'next/navigation';
 
-const ProjectPage = ({params}: any) => {
+const Page = ({params}: any) => {
     const slug = params.project as string;
     const content = ProjectsContent[slug] as IProjectContent;
 
@@ -12,4 +12,4 @@ const ProjectPage = ({params}: any) => {
     return <Project {...content} />;
 };
 
-export default ProjectPage;
+export default Page;

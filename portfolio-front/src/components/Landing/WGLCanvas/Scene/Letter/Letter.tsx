@@ -46,7 +46,6 @@ function Letter({geometry, ...props}: ILetter) {
                     blurKernelSize={8}
                 />
             </mesh>
-            {/* <TextPlane text={props.text as string} /> */}
         </group>
     );
 }

@@ -9,9 +9,11 @@ import {
 } from 'framer-motion';
 import {lerp} from 'three/src/math/MathUtils.js';
 import {SmoothScrollContext} from './SmoothScroll.context';
+import {useIsClient} from '@/hooks/client/useIsClient';
 
 const SmoothScroll: FC<PropsWithChildren> = ({children}) => {
-    const [height, setHeight] = useState<number>(window.innerHeight * 2);
+    const isClient = useIsClient();
+    const [height, setHeight] = useState<number>(10000);
     const [screensCount, setScreensCount] = useState<number>(0);
     const ref = useRef<HTMLDivElement>(null);
 
@@ -43,8 +45,9 @@ const SmoothScroll: FC<PropsWithChildren> = ({children}) => {
         return () => {
             window.removeEventListener('resize', handleOnResize);
         };
-    }, []);
+    }, [isClient]);
 
+    if (!isClient) return null;
     return (
         <SmoothScrollContext.Provider
             value={{progress: translateY, screensProgress: screensProgress}}

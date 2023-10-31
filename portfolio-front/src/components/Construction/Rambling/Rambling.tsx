@@ -21,7 +21,7 @@ const Rambling: FC<HTMLMotionProps<'div'>> = ({...props}) => {
     return (
         <Container {...props}>
             {rambles.map((_, i) => (
-                <motion.p {...TextAnimation} key={i}>
+                <motion.p {...(TextAnimation as any)} key={i}>
                     [ramble]
                 </motion.p>
             ))}

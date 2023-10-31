@@ -1,7 +1,7 @@
 import Construction from '@/components/Construction/Construction';
 
-const About = () => {
+const Page = () => {
     return <Construction />;
 };
 
-export default About;
+export default Page;

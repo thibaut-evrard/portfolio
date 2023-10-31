@@ -40,5 +40,5 @@ export const ContentContainer = styled.div({
             padding: '12rem 24rem',
         },
         padding: '24rem',
-    },
+    } as any,
 });

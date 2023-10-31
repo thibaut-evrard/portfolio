@@ -1,4 +1,5 @@
 'use client';
+
 import Landing from '@/components/Landing/Landing';
 import Projects from '@/components/Projects/Projects';
 import SmoothScroll from '@/components/SmoothScroll/SmoothScroll';

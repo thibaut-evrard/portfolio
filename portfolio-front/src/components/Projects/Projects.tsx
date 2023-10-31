@@ -7,8 +7,8 @@ const Projects = () => {
     return (
         <Container>
             <h1>{content.work}</h1>
-            {ProjectList.map((project) => {
-                return <ProjectCard {...project} />;
+            {ProjectList.map((project, index) => {
+                return <ProjectCard {...project} key={index} />;
             })}
         </Container>
     );
