@@ -1,6 +1,7 @@
-import {BLACK, ORANGE, WHITE} from '@/constants/style';
+import {BLACK, LIGHT_GREY, ORANGE, WHITE} from '@/constants/style';
 import {motion} from 'framer-motion';
 import styled from 'styled-components';
+import Markdown from 'react-markdown';
 
 export const Container = styled(motion.div)({
     position: 'relative',
@@ -21,10 +22,21 @@ export const SceneWrapper = styled.div({
 });
 
 export const ContentOverlay = styled(motion.div)({
+    position: 'absolute',
+    top: 'calc(50% - 130px)',
     zIndex: 1,
     textAlign: 'center',
     width: '90%',
-    h4: {
+    'h4, a': {
         color: ORANGE,
     },
+    '*': {
+        margin: '0.5em 0',
+    },
+});
+
+export const Paragraph = styled(Markdown)({
+    position: 'absolute',
+    bottom: '50px',
+    color: LIGHT_GREY,
 });

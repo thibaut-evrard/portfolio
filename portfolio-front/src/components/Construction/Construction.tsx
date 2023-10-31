@@ -1,6 +1,11 @@
 'use client';
 
-import {Container, ContentOverlay, SceneWrapper} from './Construction.styles';
+import {
+    Container,
+    ContentOverlay,
+    Paragraph,
+    SceneWrapper,
+} from './Construction.styles';
 import Scene from './Scene/Scene';
 import {Canvas} from '@react-three/fiber';
 import {content} from './Construction.content';
@@ -26,15 +31,17 @@ const Construction = () => {
         <Container {...ContainerAnimation}>
             <ContentOverlay style={{translateX: tx, translateY: ty}}>
                 <motion.h4 {...TextAnimation}>{content.title}</motion.h4>
-                <Spacer height={'120px'} />
+                <Spacer height={'160px'} />
                 <motion.p {...TextAnimation}>{content.description}</motion.p>
                 <Rambling {...TextAnimation} />
+                <Spacer height={'70px'} />
             </ContentOverlay>
             <SceneWrapper>
                 <Canvas camera={{position: [0, 0, 5], fov: 40}}>
                     <Scene />
                 </Canvas>
             </SceneWrapper>
+            <Paragraph>{content.github}</Paragraph>
         </Container>
     );
 };

@@ -120,4 +120,10 @@ button {
     background-color: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(10px);
     border-radius: 24rem;
+
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: rgba(176, 37, 37, 0.6);
 }
