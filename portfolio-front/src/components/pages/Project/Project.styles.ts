@@ -10,7 +10,7 @@ export const Container = styled.div({
 
     display: 'flex',
     flexDirection: 'column',
-    padding: '150rem 120rem 80rem 120rem',
+    padding: '150rem 80rem 80rem 80rem',
 
     color: WHITE,
 

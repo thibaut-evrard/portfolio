@@ -34,6 +34,7 @@ export const useCarouselControls = (
         setActiveMedia(-targetIndex);
 
         const closestIndex = clamp(-max, 0, targetIndex * step);
+        console.log(closestIndex);
         targetProgress.set(closestIndex);
     };
 
@@ -46,7 +47,7 @@ export const useCarouselControls = (
         const targetIndex = Math.round(targetProgress.get() / step);
         setActiveMedia(-targetIndex);
 
-        const closestIndex = clamp(-max - 100, -100, targetIndex * step);
+        const closestIndex = clamp(-max, 0, targetIndex * step);
         progress.set(closestIndex);
         targetProgress.set(closestIndex);
     };

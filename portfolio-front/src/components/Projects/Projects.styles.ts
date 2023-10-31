@@ -5,7 +5,7 @@ import styled from 'styled-components';
 export const Container = styled.div({
     display: 'flex',
     flexDirection: 'column',
-    padding: '40rem 120rem',
+    padding: '40rem 80rem',
     color: WHITE,
 
     [MOBILE_BREAKPOINT]: {
