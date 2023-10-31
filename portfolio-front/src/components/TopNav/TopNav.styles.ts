@@ -1,3 +1,4 @@
+import {MOBILE_BREAKPOINT} from '@/constants/devices';
 import styled from 'styled-components';
 
 export const Container = styled.div({
@@ -10,4 +11,8 @@ export const Container = styled.div({
 
     display: 'flex',
     justifyContent: 'space-between',
+
+    [MOBILE_BREAKPOINT]: {
+        padding: '24rem 40rem',
+    },
 });

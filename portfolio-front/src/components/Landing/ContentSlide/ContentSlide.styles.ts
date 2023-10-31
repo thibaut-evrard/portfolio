@@ -16,4 +16,5 @@ export const Wrapper = styled(motion.div)({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    textAlign: 'center',
 });

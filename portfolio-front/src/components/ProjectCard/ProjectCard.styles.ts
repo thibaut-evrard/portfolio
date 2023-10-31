@@ -1,3 +1,4 @@
+import {MOBILE_BREAKPOINT} from '@/constants/devices';
 import {BORDER_RADIUS} from '@/constants/style';
 import Image from 'next/image';
 import styled from 'styled-components';
@@ -5,9 +6,9 @@ import styled from 'styled-components';
 export const Container = styled.div({
     position: 'relative',
     width: '100%',
-    height: 600,
+    aspectRatio: '16/9',
     borderRadius: BORDER_RADIUS,
-    marginBottom: '48px',
+    marginBottom: '48rem',
 });
 
 export const BackgroundImage = styled(Image)({
@@ -23,11 +24,21 @@ export const ContentContainer = styled.div({
     position: 'absolute',
     height: '100%',
     width: '100%',
-    padding: 47,
+    padding: '47rem',
 
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-end',
 
     color: 'white',
+
+    [MOBILE_BREAKPOINT]: {
+        h3: {
+            fontSize: '32rem',
+        },
+        button: {
+            padding: '12rem 24rem',
+        },
+        padding: '24rem',
+    },
 });

@@ -9,6 +9,16 @@
     font-smooth: always;
 }
 
+.test {
+    font-size: 1px;
+}
+
+@media screen and (max-width: 768px) {
+    .test {
+        font-size: 0.7px;
+    }
+}
+
 html,
 body {
     margin: 0;
@@ -17,47 +27,51 @@ body {
     width: 100%;
 }
 
+* {
+    font-size: 16rem;
+}
+
 /* TYPOGRAPHY */
 .display {
-    font-size: 200px;
+    font-size: 200rem;
     font-weight: 400;
 }
 
 h1 {
-    font-size: 120px;
+    font-size: 120rem;
     font-weight: 500;
     margin: 0.3em 0;
 }
 
 h2 {
-    font-size: 64px;
+    font-size: 64rem;
     font-weight: 500;
     margin: 0.3em 0;
 }
 
 h3 {
-    font-size: 48px;
+    font-size: 48rem;
     font-weight: 500;
     margin: 0.3em 0;
 }
 
 h4 {
-    font-size: 32px;
+    font-size: 32rem;
     font-weight: 500;
 }
 
 h5 {
-    font-size: 24px;
+    font-size: 24rem;
     font-weight: 500;
 }
 
 p .caption {
-    font-size: 18px;
+    font-size: 18rem;
     font-weight: 500;
 }
 
 p {
-    font-size: 16px;
+    font-size: 16rem;
     font-weight: 400;
 }
 
@@ -66,13 +80,24 @@ p .small {
     font-weight: 400;
 }
 
+a {
+    cursor: pointer;
+}
+
+a.discreet {
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
 /* BASE ELEMENTS */
 button {
     width: fit-content;
-    padding: 24px 32px;
+    padding: 24rem 32rem;
     border: none;
 
-    font-size: 18px;
+    font-size: 18rem;
     font-weight: 500;
     text-transform: uppercase;
     color: white;
@@ -81,5 +106,5 @@ button {
 
     background-color: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(10px);
-    border-radius: 24px;
+    border-radius: 24rem;
 }

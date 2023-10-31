@@ -6,7 +6,7 @@ export const Container = styled(motion.div)({
     opacity: 1,
     width: '100%',
     position: 'absolute',
-    textAlign: 'left',
+    textAlign: 'center',
     p: {
         display: 'inline-block',
         lineHeight: '100%',

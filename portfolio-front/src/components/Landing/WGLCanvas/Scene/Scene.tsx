@@ -4,6 +4,7 @@ import {useCustomRenderer} from '@/hooks/bubbles/useCustomRenderer';
 import {useGLTF} from '@react-three/drei';
 import {ILetterAssets, IScene} from './Scene.types';
 import Letter from './Letter/Letter';
+import {useIsMobile} from '@/hooks/device/useIsMobile';
 
 export const LayerContext = createContext({
     layer: undefined as 'foreground' | 'background' | undefined,
@@ -12,6 +13,7 @@ export const LayerContext = createContext({
 });
 
 const Scene: FC<IScene> = ({text3d}) => {
+    const isMobile = useIsMobile();
     const gltf = useGLTF(text3d) as any;
     const {t, i, b, o} = gltf.nodes as ILetterAssets;
 
@@ -25,7 +27,7 @@ const Scene: FC<IScene> = ({text3d}) => {
 
     return (
         <>
-            <group position={[0, -1, 0]}>
+            <group position={[0, -1, 0]} scale={isMobile ? 0.6 : 1}>
                 <group ref={foreground}>
                     <LayerContext.Provider
                         value={{

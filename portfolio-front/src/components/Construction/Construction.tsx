@@ -1,3 +1,5 @@
+'use client';
+
 import {
     Container,
     ContentOverlay,
@@ -27,7 +29,7 @@ const Construction = () => {
     return (
         <Container {...ContainerAnimation}>
             <ContentOverlay style={{translateX: tx, translateY: ty}}>
-                <motion.h1 {...TextAnimation}>{content.title}</motion.h1>
+                <motion.h4 {...TextAnimation}>{content.title}</motion.h4>
                 <Spacer />
                 <motion.p {...TextAnimation}>{content.description}</motion.p>
                 <Rambling {...TextAnimation} />
