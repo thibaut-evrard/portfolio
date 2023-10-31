@@ -7,17 +7,17 @@ import {
     useMotionValue,
     useAnimationFrame,
 } from 'framer-motion';
-import {lerp} from 'three/src/math/MathUtils.js';
 import {SmoothScrollContext} from './SmoothScroll.context';
 import {useIsClient} from '@/hooks/client/useIsClient';
+import {lerp} from 'three/src/math/MathUtils.js';
 
 const SmoothScroll: FC<PropsWithChildren> = ({children}) => {
     const isClient = useIsClient();
-    const [height, setHeight] = useState<number>(10000);
+    const [height, setHeight] = useState<number>(0);
     const [screensCount, setScreensCount] = useState<number>(0);
     const ref = useRef<HTMLDivElement>(null);
 
-    const {scrollYProgress} = useScroll();
+    const {scrollYProgress, scrollY} = useScroll();
     const smoothProgress = useMotionValue(0);
     const screensProgress = useTransform(
         smoothProgress,
@@ -27,6 +27,8 @@ const SmoothScroll: FC<PropsWithChildren> = ({children}) => {
     const translateY = useTransform(smoothProgress, [0, 1], [0, -height]);
 
     useAnimationFrame(() => {
+        if (scrollY.get() === 0) scrollYProgress.set(0);
+
         smoothProgress.set(
             lerp(smoothProgress.get(), scrollYProgress.get(), 0.1)
         );
@@ -40,6 +42,7 @@ const SmoothScroll: FC<PropsWithChildren> = ({children}) => {
     };
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         handleOnResize();
         window.addEventListener('resize', handleOnResize);
         return () => {
@@ -52,7 +55,7 @@ const SmoothScroll: FC<PropsWithChildren> = ({children}) => {
         <SmoothScrollContext.Provider
             value={{progress: translateY, screensProgress: screensProgress}}
         >
-            <div style={{height: height}} />
+            <div style={{height: height, minHeight: '200vh'}} />
             <FakeScrollWrapper>
                 <ContentContainer ref={ref} style={{translateY}}>
                     {children}
