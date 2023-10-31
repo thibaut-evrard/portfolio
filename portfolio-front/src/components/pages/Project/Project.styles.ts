@@ -10,7 +10,7 @@ export const Container = styled.div({
 
     display: 'flex',
     flexDirection: 'column',
-    padding: '150rem 120rem 80rem 120rem',
+    padding: '150rem 80rem 80rem 80rem',
 
     color: WHITE,
 
@@ -23,10 +23,11 @@ export const ProjectDescription = styled.div({
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    gap: '80rem',
+    gap: '20rem',
 
     width: '100%',
     height: 'fit-content',
+    justifyContent: 'space-between',
 
     [MOBILE_BREAKPOINT]: {
         gap: '10rem',
@@ -43,4 +44,8 @@ export const Section = styled.div({
 export const Paragraph = styled(ReactMarkdown)({
     color: LIGHT_GREY,
     fontWeight: 300,
+});
+
+export const Title = styled.h2({
+    margin: '0.2em 0',
 });

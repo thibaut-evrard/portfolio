@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const Container = styled.div({
     position: 'fixed',
     zIndex: 1,
+    pointerEvents: 'none',
 
     top: 0,
     width: '100%',
@@ -14,5 +15,9 @@ export const Container = styled.div({
 
     [MOBILE_BREAKPOINT]: {
         padding: '24rem 40rem',
+    },
+
+    '*': {
+        pointerEvents: 'all',
     },
 });

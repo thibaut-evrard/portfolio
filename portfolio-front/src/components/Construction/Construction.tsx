@@ -3,8 +3,8 @@
 import {
     Container,
     ContentOverlay,
+    Paragraph,
     SceneWrapper,
-    Spacer,
 } from './Construction.styles';
 import Scene from './Scene/Scene';
 import {Canvas} from '@react-three/fiber';
@@ -14,6 +14,7 @@ import {useMousePosition} from '@/hooks/mouse/useMousePosition';
 import {lerp} from 'three/src/math/MathUtils.js';
 import {ContainerAnimation, TextAnimation} from './Construction.animations';
 import Rambling from './Rambling/Rambling';
+import {Spacer} from '../Atoms/Spacer';
 
 const Construction = () => {
     const tx = useMotionValue(0);
@@ -30,15 +31,17 @@ const Construction = () => {
         <Container {...ContainerAnimation}>
             <ContentOverlay style={{translateX: tx, translateY: ty}}>
                 <motion.h4 {...TextAnimation}>{content.title}</motion.h4>
-                <Spacer />
+                <Spacer height={'160px'} />
                 <motion.p {...TextAnimation}>{content.description}</motion.p>
                 <Rambling {...TextAnimation} />
+                <Spacer height={'70px'} />
             </ContentOverlay>
             <SceneWrapper>
                 <Canvas camera={{position: [0, 0, 5], fov: 40}}>
                     <Scene />
                 </Canvas>
             </SceneWrapper>
+            <Paragraph>{content.github}</Paragraph>
         </Container>
     );
 };

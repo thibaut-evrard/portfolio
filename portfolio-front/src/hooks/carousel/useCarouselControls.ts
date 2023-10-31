@@ -2,6 +2,9 @@ import {clamp, useAnimationFrame, useMotionValue} from 'framer-motion';
 import {MutableRefObject, useEffect} from 'react';
 import {lerp} from 'three/src/math/MathUtils.js';
 
+const OVERSHOOT = 100;
+const SPEED = 1.5;
+
 export const useCarouselControls = (
     containerRef: MutableRefObject<HTMLDivElement | null>,
     slidesCount: number,
@@ -15,20 +18,30 @@ export const useCarouselControls = (
         targetProgress.set(targetIndex * containerRef.current!.clientWidth);
     };
 
+    const getParams = () => {
+        if (!containerRef.current) return {max: 0, step: 0};
+        const max = containerRef.current.clientWidth * (slidesCount - 1);
+        const step = containerRef.current.clientWidth;
+        return {max, step};
+    };
+
     const onPan = (event: any, info: any) => {
         if (!containerRef.current) return;
 
-        const offset = info.delta.x * 2;
-        const max = containerRef.current.clientWidth * (slidesCount - 1);
-        const newValue = clamp(-max - 100, 100, targetProgress.get() + offset);
+        const offset = info.delta.x * SPEED;
+        const {max} = getParams();
+        const newValue = clamp(
+            -max - OVERSHOOT,
+            OVERSHOOT,
+            targetProgress.get() + offset
+        );
 
         targetProgress.set(newValue);
     };
     const onPanEnd = () => {
         if (!containerRef.current) return;
 
-        const max = containerRef.current.clientWidth * (slidesCount - 1);
-        const step = containerRef.current.clientWidth;
+        const {max, step} = getParams();
 
         const targetIndex = Math.round(targetProgress.get() / step);
         setActiveMedia(-targetIndex);
@@ -40,13 +53,12 @@ export const useCarouselControls = (
     const handleOnResize = () => {
         if (!containerRef.current) return;
 
-        const max = containerRef.current.clientWidth * (slidesCount - 1);
-        const step = containerRef.current.clientWidth;
+        const {max, step} = getParams();
 
         const targetIndex = Math.round(targetProgress.get() / step);
         setActiveMedia(-targetIndex);
 
-        const closestIndex = clamp(-max - 100, -100, targetIndex * step);
+        const closestIndex = clamp(-max, 0, targetIndex * step);
         progress.set(closestIndex);
         targetProgress.set(closestIndex);
     };

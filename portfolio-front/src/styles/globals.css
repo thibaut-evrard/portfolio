@@ -36,6 +36,18 @@ body {
 }
 
 /* TYPOGRAPHY */
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+button {
+    margin: 0.2em 0;
+}
+
 .display {
     font-size: 200rem;
     font-weight: 400;
@@ -44,19 +56,16 @@ body {
 h1 {
     font-size: 120rem;
     font-weight: 500;
-    margin: 0.3em 0;
 }
 
 h2 {
     font-size: 64rem;
     font-weight: 500;
-    margin: 0.3em 0;
 }
 
 h3 {
     font-size: 48rem;
     font-weight: 500;
-    margin: 0.3em 0;
 }
 
 h4 {
@@ -111,4 +120,10 @@ button {
     background-color: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(10px);
     border-radius: 24rem;
+
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+    background-color: rgba(176, 37, 37, 0.6);
 }
