@@ -15,8 +15,8 @@ export const ProjectsContent: any = {
 
 export const ProjectList: IProjectContent[] = [
     ProjectsContent['dms-icon-wall'],
-    ProjectsContent['finecast-webgl'],
     ProjectsContent['oyster-disaster'],
+    ProjectsContent['finecast-webgl'],
     ProjectsContent['blurry-bananas'],
     ProjectsContent['mediapipe-experiments'],
 ];
