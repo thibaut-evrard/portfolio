@@ -47,6 +47,7 @@ const Carousel: FC<ICarousel> = ({media}) => {
                                 onPan={onPan}
                                 onPanEnd={onPanEnd}
                                 playsInline
+                                loop
                             />
                         </MediaItemContainer>
                     ))}
@@ -66,11 +67,13 @@ const Carousel: FC<ICarousel> = ({media}) => {
                     ))}
                 </MediaWrapper>
             </MediaContainer>
-            <Menu
-                mediaCount={media.length}
-                activeIndex={activeMedia}
-                onSelect={handleOnSelect}
-            />
+            {media.length > 1 && (
+                <Menu
+                    mediaCount={media.length}
+                    activeIndex={activeMedia}
+                    onSelect={handleOnSelect}
+                />
+            )}
         </Container>
     );
 };
