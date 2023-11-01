@@ -95,6 +95,7 @@ p .small {
 
 a {
     cursor: pointer;
+    color: #b02525;
 }
 
 a.discreet {

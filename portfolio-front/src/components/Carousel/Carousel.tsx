@@ -6,11 +6,11 @@ import {
     MediaContainer,
     MediaItemContainer,
     MediaWrapper,
-    Video,
 } from './Carousel.styles';
 import {getMediaTypes} from '@/utils/getMediaTypes';
 import Menu from './Menu/Menu';
 import {useCarouselControls} from '@/hooks/carousel/useCarouselControls';
+import Video from './Video/Video';
 
 const Carousel: FC<ICarousel> = ({media}) => {
     const {videos, images} = getMediaTypes(media);
@@ -41,12 +41,9 @@ const Carousel: FC<ICarousel> = ({media}) => {
                             <Video
                                 key={index}
                                 src={video}
-                                muted
-                                autoPlay
-                                controls
                                 onPan={onPan}
                                 onPanEnd={onPanEnd}
-                                playsInline
+                                active={index === activeMedia}
                             />
                         </MediaItemContainer>
                     ))}
@@ -66,11 +63,13 @@ const Carousel: FC<ICarousel> = ({media}) => {
                     ))}
                 </MediaWrapper>
             </MediaContainer>
-            <Menu
-                mediaCount={media.length}
-                activeIndex={activeMedia}
-                onSelect={handleOnSelect}
-            />
+            {media.length > 1 && (
+                <Menu
+                    mediaCount={media.length}
+                    activeIndex={activeMedia}
+                    onSelect={handleOnSelect}
+                />
+            )}
         </Container>
     );
 };

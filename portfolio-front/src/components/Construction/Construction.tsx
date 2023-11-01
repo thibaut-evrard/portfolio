@@ -13,7 +13,7 @@ import {motion, useAnimationFrame, useMotionValue} from 'framer-motion';
 import {useMousePosition} from '@/hooks/mouse/useMousePosition';
 import {lerp} from 'three/src/math/MathUtils.js';
 import {ContainerAnimation, TextAnimation} from './Construction.animations';
-import Rambling from './Rambling/Rambling';
+import Rambling from './Rumbling/Rumbling';
 import {Spacer} from '../Atoms/Spacer';
 
 const Construction = () => {

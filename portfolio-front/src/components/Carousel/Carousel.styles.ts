@@ -56,8 +56,3 @@ export const Image = styled(motion.img)({
     objectFit: 'contain',
     userSelect: 'none',
 });
-
-export const Video = styled(motion.video)({
-    display: 'block',
-    objectFit: 'contain',
-});
