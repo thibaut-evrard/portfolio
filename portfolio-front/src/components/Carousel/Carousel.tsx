@@ -40,7 +40,7 @@ const Carousel: FC<ICarousel> = ({media}) => {
                         <MediaItemContainer>
                             <Video
                                 key={index}
-                                src={video}
+                                media={video}
                                 onPan={onPan}
                                 onPanEnd={onPanEnd}
                                 active={index === activeMedia}
@@ -51,7 +51,7 @@ const Carousel: FC<ICarousel> = ({media}) => {
                         <MediaItemContainer>
                             <Image
                                 key={index}
-                                src={image}
+                                src={image.src}
                                 width={'1400'}
                                 height='800'
                                 alt='img'

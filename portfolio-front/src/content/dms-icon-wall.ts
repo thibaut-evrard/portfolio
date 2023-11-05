@@ -1,3 +1,5 @@
+import {MobileLayoutStates} from './content.types';
+
 export const dmsIconWall = {
     slug: 'dms-icon-wall',
     title: "DM's Icon Wall",
@@ -12,6 +14,11 @@ My main challenge on this project was to optimise the 3D assets of the shoes to 
 - Front-end development
 - WebGL development
 - CMS integration`,
-    media: ['/projects/dms-icon-wall/showcase.mp4'],
+    media: [
+        {
+            src: '/projects/dms-icon-wall/showcase.mp4',
+            mobileLayout: MobileLayoutStates.COVER,
+        },
+    ],
     thumbnail: '/projects/dms-icon-wall/thumbnail.jpg',
 };

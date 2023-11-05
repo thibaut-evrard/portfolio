@@ -1,3 +1,5 @@
+import {MobileLayoutStates} from './content.types';
+
 export const finecastWebgl = {
     slug: 'finecast-webgl',
     title: 'Finecast Homepage',
@@ -10,6 +12,11 @@ Performance was the most difficult part of this project ( multiple videos and We
 - React Fiber`,
     role: `- Creation and export of optimised 3D and 2D assets
 - Front-end development of the homepage Background`,
-    media: ['/projects/finecast/video.mp4'],
+    media: [
+        {
+            src: '/projects/finecast/video.mp4',
+            mobileLayout: MobileLayoutStates.CONTAIN,
+        },
+    ],
     thumbnail: '/projects/finecast/thumbnail.jpg',
 };

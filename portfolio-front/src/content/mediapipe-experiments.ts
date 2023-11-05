@@ -1,3 +1,5 @@
+import {MobileLayoutStates} from './content.types';
+
 export const mediapipeExperiments = {
     slug: 'mediapipe-experiments',
     title: 'Mediapipe Experiments',
@@ -11,12 +13,30 @@ This was my way to occupy my week nights during the lockdown. Making silly exper
     role: `- Occupying tibo's free time
 - Having fun`,
     media: [
-        '/projects/mediapipe-experiments/video.mp4',
-        '/projects/mediapipe-experiments/video1.mp4',
-        '/projects/mediapipe-experiments/video2.mp4',
-        '/projects/mediapipe-experiments/video3.mp4',
-        '/projects/mediapipe-experiments/video4.mp4',
-        '/projects/mediapipe-experiments/video5.mp4',
+        {
+            src: '/projects/mediapipe-experiments/video.mp4',
+            mobileLayout: MobileLayoutStates.CONTAIN,
+        },
+        {
+            src: '/projects/mediapipe-experiments/video1.mp4',
+            mobileLayout: MobileLayoutStates.CONTAIN,
+        },
+        {
+            src: '/projects/mediapipe-experiments/video2.mp4',
+            mobileLayout: MobileLayoutStates.CONTAIN,
+        },
+        {
+            src: '/projects/mediapipe-experiments/video3.mp4',
+            mobileLayout: MobileLayoutStates.CONTAIN,
+        },
+        {
+            src: '/projects/mediapipe-experiments/video4.mp4',
+            mobileLayout: MobileLayoutStates.CONTAIN,
+        },
+        {
+            src: '/projects/mediapipe-experiments/video5.mp4',
+            mobileLayout: MobileLayoutStates.CONTAIN,
+        },
     ],
     thumbnail: '/projects/mediapipe-experiments/thumbnail.jpg',
 };

@@ -1,3 +1,5 @@
+import {MobileLayoutStates} from './content.types';
+
 export const blurryBananas = {
     slug: 'blurry-bananas',
     title: 'Blurry Bananas',
@@ -9,9 +11,18 @@ For me, this project was the opportunity to explore custom shaders in Unity HDRP
 - Obi Softbody`,
     role: `- Development of the interactive experience`,
     media: [
-        '/projects/blurry-bananas/video.mp4',
-        '/projects/blurry-bananas/video3.mp4',
-        '/projects/blurry-bananas/video2.mp4',
+        {
+            src: '/projects/blurry-bananas/video.mp4',
+            mobileLayout: MobileLayoutStates.COVER,
+        },
+        {
+            src: '/projects/blurry-bananas/video3.mp4',
+            mobileLayout: MobileLayoutStates.COVER,
+        },
+        {
+            src: '/projects/blurry-bananas/video2.mp4',
+            mobileLayout: MobileLayoutStates.COVER,
+        },
     ],
     thumbnail: '/projects/blurry-bananas/thumbnail.jpg',
 };
