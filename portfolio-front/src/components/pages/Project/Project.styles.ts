@@ -36,8 +36,14 @@ export const ProjectDescription = styled.div({
 
 export const Section = styled.div({
     height: '100%',
+    minWidth: '400px',
+    maxWidth: '600px',
     p: {
         whiteSpace: 'break-spaces',
+    },
+
+    [MOBILE_BREAKPOINT]: {
+        minWidth: 0,
     },
 });
 

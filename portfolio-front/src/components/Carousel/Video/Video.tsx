@@ -2,7 +2,7 @@ import {FC, useRef, useEffect} from 'react';
 import {IVideo} from './Video.types';
 import {VideoElement} from './Video.styles';
 
-const Video: FC<IVideo> = ({onPan, onPanEnd, active, src}) => {
+const Video: FC<IVideo> = ({onPan, onPanEnd, active, media}) => {
     const ref = useRef<HTMLVideoElement>(null);
 
     useEffect(() => {
@@ -13,7 +13,7 @@ const Video: FC<IVideo> = ({onPan, onPanEnd, active, src}) => {
 
     return (
         <VideoElement
-            src={src}
+            src={media.src}
             muted
             autoPlay
             controls
@@ -22,6 +22,7 @@ const Video: FC<IVideo> = ({onPan, onPanEnd, active, src}) => {
             playsInline
             loop
             ref={ref}
+            $mobileLayout={media.mobileLayout}
         />
     );
 };

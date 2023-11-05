@@ -23,12 +23,12 @@ const Project: FC<IProjectContent> = (props) => {
             <Caption>{props.year}</Caption>
             <Carousel media={props.media} />
             <ProjectDescription>
-                <Section style={{minWidth: '400px', maxWidth: '600px'}}>
+                <Section>
                     <Caption>{content.info}</Caption>
                     <Spacer height={'10rem'} />
                     <Paragraph>{props.description.toString()}</Paragraph>
                 </Section>
-                <Section style={{maxWidth: '600px'}}>
+                <Section>
                     <Caption>{content.role}</Caption>
                     <Spacer height={'10rem'} />
                     <Paragraph>{props.role}</Paragraph>

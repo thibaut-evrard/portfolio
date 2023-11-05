@@ -1,3 +1,5 @@
+import {MobileLayoutStates} from './content.types';
+
 export const oysterDisaster = {
     slug: 'oyster-disaster',
     title: 'Oyster Disaster',
@@ -11,10 +13,22 @@ Our contribution to the exhibition came in the form of a series of instagram AR 
 - Development of the AR filters
 - Interaction design / animation of the assets`,
     media: [
-        '/projects/oyster-disaster/video.mp4',
-        '/projects/oyster-disaster/video1.mp4',
-        '/projects/oyster-disaster/video2.mp4',
-        '/projects/oyster-disaster/video3.mp4',
+        {
+            src: '/projects/oyster-disaster/video.mp4',
+            mobileLayout: MobileLayoutStates.COVER,
+        },
+        {
+            src: '/projects/oyster-disaster/video1.mp4',
+            mobileLayout: MobileLayoutStates.COVER,
+        },
+        {
+            src: '/projects/oyster-disaster/video2.mp4',
+            mobileLayout: MobileLayoutStates.COVER,
+        },
+        {
+            src: '/projects/oyster-disaster/video3.mp4',
+            mobileLayout: MobileLayoutStates.COVER,
+        },
     ],
     thumbnail: '/projects/oyster-disaster/thumbnail.jpeg',
 };

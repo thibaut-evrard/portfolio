@@ -25,6 +25,8 @@ export const MediaContainer = styled(motion.div)({
     overflow: 'hidden',
     borderRadius: BORDER_RADIUS,
     backgroundColor: 'black',
+
+    touchAction: 'none',
 });
 
 export const MediaWrapper = styled(motion.div)({
