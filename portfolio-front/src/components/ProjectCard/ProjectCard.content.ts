@@ -1,3 +1,3 @@
 export const content = {
-    view: 'view project',
+    view: 'explore →',
 };

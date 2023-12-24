@@ -7,7 +7,6 @@ import {Texture} from 'three';
 import {lerp} from 'three/src/math/MathUtils.js';
 import {ROTATION_INTENSITY, ROTATION_SPEED, HAT_SCALE} from './Scene.constants';
 import Simplex from 'ts-perlin-simplex';
-import {ORANGE} from '@/constants/style';
 
 const noise = new Simplex.SimplexNoise();
 
@@ -63,7 +62,6 @@ const Scene = () => {
                         <meshStandardMaterial
                             roughness={0.8}
                             map={material.map as Texture}
-                            color={ORANGE}
                             attach='material'
                         />
                     </mesh>

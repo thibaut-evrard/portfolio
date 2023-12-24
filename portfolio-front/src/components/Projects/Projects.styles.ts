@@ -1,9 +1,14 @@
+import {MOBILE_BREAKPOINT} from '@/constants/devices';
 import {WHITE} from '@/constants/style';
 import styled from 'styled-components';
 
 export const Container = styled.div({
     display: 'flex',
     flexDirection: 'column',
-    padding: '40px 80px',
+    padding: '40rem 80rem',
     color: WHITE,
+
+    [MOBILE_BREAKPOINT]: {
+        padding: '40rem 40rem',
+    },
 });

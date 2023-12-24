@@ -25,6 +25,8 @@ export const MediaContainer = styled(motion.div)({
     overflow: 'hidden',
     borderRadius: BORDER_RADIUS,
     backgroundColor: 'black',
+
+    touchAction: 'none',
 });
 
 export const MediaWrapper = styled(motion.div)({
@@ -55,9 +57,4 @@ export const Image = styled(motion.img)({
     height: '100%',
     objectFit: 'contain',
     userSelect: 'none',
-});
-
-export const Video = styled(motion.video)({
-    display: 'block',
-    objectFit: 'contain',
 });

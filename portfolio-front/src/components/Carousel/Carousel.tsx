@@ -6,11 +6,11 @@ import {
     MediaContainer,
     MediaItemContainer,
     MediaWrapper,
-    Video,
 } from './Carousel.styles';
 import {getMediaTypes} from '@/utils/getMediaTypes';
 import Menu from './Menu/Menu';
 import {useCarouselControls} from '@/hooks/carousel/useCarouselControls';
+import Video from './Video/Video';
 
 const Carousel: FC<ICarousel> = ({media}) => {
     const {videos, images} = getMediaTypes(media);
@@ -40,12 +40,10 @@ const Carousel: FC<ICarousel> = ({media}) => {
                         <MediaItemContainer>
                             <Video
                                 key={index}
-                                src={video}
-                                muted
-                                autoPlay
-                                controls
+                                media={video}
                                 onPan={onPan}
                                 onPanEnd={onPanEnd}
+                                active={index === activeMedia}
                             />
                         </MediaItemContainer>
                     ))}
@@ -53,7 +51,7 @@ const Carousel: FC<ICarousel> = ({media}) => {
                         <MediaItemContainer>
                             <Image
                                 key={index}
-                                src={image}
+                                src={image.src}
                                 width={'1400'}
                                 height='800'
                                 alt='img'
@@ -65,11 +63,13 @@ const Carousel: FC<ICarousel> = ({media}) => {
                     ))}
                 </MediaWrapper>
             </MediaContainer>
-            <Menu
-                mediaCount={media.length}
-                activeIndex={activeMedia}
-                onSelect={handleOnSelect}
-            />
+            {media.length > 1 && (
+                <Menu
+                    mediaCount={media.length}
+                    activeIndex={activeMedia}
+                    onSelect={handleOnSelect}
+                />
+            )}
         </Container>
     );
 };
