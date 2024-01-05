@@ -305,37 +305,59 @@ varying vec3 vViewPosition;
 
 // CUSTOM START
 float getGummyFactor(vec3 normal, float thickness) {
-	float reverseThickness = pow(thickness, 5.);
-	float normalFactor = pow(abs(normal.x), 8.);
-	float gummy = max(normalFactor, reverseThickness);
-	return gummy;
+	float reverseThickness = pow(thickness, 1.);
+	float intensity = 4.;
+	float normalFactor = max(pow(abs(normal.y), intensity), pow(abs(normal.x), intensity));
+	float gummy = normalFactor;
+	return min(gummy, 1.);
 }
 
-vec3 getGummyEmissionFactor(vec3 geometryPosition, float gummyFactor, vec3 gummyDiffuse) {
+// vec3 getGummyEmissionFactor(vec3 geometryPosition, float gummyFactor, vec3 gummyDiffuse, vec3 normal) {
+// 	#if ( NUM_POINT_LIGHTS > 0 ) && defined( RE_Direct )
+// 	PointLight pointLight;
+// 	vec3 fragEmit = vec3(0.);
+
+// 	for ( int i = 0; i < NUM_POINT_LIGHTS; i ++ ) {
+// 		pointLight = pointLights[ i ];
+		
+// 		vec3 lightToFrag = pointLight.position - geometryPosition;
+// 		vec3 lightToFragDirection = normalize(lightToFrag);
+
+// 		float lightThroughNormal = pow(dot(lightToFragDirection, -normal), 3.);
+// 		float lightToFragDistance = length(lightToFrag);
+// 		float lightIntensity = getDistanceAttenuation( lightToFragDistance, pointLight.distance, pointLight.decay );
+
+// 		fragEmit += vec3(lightThroughNormal) * gummyFactor * (1. / (pointLight.distance * pointLight.decay));
+// 	}
+
+// 	vec3 col = gummyDiffuse * fragEmit;
+// 	return clamp(col, 0., 1.);
+
+// 	#endif
+// 	return vec3(0.);
+// }
+
+float getGummyEmission(vec3 geometryPosition, float gummyFactor, vec3 normal) {
+	float emit = 0.;
+
 	#if ( NUM_POINT_LIGHTS > 0 ) && defined( RE_Direct )
 	PointLight pointLight;
-	vec3 fragEmit = vec3(0.);
 
 	for ( int i = 0; i < NUM_POINT_LIGHTS; i ++ ) {
 		pointLight = pointLights[ i ];
 		
 		vec3 lightToFrag = pointLight.position - geometryPosition;
 		vec3 lightToFragDirection = normalize(lightToFrag);
-		float lightToFragDistance = clamp(length(lightToFrag), 0., 1.);
+
+		float lightThroughNormal = pow(dot(lightToFragDirection, -normal), 3.);
+		float lightToFragDistance = length(lightToFrag);
 		float lightIntensity = getDistanceAttenuation( lightToFragDistance, pointLight.distance, pointLight.decay );
 
-		if(lightToFragDistance < 1.) {
-			float intensityFactor = pow(lightIntensity, 2.);
-			float factor = intensityFactor;
-			fragEmit += pointLight.color * factor + intensityFactor * gummyFactor;	
-		}
+		emit += lightThroughNormal * gummyFactor * 4.; // * (1. / (lightToFragDistance * 0.2));
 	}
 
-	vec3 col = gummyDiffuse * fragEmit;
-	return clamp(col, 0., 1.);
-
 	#endif
-	return vec3(0.);
+	return min(emit, 1.);
 }
 
 uniform sampler2D gummyMap;
@@ -386,11 +408,11 @@ void main() {
 	#include <transmission_fragment>
 
 	// CUSTOM START
-	vec3 gummyEmissionColor = getGummyEmissionFactor(geometryPosition, gummyFactor, gummyDiffuse);
-	totalEmissiveRadiance = gummyEmissionColor;
+	float gummyEmission = getGummyEmission(geometryPosition, gummyFactor, normal);
+	vec3 gummyEmissionColor = mix(diffuse, coreColor, gummyEmission);
 	// CUSTOM END
 
-	vec3 outgoingLight = totalDiffuse + totalSpecular + totalEmissiveRadiance;
+	vec3 outgoingLight = vec3(gummyEmissionColor); // + gummyDiffuse * 0.4 + totalSpecular + totalEmissiveRadiance;
 
 	#ifdef USE_SHEEN
 
