@@ -4,7 +4,7 @@ import { MeshBubbleMaterial } from '@/components/wgl/materials/MeshBubbleMateria
 import { useContext, useRef } from 'react';
 import { LayerContext } from '../Scene';
 import { ILetter } from './Letter.types';
-import { useNoisyMovement } from '@/hooks/bubbles/useNoisyMovement';
+import { useNoisyMovement } from '@/hooks/wgl/bubbles/useNoisyMovement';
 
 function Letter({ geometry, ...props }: ILetter) {
   const { transmissionMap, blur } = useContext(LayerContext);

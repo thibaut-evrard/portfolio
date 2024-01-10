@@ -112,8 +112,8 @@ vec3 getGummyEmission(vec3 geometryPosition, vec3 normal, float thickness, vec3 
 		vec3 refractedLightToFragThickness = refract(lightToFragDirection, normalize(-normal), (thickness * 2.) - 1.);
 		vec3 reflectedLightToFragThickness = reflect(lightToFragDirection, normalize(-normal));
 
-		float angleLightNormal = 0.; //dot(lightToFragDirection, -normal);
-		float backsideToLight = length(lightToFrag) - clamp(angleLightNormal, 0., 1.) * thickness * length(lightToFrag);
+		float angleLightNormal = dot(lightToFragDirection, -normal);
+		float backsideToLight = length(lightToFrag) - clamp(angleLightNormal * 0.5, 0., 1.) * thickness * length(lightToFrag);
 		float lightIntensity = getDistanceAttenuation( max(length(backsideToLight), 0.), pointLight.distance, pointLight.decay);
 
 		float lightThroughIntensity = dot(camToLight, refractedLightToFragThickness);
@@ -123,10 +123,11 @@ vec3 getGummyEmission(vec3 geometryPosition, vec3 normal, float thickness, vec3 
 		lightBounceIntensity = pow(clamp(lightBounceIntensity, 0., 1.), 2.);
 
 		vec3 bounceEmit = mix(vec3(0.), gummyColor, lightBounceIntensity * 0.3);
-		vec3 throughEmit = mix(gummyColor, clamp(pointLight.color, 0., 1.), lightThroughIntensity * 0.3);
+		vec3 throughEmit = gummyColor * pointLight.color * lightThroughIntensity;
+		//vec3 throughEmit = mix(gummyColor, clamp(pointLight.color, 0., 1.), lightThroughIntensity * 0.8);
 
 		float intensity = lightIntensity * clamp(lightThroughIntensity + lightBounceIntensity, 0., 1.);
-		emit = bounceEmit * intensity + throughEmit * intensity;
+		emit += bounceEmit * intensity + throughEmit * intensity;
 	}
 
 	#endif
@@ -155,7 +156,7 @@ float getGummyColorMix(vec3 geometryPosition, vec3 normal, float thickness) {
 		float lightBounceIntensity = dot(camToLight, -reflectedLightToFragThickness);
 		lightBounceIntensity = pow(clamp(lightBounceIntensity, 0., 1.), 1.);
 		
-		emit = lightThroughIntensity - lightBounceIntensity * 0.5;
+		emit += lightThroughIntensity - lightBounceIntensity * 0.5;
 	}
 
 	#endif
@@ -216,7 +217,7 @@ void main() {
 	vec3 globalPos = (modelMatrix * vec4(geometryPosition, 1.0 )).xyz;
 	vec3 gummyEmission = getGummyEmission(geometryPosition, normal, pow(thickness, 5.), gummyColor);
 	vec3 gummyEmissionColor = mix(vec3(0.), gummyColor, gummyEmission);
-	
+
 	vec3 outgoingLight = totalDiffuse + gummyEmissionColor + totalSpecular + totalEmissiveRadiance;
 	// CUSTOM END
 

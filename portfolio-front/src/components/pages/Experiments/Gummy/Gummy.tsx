@@ -6,7 +6,7 @@ import Scene from './Scene/Scene';
 const Gummy = () => {
   return (
     <Container>
-      <Canvas>
+      <Canvas shadows dpr={1}>
         <Scene />
       </Canvas>
     </Container>
