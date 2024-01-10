@@ -4,6 +4,7 @@ import Pointer from './Physics/Pointer/Pointer';
 import MetaballInstances from './Physics/MetaballInstances/MetaballInstances';
 import PointLightInstances from './Physics/LightInstances/LightInstances';
 import GlobalLighting from './GlobalLighting/GlobalLighting';
+import PostProcessing from './PostProcessing/PostProcessing';
 
 const Scene = () => {
   return (
@@ -14,7 +15,8 @@ const Scene = () => {
         <Pointer />
         <MetaballInstances />
         <PointLightInstances color={'#ffffff'} count={2} key='whiteLights' />
-        <PointLightInstances color={'#ff0000'} count={4} key='redLights' />
+        {/* <PointLightInstances color={'#ffaaaa'} count={2} key='redLights' />
+        <PointLightInstances color={'#aaffaa'} count={2} key='greenLights' /> */}
       </Physics>
 
       {/* <PostProcessing /> */}

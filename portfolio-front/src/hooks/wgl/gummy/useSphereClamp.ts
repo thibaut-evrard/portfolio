@@ -16,9 +16,9 @@ export const useSphereClamp = (
 
   const [ref, api] = useSphere(() => ({
     args: [options.colliderScale],
-    mass: 1,
-    angularDamping: 0.1,
-    linearDamping: 0.65,
+    mass: 0.5,
+    angularDamping: 0.01,
+    linearDamping: 0.065,
     position: [rfs(20), rfs(20), rfs(20)]
   }));
 

@@ -6,7 +6,7 @@ import { ILightInstances } from './LightInstances.types';
 
 const PointLightInstances: FC<ILightInstances> = ({ count = 1, color = '#ffffff' }) => {
   const arr = new Array(count).fill(0);
-  const ref = useSphereClamp({ numInstances: count, colliderScale: 1.2 });
+  const ref = useSphereClamp({ numInstances: count, colliderScale: 1 });
   const lightsRef = useRef<Group>(null);
 
   useFrame(() => {
@@ -24,17 +24,14 @@ const PointLightInstances: FC<ILightInstances> = ({ count = 1, color = '#ffffff'
     <>
       <group ref={lightsRef}>
         {arr.map((_, i) => (
-          <pointLight
-            key={i}
-            intensity={20}
-            decay={3}
-            color={color}
-            castShadow
-            receiveShadow
-          />
+          <pointLight key={i} intensity={20} decay={4} color={color} castShadow />
         ))}
       </group>
-      <instancedMesh ref={ref as Ref<InstancedMesh>} args={[undefined, undefined, count]}>
+      <instancedMesh
+        ref={ref as Ref<InstancedMesh>}
+        args={[undefined, undefined, count]}
+        castShadow
+      >
         <sphereGeometry args={[1, 64, 64]} />
         <meshPhysicalMaterial emissive={color} />
       </instancedMesh>

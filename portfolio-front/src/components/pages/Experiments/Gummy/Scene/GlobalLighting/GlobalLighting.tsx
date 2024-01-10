@@ -1,10 +1,10 @@
-// import { Environment } from '@react-three/drei';
+import { Environment } from '@react-three/drei';
 
 const GlobalLighting = () => {
   return (
     <>
       <ambientLight intensity={0.1} />
-      {/* <Environment preset='sunset' /> */}
+      {/* <Environment files='assets/textures/rainforest_trail_1k.exr' /> */}
     </>
   );
 };
