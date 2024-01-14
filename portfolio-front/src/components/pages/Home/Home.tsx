@@ -2,15 +2,15 @@
 
 import Landing from '@/components/Landing/Landing';
 import Projects from '@/components/Projects/Projects';
-import SmoothScroll from '@/components/SmoothScroll/SmoothScroll';
+import Scroll from '@/components/Scroll/Sroll';
 
 const Home = () => {
-    return (
-        <SmoothScroll>
-            <Landing />
-            <Projects />
-        </SmoothScroll>
-    );
+  return (
+    <Scroll>
+      <Landing />
+      <Projects />
+    </Scroll>
+  );
 };
 
 export default Home;

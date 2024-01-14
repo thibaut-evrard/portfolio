@@ -1,23 +1,30 @@
-import {useTransform} from 'framer-motion';
-import {CanvasContainer, ScrollContainer} from './Landing.styles';
+import { useAnimationFrame, useTransform } from 'framer-motion';
+import { CanvasContainer, ScrollContainer } from './Landing.styles';
 import WGLCanvas from './WGLCanvas/WGLCanvas';
-import {useContext} from 'react';
+import { useContext } from 'react';
 import ContentSlide from './ContentSlide/ContentSlide';
-import {SmoothScrollContext} from '../SmoothScroll/SmoothScroll.context';
+import { SmoothScrollContext } from '../SmoothScroll/SmoothScroll.context';
+import { useIsMobile } from '@/hooks/device/useIsMobile';
 
 const Landing = () => {
-    const {screensProgress} = useContext(SmoothScrollContext);
-    const translateY = useTransform(screensProgress, [0, -2], ['0%', '200%']);
-    const progress = useTransform(screensProgress, [0, -2], [0, 1]);
+  const isMobile = useIsMobile();
+  const { screensProgress } = useContext(SmoothScrollContext);
 
-    return (
-        <ScrollContainer key={1}>
-            <CanvasContainer style={{translateY}}>
-                <ContentSlide progress={progress} />
-                <WGLCanvas progress={progress} />
-            </CanvasContainer>
-        </ScrollContainer>
-    );
+  useAnimationFrame(() => {
+    console.log(screensProgress.get());
+  });
+
+  const translateY = useTransform(screensProgress, [0, -2], ['0%', '200%']);
+  const progress = useTransform(screensProgress, [0, -2], [0, 1]);
+
+  return (
+    <ScrollContainer key={1}>
+      <CanvasContainer style={{ translateY: !isMobile ? translateY : 0 }}>
+        <ContentSlide progress={progress} />
+        <WGLCanvas progress={progress} />
+      </CanvasContainer>
+    </ScrollContainer>
+  );
 };
 
 export default Landing;
