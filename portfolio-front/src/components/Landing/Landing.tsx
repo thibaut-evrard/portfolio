@@ -1,4 +1,4 @@
-import { useAnimationFrame, useTransform } from 'framer-motion';
+import { useTransform } from 'framer-motion';
 import { CanvasContainer, ScrollContainer } from './Landing.styles';
 import WGLCanvas from './WGLCanvas/WGLCanvas';
 import { useContext } from 'react';
@@ -9,10 +9,6 @@ import { useIsMobile } from '@/hooks/device/useIsMobile';
 const Landing = () => {
   const isMobile = useIsMobile();
   const { screensProgress } = useContext(SmoothScrollContext);
-
-  useAnimationFrame(() => {
-    console.log(screensProgress.get());
-  });
 
   const translateY = useTransform(screensProgress, [0, -2], ['0%', '200%']);
   const progress = useTransform(screensProgress, [0, -2], [0, 1]);
