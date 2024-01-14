@@ -1,3 +1,4 @@
+import { MOBILE_BREAKPOINT } from '@/constants/devices';
 import { BORDER_RADIUS } from '@/constants/style';
 import { motion } from 'framer-motion';
 import styled from 'styled-components';
@@ -11,7 +12,12 @@ export const Container = styled.div({
   height: '100%',
 
   marginTop: '80px',
-  marginBottom: '40px'
+  marginBottom: '40px',
+
+  [MOBILE_BREAKPOINT]: {
+    marginTop: '40px',
+    marginBottom: '40px'
+  }
 });
 
 export const MediaContainer = styled(motion.div)({
