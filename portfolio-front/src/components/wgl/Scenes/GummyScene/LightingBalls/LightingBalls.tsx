@@ -1,4 +1,4 @@
-import LightballMesh from '../Meshes/LightballMesh/LightballMesh';
+import LightballMesh from './LightballMesh/LightballMesh';
 
 const LightingBalls = () => {
   return (

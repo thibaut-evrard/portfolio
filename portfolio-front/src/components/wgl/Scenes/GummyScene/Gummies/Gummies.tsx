@@ -1,10 +1,12 @@
 import { useGLTF, useTexture } from '@react-three/drei';
 import { RepeatWrapping } from 'three';
 import { GummyMesh } from './GummyMesh/GummyMesh';
+import { FC } from 'react';
+import { IGummies } from './Gummies.types';
 
-export const Gummies = () => {
-  const { nodes, materials } = useGLTF('/assets/gummy/models/model.glb') as any;
-  const bumpMap = useTexture('/assets/textures/grain-bump.jpeg');
+export const Gummies: FC<IGummies> = ({ modelSrc, bumpMapSrc }) => {
+  const { nodes, materials } = useGLTF(modelSrc) as any;
+  const bumpMap = useTexture(bumpMapSrc);
   bumpMap.wrapS = bumpMap.wrapT = RepeatWrapping;
   bumpMap.repeat.set(3, 3);
 

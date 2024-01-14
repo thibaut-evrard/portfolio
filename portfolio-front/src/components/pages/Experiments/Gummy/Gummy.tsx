@@ -1,7 +1,7 @@
 'use client';
 import { Canvas } from '@react-three/fiber';
 import { Container, ContentContainer, Headline } from './Gummy.styles';
-import Scene from './Scene/Scene';
+import GummyScene from '../../../wgl/Scenes/GummyScene/GummyScene';
 
 const Gummy = () => {
   return (
@@ -10,7 +10,7 @@ const Gummy = () => {
         <Headline>TIBO</Headline>
       </ContentContainer>
       <Canvas shadows dpr={1}>
-        <Scene />
+        <GummyScene />
       </Canvas>
     </Container>
   );

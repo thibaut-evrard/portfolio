@@ -1,6 +1,6 @@
 import { useFrame, useThree } from '@react-three/fiber';
 import { Group, Material, Vector2 } from 'three';
-import { MeshBubbleMaterial } from '@/components/wgl/materials/MeshBubbleMaterial/MeshBubbleMaterial';
+import { MeshBubbleMaterial } from '@/components/wgl/Materials/MeshBubbleMaterial/MeshBubbleMaterial';
 import { useContext, useRef } from 'react';
 import { LayerContext } from '../Scene';
 import { ILetter } from './Letter.types';

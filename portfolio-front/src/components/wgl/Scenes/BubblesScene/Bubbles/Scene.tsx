@@ -2,7 +2,7 @@ import { FC, createContext, useRef } from 'react';
 import { Group, Texture } from 'three';
 import { useCustomRenderer } from '@/hooks/wgl/bubbles/useCustomRenderer';
 import { useGLTF } from '@react-three/drei';
-import { ILetterAssets, IScene } from './Scene.types';
+import { ILetterAssets, IBubbles } from './Scene.types';
 import Letter from './Letter/Letter';
 import { useIsMobile } from '@/hooks/device/useIsMobile';
 
@@ -12,7 +12,7 @@ export const LayerContext = createContext({
   blur: 0 as number
 });
 
-const Scene: FC<IScene> = ({ text3d }) => {
+const Bubbles: FC<IBubbles> = ({ text3d }) => {
   const isMobile = useIsMobile();
   const gltf = useGLTF(text3d) as any;
   const { t, i, b, o } = gltf.nodes as ILetterAssets;
@@ -61,4 +61,4 @@ const Scene: FC<IScene> = ({ text3d }) => {
   );
 };
 
-export default Scene;
+export default Bubbles;
