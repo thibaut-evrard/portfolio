@@ -101,78 +101,60 @@ uniform vec3 coreColor;
 uniform float gummyStrength;
 uniform mat4 modelMatrix;
 
-vec3 getGummyEmission(vec3 geometryPosition, vec3 normal, float thinness, vec3 gummyColor) {
-	float thickness = 1. - thinness;
-	vec3 emit = vec3(0.);
-
-	#if ( NUM_POINT_LIGHTS > 0 ) && defined( RE_Direct )
-	PointLight pointLight;
-
-	for ( int i = 0; i < NUM_POINT_LIGHTS; i ++ ) {
-		pointLight = pointLights[ i ];
-
-		vec3 lightToFrag = pointLight.position - geometryPosition + normal;
-		vec3 camToLight = -normalize(pointLight.position);
-		vec3 lightToFragDirection = normalize(lightToFrag);
-
-		vec3 refractedLightToFragThickness = refract(lightToFragDirection, normalize(-normal), (thickness * 2.) - 1.);
-		vec3 reflectedLightToFragThickness = reflect(lightToFragDirection, normalize(-normal));
-
-		float angleLightNormal = dot(lightToFragDirection, -normal);
-		float backsideToLight = length(lightToFrag) - clamp(angleLightNormal * 0.5, 0., 1.) * thickness * length(lightToFrag);
-		float lightIntensity = getDistanceAttenuation( max(length(backsideToLight), 0.), pointLight.distance, pointLight.decay);
-
-		float lightThroughIntensity = dot(camToLight, refractedLightToFragThickness);
-		lightThroughIntensity = pow(clamp(lightThroughIntensity, 0., 1.), 5.) * lightIntensity * (1. - thickness);
-
-		float lightBounceIntensity = dot(camToLight, -reflectedLightToFragThickness);
-		lightBounceIntensity = pow(clamp(lightBounceIntensity, 0., 1.), 2.) * lightIntensity;
-
-		vec3 bounceEmit = mix(vec3(0.), gummyColor * pointLight.color, lightBounceIntensity * 0.3);
-		vec3 throughEmit = (gummyColor + pointLight.color * gummyColor * lightIntensity) * lightThroughIntensity;
-		//vec3 throughEmit = mix(gummyColor, clamp(pointLight.color, 0., 1.), lightThroughIntensity * 0.8);
-
-		float intensity = clamp(lightThroughIntensity + lightBounceIntensity, 0., 1.);
-		intensity = intensity * gummyStrength;
-		emit += bounceEmit * intensity + throughEmit * intensity;
-	}
-
-	#endif
-	return clamp(emit, 0., 1.);
-}
-
-float getGummyColorMix(vec3 geometryPosition, vec3 normal, float thinness) {
-	float thickness = 1. - thinness;
+float getGummyColorMix(vec3 geometryPosition, vec3 normal, float thickness) {
 	float emit = 0.;
 
+	vec3 camToFrag = normalize(geometryPosition);
+	float gummyFactor = abs(dot(camToFrag, normal));
+	gummyFactor = pow(gummyFactor, 2.);
+
+	return thickness * 0.8 + gummyFactor * 0.5;
+}
+
+vec3 getLightCapture(vec3 geometryPosition, vec3 normal, float thickness, vec3 diffuse) {
+	float emit = 0.;
+	float thinness = 1. - thickness;
+	float remappedThinness = thinness * 0.7;
+	vec3 outColor = vec3(0.);
+
 	#if ( NUM_POINT_LIGHTS > 0 ) && defined( RE_Direct )
 	PointLight pointLight;
 
 	for ( int i = 0; i < NUM_POINT_LIGHTS; i ++ ) {
 		pointLight = pointLights[ i ];
 
+		// measuring key distances
+		vec3 camToFrag = normalize(geometryPosition);
 		vec3 lightToFrag = pointLight.position - (geometryPosition + normal);
 		vec3 camToLight = -normalize(pointLight.position);
 		vec3 lightToFragDirection = normalize(lightToFrag);
-
-		vec3 refractedLightToFragThickness = refract(lightToFragDirection, normalize(normal), (thickness * 2.) - 1.);
-		vec3 reflectedLightToFragThickness = reflect(lightToFragDirection, normalize(normal));
-
 		float angleLightNormal = dot(lightToFragDirection, -normal);
+
+		// compute thickness
+		float altThickness = abs(angleLightNormal);
+		altThickness = pow(altThickness, 1.);
+		float fullThickness = thickness * altThickness;
+
+		// compute light intensity
 		float backsideToLight = length(lightToFrag) - clamp(angleLightNormal * 0.5, 0., 1.) * thickness * length(lightToFrag);
-		float lightIntensity = getDistanceAttenuation( max(length(backsideToLight), 0.), pointLight.distance, pointLight.decay);
+		float lightIntensity = getDistanceAttenuation( length(lightToFrag), pointLight.distance, pointLight.decay);
+		lightIntensity = length(pointLight.color) * lightIntensity;
 
-		float lightThroughIntensity = dot(camToLight, -refractedLightToFragThickness);
-		lightThroughIntensity = pow(clamp(lightThroughIntensity, 0., 1.), 2.);
+		// compute direction similarity
+		float lightDirectionSimilarity = dot(camToFrag, lightToFragDirection);
+		lightDirectionSimilarity = pow(clamp(lightDirectionSimilarity, 0., 1.), 20.);
+		float lightThroughIntensity = (1. - fullThickness) * lightDirectionSimilarity * lightIntensity;
 
-		float lightBounceIntensity = dot(camToLight, -reflectedLightToFragThickness);
-		lightBounceIntensity = pow(clamp(lightBounceIntensity, 0., lightThroughIntensity), 1.);
-		
-		emit += (lightThroughIntensity - lightBounceIntensity * 0.5) * lightIntensity * gummyStrength;
+		float emitIntensity = lightIntensity * (1. - fullThickness) * 0.5 + lightThroughIntensity * 2.;
+		vec3 pointLightHue = clamp(pointLight.color, 0., 1.) * 0.8 + diffuse * 0.2;
+		vec3 maxEmit = mix(diffuse, pointLightHue, emitIntensity);
+		vec3 emitColor = mix(vec3(0.), maxEmit, emitIntensity);
+
+		outColor += vec3(clamp(emitColor, 0., 1.));
 	}
 
 	#endif
-	return clamp(emit, 0., 1.);
+	return vec3(outColor);
 }
 // CUSTOM END
 
@@ -200,8 +182,7 @@ void main() {
 
 	// CUSTOM START
 	vec3 geomPos = - vViewPosition;
-	float thickness = 1. - texture2D( gummyMap, vUv ).r;
-
+	float thickness = texture2D( gummyMap, vUv ).r;
 	float gummyColorMix = getGummyColorMix(geomPos, normal, pow(thickness, 1.));
 	vec3 gummyColor = mix(diffuse, coreColor, gummyColorMix);
 	diffuseColor = vec4( gummyColor, opacity );
@@ -222,11 +203,11 @@ void main() {
 	#include <transmission_fragment>
 
 	// CUSTOM START
-	vec3 globalPos = (modelMatrix * vec4(geometryPosition, 1.0 )).xyz;
-	vec3 gummyEmission = getGummyEmission(geometryPosition, normal, pow(thickness, 1.), gummyColor);
-	vec3 gummyEmissionColor = mix(vec3(0.), gummyColor, gummyEmission);
-
-	vec3 outgoingLight = totalDiffuse + gummyEmissionColor + totalSpecular + totalEmissiveRadiance;
+	// vec3 globalPos = (modelMatrix * vec4(geometryPosition, 1.0 )).xyz;
+	// vec3 gummyEmission = getGummyEmission(geometryPosition, normal, pow(thickness, 1.), gummyColor);
+	// vec3 gummyEmissionColor = mix(vec3(0.), gummyColor, gummyEmission);
+	vec3 col = getLightCapture(geomPos, normal, thickness, coreColor);
+	vec3 outgoingLight = totalDiffuse + col + totalSpecular + totalEmissiveRadiance;//totalDiffuse + totalSpecular + totalEmissiveRadiance;
 	//vec3 outgoingLight = vec3(gummyStrength);
 	// CUSTOM END
 

@@ -14,7 +14,7 @@ import { IUniform } from 'three';
 import vertex from './shader/vertex';
 import fragment from './shader/fragment';
 
-class MeshCandleMaterialBase extends MeshPhysicalMaterial {
+class MeshTranslucentMaterialBase extends MeshPhysicalMaterial {
   _time: IUniform = { value: 0.0 };
   _gummyStrength: IUniform = { value: 0.0 };
   _gummyMap: IUniform = { value: new Texture() };
@@ -77,35 +77,36 @@ class MeshCandleMaterialBase extends MeshPhysicalMaterial {
   }
 }
 
-interface MeshCandleMaterialProps extends MeshPhysicalMaterialParameters {
+interface MeshTranslucentMaterialProps extends MeshPhysicalMaterialParameters {
   time?: number;
   gummyMap: Texture;
   gummyStrength?: number;
   coreColor?: Color;
 }
 
-const MeshCandleMaterial = /*#__PURE__*/ React.forwardRef<any, MeshCandleMaterialProps>(
-  ({ ...props }, ref) => {
-    const [material] = React.useState(() => new MeshCandleMaterialBase());
-    if (!props.gummyStrength) material.gummyStrength = 1.0;
+const MeshTranslucentMaterial = /*#__PURE__*/ React.forwardRef<
+  any,
+  MeshTranslucentMaterialProps
+>(({ ...props }, ref) => {
+  const [material] = React.useState(() => new MeshTranslucentMaterialBase());
+  if (!props.gummyStrength) material.gummyStrength = 1.0;
 
-    useFrame((state) => {
-      material && (material.time = state.clock.getElapsedTime());
-    });
-    return /*#__PURE__*/ React.createElement(
-      'primitive',
-      _extends(
-        {
-          object: material,
-          ref: ref,
-          attach: 'material'
-        },
-        props
-      )
-    );
-  }
-);
+  useFrame((state) => {
+    material && (material.time = state.clock.getElapsedTime());
+  });
+  return /*#__PURE__*/ React.createElement(
+    'primitive',
+    _extends(
+      {
+        object: material,
+        ref: ref,
+        attach: 'material'
+      },
+      props
+    )
+  );
+});
 
-MeshCandleMaterial.displayName = 'MeshCandleMaterial';
+MeshTranslucentMaterial.displayName = 'MeshTranslucentMaterial';
 
-export { MeshCandleMaterial };
+export { MeshTranslucentMaterial };
