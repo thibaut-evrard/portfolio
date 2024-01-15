@@ -1,15 +1,15 @@
-'use client';
+"use client";
 
-import Landing from '@/components/Landing/Landing';
-import Projects from '@/components/Projects/Projects';
+import Landing from "@/components/Landing/Landing";
+import Projects from "@/components/Projects/Projects";
 
 const Home = () => {
-  return (
-    <>
-      <Landing />
-      <Projects />
-    </>
-  );
+    return (
+        <>
+            <Landing />
+            <Projects />
+        </>
+    );
 };
 
 export default Home;
