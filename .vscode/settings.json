@@ -1,3 +1,9 @@
 {
+<<<<<<< HEAD
   "editor.detectIndentation": false
+=======
+  "[dockercompose]": {
+    "editor.tabSize": 4
+  }
+>>>>>>> origin/develop
 }
