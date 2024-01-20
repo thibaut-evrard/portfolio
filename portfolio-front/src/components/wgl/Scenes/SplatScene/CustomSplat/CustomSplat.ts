@@ -15,6 +15,10 @@ const CustomSplatMaterial = /* @__PURE__ */ shaderMaterial(
         focal: 1000.0,
         centerAndScaleTexture: null,
         covAndColorTexture: null,
+        // CUSTOM START
+        yOcclude: 0,
+        time: 0,
+        // CUSTOM END
     },
     vertex,
     fragment,
@@ -561,7 +565,16 @@ function CustomSplat({
     // Listen to worker results, apply them to the target mesh
     React.useLayoutEffect(() => shared.connect(ref.current), [src]);
     // Update the worker
-    useFrame(() => {
+    useFrame((state) => {
+        // CUSTOM START
+        if (!ref.current) return;
+        const mesh = ref.current as THREE.Mesh;
+        const { uniforms } = mesh.material as THREE.ShaderMaterial;
+
+        uniforms.time.value = state.clock.elapsedTime;
+        uniforms.yOcclude.value = Math.sin(Date.now() / 5000) / 2 - 0.2;
+        // CUSTOM END
+
         shared.update(ref.current, camera, alphaHash);
     });
     return /*#__PURE__*/ React.createElement(
