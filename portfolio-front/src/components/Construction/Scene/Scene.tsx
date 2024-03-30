@@ -1,7 +1,7 @@
 import {Environment, useGLTF} from '@react-three/drei';
 import {useFrame} from '@react-three/fiber';
 import {content} from './Scene.content';
-import {useMousePosition} from '@/hooks/mouse/useMousePosition';
+import {useMouse} from '@/hooks/mouse/useMouse';
 import {useRef} from 'react';
 import {Texture} from 'three';
 import {lerp} from 'three/src/math/MathUtils.js';
@@ -15,11 +15,11 @@ const Scene = () => {
     const gltf = useGLTF(content.hatSrc);
     const {geometry, material} = gltf.scene.children[0] as any;
 
-    const mousePos = useMousePosition();
+    const {positionRef} = useMouse();
 
     const lookAtMouse = () => {
         if (!ref.current) return;
-        const {x, y} = mousePos.current;
+        const {x, y} = positionRef.current;
         const rotX = (y - 0.5) * ROTATION_INTENSITY.x;
         const rotY = (x - 0.5) * ROTATION_INTENSITY.y;
 

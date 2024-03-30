@@ -22,6 +22,7 @@
         "framer-motion": "^10.16.4",
         "glslify": "^7.1.1",
         "glslify-loader": "^2.0.0",
+        "leva": "^0.9.35",
         "next": "13.5",
         "prettier": "^3.0.3",
         "raw-loader": "^4.0.2",
