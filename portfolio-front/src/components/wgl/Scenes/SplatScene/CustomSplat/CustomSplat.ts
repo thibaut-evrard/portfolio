@@ -4,9 +4,9 @@ import _extends from "@babel/runtime/helpers/esm/extends";
 import * as THREE from "three";
 import * as React from "react";
 import { extend, useThree, useLoader, useFrame } from "@react-three/fiber";
-import { shaderMaterial } from "./Materials/shaderMaterial";
 import { fragment } from "./shaders/fragment";
 import { vertex } from "./shaders/vertex";
+import { shaderMaterial } from "./materials/shaderMaterial";
 
 const CustomSplatMaterial = /* @__PURE__ */ shaderMaterial(
     {

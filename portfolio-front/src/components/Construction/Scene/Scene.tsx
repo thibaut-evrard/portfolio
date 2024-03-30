@@ -1,37 +1,41 @@
-import {Environment, useGLTF} from '@react-three/drei';
-import {useFrame} from '@react-three/fiber';
-import {content} from './Scene.content';
-import {useMouse} from '@/hooks/mouse/useMouse';
-import {useRef} from 'react';
-import {Texture} from 'three';
-import {lerp} from 'three/src/math/MathUtils.js';
-import {ROTATION_INTENSITY, ROTATION_SPEED, HAT_SCALE} from './Scene.constants';
-import Simplex from 'ts-perlin-simplex';
+import { Environment, useGLTF } from "@react-three/drei";
+import { useFrame } from "@react-three/fiber";
+import { content } from "./Scene.content";
+import { useMouse } from "@/hooks/mouse/useMouse";
+import { useRef } from "react";
+import { Texture } from "three";
+import { lerp } from "three/src/math/MathUtils.js";
+import {
+    ROTATION_INTENSITY,
+    ROTATION_SPEED,
+    HAT_SCALE,
+} from "./Scene.constants";
+import Simplex from "ts-perlin-simplex";
 
 const noise = new Simplex.SimplexNoise();
 
 const Scene = () => {
     const ref = useRef<any>();
     const gltf = useGLTF(content.hatSrc);
-    const {geometry, material} = gltf.scene.children[0] as any;
+    const { geometry, material } = gltf.scene.children[0] as any;
 
-    const {positionRef} = useMouse();
+    const { positionRef } = useMouse();
 
     const lookAtMouse = () => {
         if (!ref.current) return;
-        const {x, y} = positionRef.current;
+        const { x, y } = positionRef.current;
         const rotX = (y - 0.5) * ROTATION_INTENSITY.x;
         const rotY = (x - 0.5) * ROTATION_INTENSITY.y;
 
         ref.current.rotation.y = lerp(
             ref.current.rotation.y,
             rotY,
-            ROTATION_SPEED
+            ROTATION_SPEED,
         );
         ref.current.rotation.x = lerp(
             ref.current.rotation.x,
             rotX,
-            ROTATION_SPEED
+            ROTATION_SPEED,
         );
     };
 
@@ -41,7 +45,7 @@ const Scene = () => {
         ref.current.position.y = y;
     };
 
-    useFrame(({clock}) => {
+    useFrame(({ clock }) => {
         if (!ref.current) return;
         lookAtMouse();
         hover(clock.elapsedTime);
@@ -50,7 +54,7 @@ const Scene = () => {
     if (!gltf) return null;
     return (
         <>
-            <Environment preset='city' />
+            <Environment preset="city" />
             {gltf && (
                 <group
                     scale={HAT_SCALE}
@@ -58,11 +62,11 @@ const Scene = () => {
                     position={[0, -0.5, 0]}
                 >
                     <mesh ref={ref}>
-                        <bufferGeometry {...geometry} attach='geometry' />
+                        <bufferGeometry {...geometry} attach="geometry" />
                         <meshStandardMaterial
                             roughness={0.8}
                             map={material.map as Texture}
-                            attach='material'
+                            attach="material"
                         />
                     </mesh>
                 </group>

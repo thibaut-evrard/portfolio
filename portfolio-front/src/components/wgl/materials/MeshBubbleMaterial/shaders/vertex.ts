@@ -1,3 +1,4 @@
+export const vert = /* glsl */ `
 #define STANDARD
 
 uniform float time;
@@ -73,4 +74,4 @@ void main() {
 
     vWorldPosition = worldPosition.xyz;
 
-}
+}`;
