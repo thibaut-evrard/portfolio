@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { extend, useFrame } from "@react-three/fiber";
-import { Color, DoubleSide, Mesh, ShaderMaterial } from "three";
-import { useEnvironment } from "@react-three/drei";
+import { Color, DoubleSide, Mesh, ShaderMaterial, Vector2 } from "three";
+import { useEnvironment, useTexture } from "@react-three/drei";
 import { useControls } from "leva";
 import { BodyFluidShaderMaterial } from "./FluidShaderMaterial/FluidShaderMaterial";
 import { useScrollParams } from "./hooks/useScrollParams";
@@ -14,15 +14,18 @@ const FluidSimulationMaterial = () => {
     const controls = useControls({
         attenuation: { value: 0.005, max: 0.1, min: 0.0 },
         waveSpeed: { value: 0.4, max: 0.7, min: 0.0 },
-        sampleScale: { value: 1.0, max: 30.0, min: 1.0 },
+        sampleScale: { value: 1.0, max: 2.0, min: 1.0 },
         cursorScale: { value: 0.03, max: 1, min: 0.0 },
     });
 
     const meshRef = useRef<Mesh>(null);
-    const environment = useEnvironment({ preset: "sunset" });
+    const environment = useEnvironment({ preset: "city" });
     const materialRef = useRef(null);
     const cursor = useMouse();
-    const waterSim = useWaterSimCompute();
+    const waterSim = useWaterSimCompute({
+        resolution: new Vector2(window.innerWidth, window.innerHeight),
+    });
+    const chromeMap = useTexture("/wgl/waterScene/chromeMap5.png");
     const { scrollAccelerationDamped, scrollScalarDamped, scrollProgress } =
         useScrollParams();
 
@@ -63,12 +66,12 @@ const FluidSimulationMaterial = () => {
 
     return (
         <bodyFluidShaderMaterial
+            ref={materialRef}
             side={DoubleSide}
             key="material"
-            ref={materialRef}
+            color={new Color(0x0077ff)}
             displacementFactor={0}
-            color={new Color("#000000")}
-            envMap={environment}
+            chromeMap={chromeMap}
             transparent
         />
     );

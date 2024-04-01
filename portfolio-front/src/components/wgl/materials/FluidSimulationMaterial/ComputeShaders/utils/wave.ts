@@ -1,4 +1,5 @@
 // requires noise to be implemented
+// requires win to be implemented
 export const waveUtils = /*glsl*/ `
   #define PI 3.1415926538  
 
@@ -21,11 +22,6 @@ export const waveUtils = /*glsl*/ `
     vec2 h;
   };
 
-  struct WindParams {
-    float force;
-    vec2 direction;
-  };
-
   float getWindWeight(float windForce, vec2 windDirection, vec2 sampleDirection, float pressureA, float pressureB, float steepnessAttenuationFactor) {
     float windAffect = windForce * dot(windDirection, sampleDirection);
     float steepness = abs(pressureA - pressureB);
@@ -41,17 +37,6 @@ export const waveUtils = /*glsl*/ `
     wWeights.w21 = getWindWeight(wParams.force, wParams.direction, vec2(1., 0.), p11, samples.p21, steepnessAttenuationFactor);
 
     return wWeights;
-  }
-
-  WindParams getWindParams(vec2 uv, float time) {
-    WindParams wParams;
-
-    float a = noise3d(vec3(vec2(uv), time)) * PI * 2.;
-
-    wParams.direction = vec2(cos(a), sin(a)); //vec2(cos(noise3d(vec3(vec2(uv), time)) * .5 * PI), sin(time));
-    wParams.force = 0.0;
-
-    return wParams;
   }
 
   CellSteps getCellSteps(vec2 sampleStep) {
@@ -72,8 +57,7 @@ export const waveUtils = /*glsl*/ `
     return samples;
   }
 
-  vec4 computeWave(vec2 uv, sampler2D map, vec2 sampleStep, float waveSpeed, float attenuation, float time) {
-    WindParams wParams = getWindParams(uv, time);
+  vec4 computeWave(vec2 uv, sampler2D map, vec2 sampleStep, float waveSpeed, float attenuation, float time, WindParams wParams) {
     CellSteps cSteps = getCellSteps(sampleStep);
 
     // compute wave speed

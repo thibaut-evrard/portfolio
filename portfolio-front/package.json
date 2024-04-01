@@ -28,8 +28,7 @@
         "react-markdown": "^9.0.0",
         "styled-components": "^6.1.0",
         "three": "^0.162.0",
-        "ts-perlin-simplex": "^0.0.3",
-        "typescript-eslint": "^7.4.0"
+        "ts-perlin-simplex": "^0.0.3"
     },
     "devDependencies": {
         "@types/node": "^20",

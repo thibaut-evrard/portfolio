@@ -4,8 +4,10 @@ export const fluidShaderFrag = /* glsl */ `
 
   uniform sampler2D velocityMap;
   uniform sampler2D backgroundMap;
+  uniform sampler2D chromeMap;
   uniform sampler2D envMap;
   uniform vec3 color;
+
 
   varying vec2 vUv;
   varying vec3 vWorldPosition;
@@ -46,8 +48,8 @@ export const fluidShaderFrag = /* glsl */ `
 
   void main() {
     // extracting data from compute shader
-    vec2 bx = vec2(0., 0.001);
-    vec2 by = vec2(0.001, 0.);
+    vec2 bx = vec2(0., 0.002);
+    vec2 by = vec2(0.002, 0.);
 
     vec4 data11 = texture2D(velocityMap, vUv);
     vec4 data01 = texture2D(velocityMap, vUv - bx);
@@ -58,20 +60,35 @@ export const fluidShaderFrag = /* glsl */ `
     vec4 data = (data01 + data11 + data21 + data10 + data12) / 5.;
 
 
-    vec3 normal = normalize(vec3(data.z, data.w, .2));
+    vec3 normal = normalize(vec3(data.z, data.w, .1));
 
     // compute reflections
     vec2 reflectionSample = (normal.xy * 0.5 + vec2(0.5));
     
 
     vec3 camToVertex = normalize(vWorldPosition - cameraPosition);
-    vec3 worldNormal = normalize(vWorldNormal + normal * 1.);
+    vec3 worldNormal = normalize(vWorldNormal + normal * .1);
     
-    vec3 reflection = getReflection(camToVertex, envMap, worldNormal);
-    reflection = vec3(reflection.r + reflection.g + reflection.b) / 3.;
-    
-    vec3 outCol = mix(color, vec3(1.), max(reflection * 2. - 1., 0.));
-    outCol += data.x * (reflection - .5) * 1.;
+    vec3 outCol = vec3(0.);
+
+    // IF WE ARE WORKING WITH ENV
+    #if defined ENV_MAP
+      vec3 reflection = getReflection(camToVertex, envMap, worldNormal);
+
+      outCol = mix(color, vec3(1.), max(reflection * 2. - 1., 0.));
+      outCol += data.x * (reflection - .5) * 1.;
+
+    // IF WE ARE WORKING WITH CHROME
+    #elif defined CHROME_MAP
+      vec2 chromeNormal = pow(normal.xy, vec2(1.));
+      vec2 scaledNormal = chromeNormal * .5 + .5;
+
+      outCol = texture2D(chromeMap, scaledNormal).rgb;
+      outCol = outCol + vec3(pow(normal.x, 3.));
+    #else
+    // vec3 sNormal = normal * .5 + .5;
+    // outCol = vec3(sNormal);
+    #endif
 
     gl_FragColor = vec4(vec3(outCol), 1.);
   }

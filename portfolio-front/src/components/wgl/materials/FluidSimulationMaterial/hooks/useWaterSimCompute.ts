@@ -20,7 +20,11 @@ interface IUpdateOptions {
     scrollProgress?: number;
 }
 
-export const useWaterSimCompute = () => {
+export interface IWaterSimCompute {
+    resolution: Vector2;
+}
+
+export const useWaterSimCompute = ({ resolution }: IWaterSimCompute) => {
     const { gl } = useThree();
     const computeTextureRef = useRef({} as Texture);
 
@@ -33,7 +37,7 @@ export const useWaterSimCompute = () => {
         uniforms.cursorClicked = { value: false };
         uniforms.attenuation = { value: 0.001 };
         uniforms.waveSpeed = { value: 0.003 };
-        uniforms.sampleScale = { value: 5 };
+        uniforms.sampleScale = { value: 1 };
         uniforms.cursorScale = { value: 0.1 };
         uniforms.scrollScalar = { value: 0 };
         uniforms.scrollAcceleration = { value: 0 };
@@ -42,8 +46,8 @@ export const useWaterSimCompute = () => {
 
     const computeLayer = useMemo(() => {
         const gpRenderer = new GPUComputationRenderer(
-            window.innerWidth / 2,
-            window.innerHeight / 2,
+            resolution.x,
+            resolution.y,
             gl,
         );
         const computeTexture = gpRenderer.createTexture();
