@@ -10,6 +10,25 @@ export const CanvasContainer = styled.div`
 `;
 
 export const ScrollContainer = styled.div`
-    border: 1px solid red;
+    // position
+    width: 100%;
+    height: 200%;
+
+    // display
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+
+    // cosmetics
     color: white;
+`;
+
+export const ScrollWrapper = styled.div`
+    // position
+    width: 100%;
+    height: 50%;
+    max-width: 500px;
+
+    opacity: 0.6;
 `;

@@ -47,8 +47,7 @@ export const fragment = /*glsl*/ `
 
     vec2 uv = gl_FragCoord.xy / resolution.xy;
     // displace the uvs by the scroll speed
-    vec2 nUv = uv + vec2(0., 0.001 * -clamp(scrollScalar, -10., 10.));
-    vec2 pUv = uv + vec2(0., 0.001 * scrollAcceleration);
+    vec2 nUv = uv + vec2(0., 0.001 * -scrollScalar);
 
     // compute interactions
     CursorParams cursor = getCursorParams(cursorPosition, prevCursorPosition, cursorDirection, cursorScale);
@@ -58,7 +57,7 @@ export const fragment = /*glsl*/ `
 
     // x: pressure, y: acceleration, z: nx, w: ny
     vec4 newValues = computeWave(nUv, computeTexture, sampleStep, waveSpeed, attenuation, time, windParams);
-    float ambientNoise = getOctaveNoise(nUv, time * 1., vec3(10., 25., 28.), 0.5);
+    float ambientNoise = getOctaveNoise(uv, time * 1., vec3(10., 25., 28.), 0.5);
     float noiseMask = getNoiseMask(nUv);
 
     noiseMask = noiseMask;

@@ -1,7 +1,12 @@
 "use client";
-import { CanvasContainer, ScrollContainer } from "./Water.styles";
+import {
+    CanvasContainer,
+    ScrollContainer,
+    ScrollWrapper,
+} from "./Water.styles";
 import WaterScene from "@/components/wgl/Scenes/WaterScene/WaterScene";
 import { Canvas } from "@react-three/fiber";
+import { text } from "./Water.content";
 
 const Water = () => {
     return (
@@ -12,32 +17,9 @@ const Water = () => {
                 </Canvas>
             </CanvasContainer>
             <ScrollContainer>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
-                <h1>test</h1>
+                <ScrollWrapper>
+                    <span dangerouslySetInnerHTML={{ __html: text }} />
+                </ScrollWrapper>
             </ScrollContainer>
         </>
     );
