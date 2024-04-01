@@ -1,4 +1,4 @@
-import FluidSimulationMaterial from "../../Materials/FluidSimulationMaterial/FluidSimulationMaterial";
+import FluidSimulationMaterial from "../../TempMaterials/FluidSimulationMaterial/FluidSimulationMaterial";
 
 const WaterScene = () => {
     return (

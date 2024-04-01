@@ -1,4 +1,4 @@
-import { MeshTranslucentMaterial } from "@/components/wgl/Materials/MeshTranslucentMaterial/MeshTranslucentMaterial";
+import { MeshTranslucentMaterial } from "@/components/wgl/TempMaterials/MeshTranslucentMaterial/MeshTranslucentMaterial";
 import { FC, useRef } from "react";
 import { IGummyMesh } from "./GummyMesh.types";
 import { Color, Group, Texture } from "three";
