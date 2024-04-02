@@ -1,4 +1,4 @@
-import { Environment } from "@react-three/drei";
+import { Environment, useEnvironment } from "@react-three/drei";
 import BackgroundTexture from "src/components/wgl/BackgroundTexture/BackgroundTexture";
 import { FC } from "react";
 import Bubbles from "./Bubbles/Scene";
@@ -7,10 +7,12 @@ import { IBubblesScene } from "./BubblesScene.types";
 import { content } from "./BubblesScene.content";
 
 const BubblesScene: FC<IBubblesScene> = ({ progress }) => {
+    const envMap = useEnvironment({ files: content.hdri });
+
     return (
         <>
             <BackgroundTexture path={content.background} />
-            <Environment path="/" files={content.hdri} />
+            <Environment map={envMap} />
             <PointerCamera progress={progress} />
             <Bubbles text3d={content.model} />
         </>
