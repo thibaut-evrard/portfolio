@@ -7,7 +7,10 @@ import { IBubblesScene } from "./BubblesScene.types";
 import { content } from "./BubblesScene.content";
 
 const BubblesScene: FC<IBubblesScene> = ({ progress }) => {
-    const envMap = useEnvironment({ files: content.hdri });
+    const envMap = useEnvironment({
+        files: "env.hdr",
+        path: "./wgl/common/hdr/",
+    });
 
     return (
         <>
