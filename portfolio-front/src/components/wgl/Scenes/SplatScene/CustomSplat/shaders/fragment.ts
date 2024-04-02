@@ -1,5 +1,3 @@
-import { REVISION } from "three";
-
 export const fragment = `
 #include <alphatest_pars_fragment>
 #include <alphahash_pars_fragment>

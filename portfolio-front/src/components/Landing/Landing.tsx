@@ -5,11 +5,10 @@ import { useRef } from "react";
 import ContentSlide from "./ContentSlide/ContentSlide";
 import { Canvas } from "@react-three/fiber";
 import { LOW_POWER_MODE } from "@/constants/performance";
-import { LinearEncoding, NoToneMapping } from "three";
+import { NoToneMapping } from "three";
 
 const GL_PARAMS = {
     alpha: false,
-    outputEncoding: LinearEncoding,
     toneMapping: NoToneMapping,
 };
 
@@ -24,7 +23,7 @@ const Landing = () => {
         <ScrollContainer ref={scrollContainerRef}>
             <CanvasContainer>
                 <ContentSlide progress={scrollYProgress} />
-                <Canvas dpr={LOW_POWER_MODE ? 0.5 : 1} gl={GL_PARAMS}>
+                <Canvas dpr={LOW_POWER_MODE ? 0.5 : 1} gl={GL_PARAMS} linear>
                     <BubblesScene progress={scrollYProgress} />
                 </Canvas>
             </CanvasContainer>

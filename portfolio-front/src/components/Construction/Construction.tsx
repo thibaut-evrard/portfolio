@@ -10,7 +10,7 @@ import Scene from './Scene/Scene';
 import {Canvas} from '@react-three/fiber';
 import {content} from './Construction.content';
 import {motion, useAnimationFrame, useMotionValue} from 'framer-motion';
-import {useMousePosition} from '@/hooks/mouse/useMousePosition';
+import {useMouse} from '@/hooks/mouse/useMouse';
 import {lerp} from 'three/src/math/MathUtils.js';
 import {ContainerAnimation, TextAnimation} from './Construction.animations';
 import Rambling from './Rumbling/Rumbling';
@@ -20,9 +20,9 @@ const Construction = () => {
     const tx = useMotionValue(0);
     const ty = useMotionValue(0);
 
-    const mousePos = useMousePosition();
+    const {positionRef} = useMouse();
     useAnimationFrame(() => {
-        const {x, y} = mousePos.current;
+        const {x, y} = positionRef.current;
         tx.set(lerp(tx.get(), (x - 0.5) * 10, 0.1));
         ty.set(lerp(ty.get(), (y - 0.5) * 10, 0.1));
     });

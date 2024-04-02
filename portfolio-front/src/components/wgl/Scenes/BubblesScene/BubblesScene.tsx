@@ -10,7 +10,7 @@ const BubblesScene: FC<IBubblesScene> = ({ progress }) => {
     return (
         <>
             <BackgroundTexture path={content.background} />
-            <Environment files={content.hdri} />
+            <Environment path="/" files={content.hdri} />
             <PointerCamera progress={progress} />
             <Bubbles text3d={content.model} />
         </>

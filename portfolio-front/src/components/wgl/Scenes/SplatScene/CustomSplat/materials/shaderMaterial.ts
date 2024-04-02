@@ -1,7 +1,14 @@
 import * as THREE from "three";
 
-function shaderMaterial(uniforms, vertexShader, fragmentShader, onInit) {
-    const material = class material extends THREE.ShaderMaterial {
+function shaderMaterial(
+    uniforms: any,
+    vertexShader: any,
+    fragmentShader: any,
+    onInit?: any,
+) {
+    class CustomMaterial extends THREE.ShaderMaterial {
+        key = "";
+
         constructor(parameters = {}) {
             const entries = Object.entries(uniforms);
             // Create unforms and shaders
@@ -34,7 +41,8 @@ function shaderMaterial(uniforms, vertexShader, fragmentShader, onInit) {
             // Call onInit
             if (onInit) onInit(this);
         }
-    };
+    }
+    const material = new CustomMaterial();
     material.key = THREE.MathUtils.generateUUID();
     return material;
 }

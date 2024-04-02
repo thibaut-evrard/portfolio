@@ -1,9 +1,9 @@
-import _extends from '@babel/runtime/helpers/esm/extends';
-import frag from './shaders/frag.glsl';
-import vert from './shaders/vert.glsl';
-import * as React from 'react';
-import {MeshStandardMaterial} from 'three';
-import {useFrame} from '@react-three/fiber';
+import _extends from "@babel/runtime/helpers/esm/extends";
+import { frag } from "./shaders/fragment.ts";
+import { vert } from "./shaders/vertex.ts";
+import * as React from "react";
+import { MeshStandardMaterial } from "three";
+import { useFrame } from "@react-three/fiber";
 
 class MeshBubbleMaterialImpl extends MeshStandardMaterial {
     constructor(parameters = {}) {
@@ -110,28 +110,28 @@ class MeshBubbleMaterialImpl extends MeshStandardMaterial {
 }
 
 const MeshBubbleMaterial = /*#__PURE__*/ React.forwardRef(
-    ({speed = 1, ...props}, ref) => {
+    ({ speed = 1, ...props }, ref) => {
         const [material] = React.useState(() => new MeshBubbleMaterialImpl());
 
         useFrame(
             (state) =>
                 material &&
-                (material.time = state.clock.getElapsedTime() * speed)
+                (material.time = state.clock.getElapsedTime() * speed),
         );
         return /*#__PURE__*/ React.createElement(
-            'primitive',
+            "primitive",
             _extends(
                 {
                     object: material,
                     ref: ref,
-                    attach: 'material',
+                    attach: "material",
                 },
-                props
-            )
+                props,
+            ),
         );
-    }
+    },
 );
 
-MeshBubbleMaterial.displayName = 'MeshBubbleMaterial';
+MeshBubbleMaterial.displayName = "MeshBubbleMaterial";
 
-export {MeshBubbleMaterial};
+export { MeshBubbleMaterial };

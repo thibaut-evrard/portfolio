@@ -3,11 +3,10 @@
 import BubblesScene from "@/components/wgl/Scenes/BubblesScene/BubblesScene";
 import { Canvas } from "@react-three/fiber";
 import { useMotionValue } from "framer-motion";
-import { LinearEncoding, NoToneMapping } from "three";
+import { NoToneMapping } from "three";
 
 const GL_PARAMS = {
     alpha: false,
-    outputEncoding: LinearEncoding,
     toneMapping: NoToneMapping,
 };
 

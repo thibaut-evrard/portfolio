@@ -1,4 +1,4 @@
-import {useMousePosition} from '@/hooks/mouse/useMousePosition';
+import {useMouse} from '@/hooks/mouse/useMouse';
 import {PerspectiveCamera as DreiCamera} from '@react-three/drei';
 import {useFrame} from '@react-three/fiber';
 import {useRef} from 'react';
@@ -12,11 +12,11 @@ const SPEED = 0.1;
 const PointerCamera = ({progress}: IPointerCamera) => {
     const cameraRef = useRef<PerspectiveCamera>(null);
 
-    const mousePos = useMousePosition();
+    const {positionRef} = useMouse();
 
     useFrame(() => {
-        const x = mousePos.current.x - 0.5;
-        const y = mousePos.current.y - 0.5;
+        const x = positionRef.current.x - 0.5;
+        const y = positionRef.current.y - 0.5;
 
         const camera = cameraRef.current;
         if (!camera) return;
