@@ -1,9 +1,9 @@
 import { Environment, useGLTF } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { useFrame, useLoader } from "@react-three/fiber";
 import { content } from "./Scene.content";
 import { useMouse } from "@/hooks/mouse/useMouse";
 import { useRef } from "react";
-import { Texture } from "three";
+import { EquirectangularReflectionMapping, Texture } from "three";
 import { lerp } from "three/src/math/MathUtils.js";
 import {
     ROTATION_INTENSITY,
@@ -11,10 +11,14 @@ import {
     HAT_SCALE,
 } from "./Scene.constants";
 import Simplex from "ts-perlin-simplex";
+import { RGBELoader } from "three/examples/jsm/Addons.js";
 
 const noise = new Simplex.SimplexNoise();
 
 const Scene = () => {
+    const envMap = useLoader(RGBELoader, "/wgl/common/hdr/env.hdr");
+    envMap.mapping = EquirectangularReflectionMapping;
+
     const ref = useRef<any>();
     const gltf = useGLTF(content.hatSrc);
     const { geometry, material } = gltf.scene.children[0] as any;
@@ -54,7 +58,7 @@ const Scene = () => {
     if (!gltf) return null;
     return (
         <>
-            <Environment preset="city" />
+            <Environment files={"/wgl/common/hdr/env.hdr"} />
             {gltf && (
                 <group
                     scale={HAT_SCALE}
