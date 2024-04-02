@@ -1,16 +1,17 @@
-import { Environment, useEnvironment } from "@react-three/drei";
+import { Environment } from "@react-three/drei";
 import BackgroundTexture from "src/components/wgl/BackgroundTexture/BackgroundTexture";
 import { FC } from "react";
 import Bubbles from "./Bubbles/Scene";
 import PointerCamera from "./PointerCamera/PointerCamera";
 import { IBubblesScene } from "./BubblesScene.types";
 import { content } from "./BubblesScene.content";
+import { useLoader } from "@react-three/fiber";
+import { RGBELoader } from "three/examples/jsm/Addons.js";
+import { EquirectangularReflectionMapping } from "three";
 
 const BubblesScene: FC<IBubblesScene> = ({ progress }) => {
-    const envMap = useEnvironment({
-        files: "env.hdr",
-        path: "./wgl/common/hdr/",
-    });
+    const envMap = useLoader(RGBELoader, content.hdri);
+    envMap.mapping = EquirectangularReflectionMapping;
 
     return (
         <>
