@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import "src/styles/globals.css";
-import StyledComponentsRegistry from "../lib/registry";
-import Head from "@/components/Head/Head";
-import TopNav from "@/components/Navigation/TopNav/TopNav";
+// import "src/styles/globals.css";
+import StyledComponentsRegistry from "../components/StyledComponents/StyledComponentRegistry";
+import TopNav from "@/components/Ecosystems/Navigation/TopNav/TopNav";
+import GlobalStyles from "@/components/StyledComponents/GlobalStyles";
 
 export const metadata: Metadata = {
     title: "Tibo's portfolio",
@@ -14,10 +14,10 @@ export default function RootLayout({
     children: React.ReactNode;
 }) {
     return (
-        <html className="test">
-            <Head />
+        <html>
             <body>
                 <StyledComponentsRegistry>
+                    <GlobalStyles />
                     <TopNav />
                     {children}
                 </StyledComponentsRegistry>

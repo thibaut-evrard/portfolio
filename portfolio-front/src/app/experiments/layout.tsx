@@ -1,4 +1,4 @@
-import ExperimentsFooter from "@/components/Navigation/ExperimentsFooter/ExperimentsFooter";
+import ExperimentsFooter from "@/components/Ecosystems/Navigation/ExperimentsFooter/ExperimentsFooter";
 import { FC, PropsWithChildren } from "react";
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {

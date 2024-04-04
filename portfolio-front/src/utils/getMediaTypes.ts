@@ -1,14 +1,14 @@
-import {ICarouselMedia} from '@/components/Projects/Projects.types';
+import { ICarouselMedia } from "@/components/Ecosystems/Projects/Projects.types";
 
-const VIDEO_FORMATS = ['mp4', 'webm', 'ogg'];
-const IMAGE_FORMATS = ['png', 'jpg', 'jpeg', 'gif', 'svg'];
+const VIDEO_FORMATS = ["mp4", "webm", "ogg"];
+const IMAGE_FORMATS = ["png", "jpg", "jpeg", "gif", "svg"];
 
 export const getMediaTypes = (media: ICarouselMedia[]) => {
     const videos = [];
     const images = [];
 
     for (const item of media) {
-        const extension = item.src.split('.').pop();
+        const extension = item.src.split(".").pop();
         if (!extension) continue;
 
         if (VIDEO_FORMATS.includes(extension)) {
@@ -18,5 +18,5 @@ export const getMediaTypes = (media: ICarouselMedia[]) => {
         }
     }
 
-    return {videos, images};
+    return { videos, images };
 };

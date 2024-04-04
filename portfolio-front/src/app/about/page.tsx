@@ -1,4 +1,4 @@
-import Construction from '@/components/Construction/Construction';
+import Construction from "@/components/pages/Construction/Construction";
 
 const Page = () => {
     return <Construction />;
