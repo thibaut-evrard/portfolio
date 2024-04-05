@@ -7,20 +7,23 @@ import {
     ContentContainer,
     HeadlineContainer,
 } from "./ProjectCard.styles";
-import Link from "next/link";
 import { H3, P } from "../../Atoms/Typography/Typography.styles";
 import { Button } from "@/components/Atoms/Button/Button.styles";
+import { useRouter } from "next/navigation";
 
 const ProjectCard: FC<IProjectContent> = (props) => {
+    const router = useRouter();
+    const handleOnClick = () => {
+        router.push(`/projects/${props.slug}`);
+    };
+
     return (
-        <Container>
+        <Container onClick={handleOnClick}>
             <ContentContainer>
                 <HeadlineContainer>
                     <H3>{props.title}</H3>
                 </HeadlineContainer>
-                <Link href={`${props.slug}`}>
-                    <Button>{content.view}</Button>
-                </Link>
+                <Button>{content.view}</Button>
             </ContentContainer>
             <BackgroundImage
                 src={props.thumbnail}

@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components";
 import { IButton } from "./Button.types";
-import { DEEP_PURPLE, WHITE } from "@/constants/style";
+import { COLORS } from "@/constants/style";
 
 export const Button = styled.button<IButton>(
     ({ $secondary }) => css`
@@ -20,7 +20,7 @@ export const Button = styled.button<IButton>(
         font-size: 18rem;
         font-weight: 500;
         text-transform: uppercase;
-        color: white;
+        color: ${COLORS.WHITE};
         background-color: rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(10px);
         border-radius: 24rem;

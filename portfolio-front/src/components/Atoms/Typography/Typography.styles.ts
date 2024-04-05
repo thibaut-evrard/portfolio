@@ -1,4 +1,4 @@
-import { WHITE } from "@/constants/style";
+import { COLORS } from "@/constants/style";
 import styled, { css } from "styled-components";
 import { IStyledA } from "./Typography.types";
 
@@ -6,7 +6,7 @@ export const Caption = styled.p`
     font-size: 18rem;
     font-weight: 400;
 
-    color: ${WHITE};
+    color: ${COLORS.WHITE};
     text-transform: uppercase;
     text-decoration: none;
 `;

@@ -1,5 +1,5 @@
 "use client";
-import { WHITE } from "@/constants/style";
+import { COLORS } from "@/constants/style";
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle<{ $whiteColor?: boolean }>`
@@ -35,7 +35,7 @@ body {
 }
 
 body {
-  background-color: #0b0b0b;
+  background-color: ${COLORS.BLACK};
 }
 
 
@@ -54,7 +54,7 @@ h4,
 h5,
 p,
 button {
-  color: ${WHITE};
+  color: ${COLORS.WHITE};
   margin: 0.2em 0;
 }
 

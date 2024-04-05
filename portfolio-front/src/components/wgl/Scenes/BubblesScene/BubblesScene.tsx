@@ -8,6 +8,7 @@ import { content } from "./BubblesScene.content";
 import { useLoader } from "@react-three/fiber";
 import { RGBELoader } from "three/examples/jsm/Addons.js";
 import { EquirectangularReflectionMapping } from "three";
+import { COLORS } from "@/constants/style";
 
 const BubblesScene: FC<IBubblesScene> = ({ progress }) => {
     const envMap = useLoader(RGBELoader, content.hdri);

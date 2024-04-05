@@ -1,8 +1,8 @@
-import { LIGHT_GREY } from "@/constants/style";
+import { COLORS } from "@/constants/style";
 import styled from "styled-components";
 
 export const Container = styled.div`
-    border-top: 0.5px solid ${LIGHT_GREY};
+    border-top: 0.5px solid ${COLORS.LIGHT_GREY};
     height: 50;
     position: fixed;
     bottom: 0;

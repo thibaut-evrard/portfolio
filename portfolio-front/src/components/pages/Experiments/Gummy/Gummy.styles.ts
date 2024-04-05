@@ -1,4 +1,4 @@
-import { WHITE } from "@/constants/style";
+import { COLORS } from "@/constants/style";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -13,7 +13,7 @@ export const Container = styled.div`
 
 export const Headline = styled.h1`
     font-family: gummy;
-    color: WHITE;
+    color: ${COLORS.WHITE};
     font-size: 300rem;
 `;
 

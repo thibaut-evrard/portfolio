@@ -1,13 +1,7 @@
 import { Button } from "@/components/Atoms/Button/Button.styles";
 import { H2, H3, P } from "@/components/Atoms/Typography/Typography.styles";
 import { MOBILE_BREAKPOINT } from "@/constants/devices";
-import {
-    BLACK,
-    BORDER_RADIUS,
-    DEEP_PURPLE,
-    GREY,
-    ORANGE,
-} from "@/constants/style";
+import { COLORS, BORDER_RADIUS } from "@/constants/style";
 import Image from "next/image";
 import styled from "styled-components";
 
@@ -33,7 +27,7 @@ export const HeadlineContainer = styled.div`
     padding: 20rem 30rem;
 
     ${H3} {
-        text-shadow: 0px 0px 5px ${BLACK};
+        text-shadow: 0px 0px 5px ${COLORS.BLACK};
     }
 `;
 
@@ -61,6 +55,8 @@ export const ContentContainer = styled.div`
 `;
 
 export const Container = styled.div`
+    border: 1px solid red;
+
     // position
     position: relative;
     width: calc(50% - 20rem);
