@@ -1,9 +1,10 @@
-import {MobileLayoutStates} from './content.types';
+import { MobileLayoutStates } from "./content.types";
 
 export const dmsIconWall = {
-    slug: 'dms-icon-wall',
+    slug: "dms-icon-wall",
     title: "DM's Icon Wall",
-    year: '2021',
+    year: "2021",
+    headline: "An in-store interactive experience for Dr. Martens",
     description: `This in-store interactive experience allows DM's customers to explore the brand's products and see how they are styled locally and globally  
 My main challenge on this project was to optimise the 3D assets of the shoes to get them to run smoothly on this 4K WebGL app.`,
     tools: `- Blender
@@ -16,9 +17,9 @@ My main challenge on this project was to optimise the 3D assets of the shoes to 
 - CMS integration`,
     media: [
         {
-            src: '/projects/dms-icon-wall/showcase.mp4',
+            src: "/projects/dms-icon-wall/showcase.mp4",
             mobileLayout: MobileLayoutStates.COVER,
         },
     ],
-    thumbnail: '/projects/dms-icon-wall/thumbnail.jpg',
+    thumbnail: "/projects/dms-icon-wall/thumbnail.jpg",
 };

@@ -1,9 +1,11 @@
-import {MobileLayoutStates} from './content.types';
+import { MobileLayoutStates } from "./content.types";
 
 export const mediapipeExperiments = {
-    slug: 'mediapipe-experiments',
-    title: 'Mediapipe Experiments',
-    year: '2021',
+    slug: "mediapipe-experiments",
+    title: "Mediapipe Experiments",
+    year: "2021",
+    headline:
+        "A collection of fun little sketches using Google's Mediapipe library",
     description: `This is a collection of experiments I did with Google's [Mediapipe](https://mediapipe.dev/) library.  
 This was my way to occupy my week nights during the lockdown. Making silly experiments trying to imagine new fun ways to interact with websites`,
     tools: `- React
@@ -14,29 +16,29 @@ This was my way to occupy my week nights during the lockdown. Making silly exper
 - Having fun`,
     media: [
         {
-            src: '/projects/mediapipe-experiments/video.mp4',
+            src: "/projects/mediapipe-experiments/video.mp4",
             mobileLayout: MobileLayoutStates.CONTAIN,
         },
         {
-            src: '/projects/mediapipe-experiments/video1.mp4',
+            src: "/projects/mediapipe-experiments/video1.mp4",
             mobileLayout: MobileLayoutStates.CONTAIN,
         },
         {
-            src: '/projects/mediapipe-experiments/video2.mp4',
+            src: "/projects/mediapipe-experiments/video2.mp4",
             mobileLayout: MobileLayoutStates.CONTAIN,
         },
         {
-            src: '/projects/mediapipe-experiments/video3.mp4',
+            src: "/projects/mediapipe-experiments/video3.mp4",
             mobileLayout: MobileLayoutStates.CONTAIN,
         },
         {
-            src: '/projects/mediapipe-experiments/video4.mp4',
+            src: "/projects/mediapipe-experiments/video4.mp4",
             mobileLayout: MobileLayoutStates.CONTAIN,
         },
         {
-            src: '/projects/mediapipe-experiments/video5.mp4',
+            src: "/projects/mediapipe-experiments/video5.mp4",
             mobileLayout: MobileLayoutStates.CONTAIN,
         },
     ],
-    thumbnail: '/projects/mediapipe-experiments/thumbnail.jpg',
+    thumbnail: "/projects/mediapipe-experiments/thumbnail.jpg",
 };
