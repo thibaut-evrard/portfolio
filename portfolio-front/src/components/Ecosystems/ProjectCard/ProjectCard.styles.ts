@@ -55,7 +55,8 @@ export const ContentContainer = styled.div`
 `;
 
 export const Container = styled.div`
-    border: 1px solid red;
+    // behavior
+    cursor: pointer;
 
     // position
     position: relative;

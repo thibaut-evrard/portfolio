@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import { IProjectContent } from "../Projects/Projects.types";
 import { content } from "./ProjectCard.content";
 import {
@@ -12,18 +12,23 @@ import { Button } from "@/components/Atoms/Button/Button.styles";
 import { useRouter } from "next/navigation";
 
 const ProjectCard: FC<IProjectContent> = (props) => {
+    const [isHovered, setIsHovered] = useState(false);
     const router = useRouter();
     const handleOnClick = () => {
         router.push(`/projects/${props.slug}`);
     };
 
     return (
-        <Container onClick={handleOnClick}>
+        <Container
+            onClick={handleOnClick}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+        >
             <ContentContainer>
                 <HeadlineContainer>
                     <H3>{props.title}</H3>
                 </HeadlineContainer>
-                <Button>{content.view}</Button>
+                <Button $highlight={isHovered}>{content.view}</Button>
             </ContentContainer>
             <BackgroundImage
                 src={props.thumbnail}

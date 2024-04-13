@@ -1,5 +1,9 @@
 import { MobileLayoutStates } from "@/content/content.types";
 
+export interface IProject {
+    project: IProjectContent;
+}
+
 export interface IProjectContent {
     title: string;
     year: string;

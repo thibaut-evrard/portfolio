@@ -3,7 +3,7 @@ import { IButton } from "./Button.types";
 import { COLORS } from "@/constants/style";
 
 export const Button = styled.button<IButton>(
-    ({ $secondary }) => css`
+    ({ $secondary, $highlight = false }) => css`
         // behavior
         cursor: pointer;
 
@@ -28,6 +28,10 @@ export const Button = styled.button<IButton>(
         &:hover {
             background-color: rgba(0, 0, 0, 0.6);
         }
+        ${$highlight &&
+        css`
+            background-color: rgba(0, 0, 0, 0.6);
+        `}
         transition: background-color 0.3s ease-in-out;
     `,
 );

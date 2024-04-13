@@ -11,7 +11,6 @@ export const Container = styled.div`
     width: 100%;
     height: 100%;
 
-    margin-top: 80px;
     margin-bottom: 40px;
 
     ${MOBILE_BREAKPOINT} {

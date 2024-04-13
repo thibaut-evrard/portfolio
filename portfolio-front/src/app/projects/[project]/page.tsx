@@ -9,7 +9,7 @@ const Page = ({ params }: any) => {
 
     if (!content) notFound();
 
-    return <Project {...content} />;
+    return <Project project={content} />;
 };
 
 export default Page;
