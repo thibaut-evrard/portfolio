@@ -1,3 +1,3 @@
 export const content = {
-    work: "Projects",
+    title: "Experiments",
 };

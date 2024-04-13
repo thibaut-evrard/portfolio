@@ -2,7 +2,7 @@ import { MOBILE_BREAKPOINT } from "@/constants/devices";
 import { COLORS } from "@/constants/style";
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const ProjectsSectionContainer = styled.div`
     display: flex;
     flex-direction: column;
     padding: 40rem 80rem;
@@ -13,7 +13,7 @@ export const Container = styled.div`
     }
 `;
 
-export const ProjectsContainer = styled.div`
+export const ProjectCardsContainer = styled.div`
     // position
     position: relative;
     width: 100%;

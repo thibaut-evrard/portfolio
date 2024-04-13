@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { IProjectContent } from "../Projects/Projects.types";
+import { IProjectContent } from "@/content/Projects/projects.types";
 import { content } from "./ProjectCard.content";
 import {
     BackgroundImage,
@@ -10,12 +10,13 @@ import {
 import { H3, P } from "../../Atoms/Typography/Typography.styles";
 import { Button } from "@/components/Atoms/Button/Button.styles";
 import { useRouter } from "next/navigation";
+import { IProjectCard } from "./ProjectCard.types";
 
-const ProjectCard: FC<IProjectContent> = (props) => {
+const ProjectCard: FC<IProjectCard> = ({ title, thumbnailSrc, url }) => {
     const [isHovered, setIsHovered] = useState(false);
     const router = useRouter();
     const handleOnClick = () => {
-        router.push(`/projects/${props.slug}`);
+        router.push(url);
     };
 
     return (
@@ -26,12 +27,12 @@ const ProjectCard: FC<IProjectContent> = (props) => {
         >
             <ContentContainer>
                 <HeadlineContainer>
-                    <H3>{props.title}</H3>
+                    <H3>{title}</H3>
                 </HeadlineContainer>
                 <Button $highlight={isHovered}>{content.view}</Button>
             </ContentContainer>
             <BackgroundImage
-                src={props.thumbnail}
+                src={thumbnailSrc}
                 fill
                 alt="hero"
                 loading="eager"

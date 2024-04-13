@@ -1,21 +1,31 @@
-import { ProjectList } from "@/content/projects";
-import ProjectCard from "../ProjectCard/ProjectCard";
+import { ProjectList } from "@/content/Projects/projects";
+import ProjectCard from "../../Molecules/ProjectCard/ProjectCard";
 import { content } from "./Projects.content";
-import { Container, ProjectsContainer } from "./Projects.styles";
 import { Spacer } from "../../Atoms/Structure.styles";
 import { Headline } from "../../Atoms/Typography/Typography.styles";
+import {
+    ProjectCardsContainer,
+    ProjectsSectionContainer,
+} from "@/components/Atoms/Structure/Projects/Projects.styles";
 
 const Projects = () => {
     return (
-        <Container>
+        <ProjectsSectionContainer>
             <Headline>{content.work}</Headline>
             <Spacer height={"10rem"} />
-            <ProjectsContainer>
+            <ProjectCardsContainer>
                 {ProjectList.map((project, index) => {
-                    return <ProjectCard {...project} key={index} />;
+                    return (
+                        <ProjectCard
+                            key={index}
+                            title={project.title}
+                            thumbnailSrc={project.thumbnail}
+                            url={`/projects/${project.slug}`}
+                        />
+                    );
                 })}
-            </ProjectsContainer>
-        </Container>
+            </ProjectCardsContainer>
+        </ProjectsSectionContainer>
     );
 };
 

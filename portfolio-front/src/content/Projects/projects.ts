@@ -1,9 +1,9 @@
-import { IProjectContent } from "@/components/Ecosystems/Projects/Projects.types";
-import { dmsIconWall } from "./dms-icon-wall";
-import { finecastWebgl } from "./finecast-webgl";
-import { oysterDisaster } from "./oyster-disaster";
-import { blurryBananas } from "./blurry-bananas";
-import { mediapipeExperiments } from "./mediapipe-experiments";
+import { IProjectContent } from "./projects.types";
+import { dmsIconWall } from "./Project/dms-icon-wall";
+import { finecastWebgl } from "./Project/finecast-webgl";
+import { oysterDisaster } from "./Project/oyster-disaster";
+import { blurryBananas } from "./Project/blurry-bananas";
+import { mediapipeExperiments } from "./Project/mediapipe-experiments";
 
 export const ProjectsContent: any = {
     ["dms-icon-wall"]: dmsIconWall,

@@ -1,4 +1,4 @@
-import { MobileLayoutStates } from "./content.types";
+import { MobileLayoutStates } from "../projects.types";
 
 export const blurryBananas = {
     slug: "blurry-bananas",

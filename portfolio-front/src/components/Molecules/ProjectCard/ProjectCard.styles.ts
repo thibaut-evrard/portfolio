@@ -1,7 +1,6 @@
 import { Button } from "@/components/Atoms/Button/Button.styles";
-import { H2, H3, P } from "@/components/Atoms/Typography/Typography.styles";
-import { MOBILE_BREAKPOINT } from "@/constants/devices";
-import { COLORS, BORDER_RADIUS } from "@/constants/style";
+import { H3 } from "@/components/Atoms/Typography/Typography.styles";
+import { COLORS } from "@/constants/style";
 import Image from "next/image";
 import styled from "styled-components";
 

@@ -1,5 +1,5 @@
 import { ICarouselMedia } from "@/components/Ecosystems/Projects/Projects.types";
-import { MobileLayoutStates } from "@/content/content.types";
+import { MobileLayoutStates } from "@/content/Projects/projects.types";
 
 export interface IVideo {
     media: ICarouselMedia;

@@ -1,4 +1,4 @@
-import { MobileLayoutStates } from "./content.types";
+import { MobileLayoutStates } from "../projects.types";
 
 export const dmsIconWall = {
     slug: "dms-icon-wall",
