@@ -5,9 +5,8 @@ const SplatScene = () => {
     return (
         <>
             <OrbitControls />
-            <group rotation={[0, 1.4, 0]} position={[0, 0, -5]} scale={6}>
+            <group rotation={[0, 1.4, 0]} position={[0, 0, 0]} scale={6}>
                 <CustomSplat src="/wgl/splatScene/tibo.splat" />
-                {/* <CustomSplat src="/wgl/splatScene/tibo.splat" /> */}
             </group>
         </>
     );
