@@ -1,4 +1,4 @@
-import { OrbitControls } from "@react-three/drei";
+import { OrbitControls, Splat } from "@react-three/drei";
 import { CustomSplat } from "./CustomSplat/CustomSplat";
 
 const SplatScene = () => {
@@ -7,6 +7,7 @@ const SplatScene = () => {
             <OrbitControls />
             <group rotation={[0, 1.4, 0]} position={[0, 0, -5]} scale={6}>
                 <CustomSplat src="/wgl/splatScene/tibo.splat" />
+                {/* <CustomSplat src="/wgl/splatScene/tibo.splat" /> */}
             </group>
         </>
     );

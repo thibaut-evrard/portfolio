@@ -1,11 +1,11 @@
 "use client";
 import { content } from "./ExperimentsFooter.content";
-import { Container } from "./ExperimentsFooter.styles";
+import { CodeIcon, Container } from "./ExperimentsFooter.styles";
 
 const ExperimentsFooter = () => {
     return (
         <Container>
-            <a href={content.url}>{content.title}</a>
+            <CodeIcon href={content.url}>{content.title}</CodeIcon>
         </Container>
     );
 };

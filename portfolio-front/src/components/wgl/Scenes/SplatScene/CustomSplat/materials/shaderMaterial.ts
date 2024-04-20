@@ -4,7 +4,7 @@ function shaderMaterial(
     uniforms: any,
     vertexShader: any,
     fragmentShader: any,
-    onInit?: any,
+    onInit: any,
 ) {
     class CustomMaterial extends THREE.ShaderMaterial {
         key = "";

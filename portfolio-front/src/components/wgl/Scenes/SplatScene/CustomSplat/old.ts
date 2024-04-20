@@ -1,35 +1,33 @@
+// @ts-ignore
 import _extends from "@babel/runtime/helpers/esm/extends";
+// @ts-check
 import * as THREE from "three";
 import * as React from "react";
 import { extend, useThree, useLoader, useFrame } from "@react-three/fiber";
-
-// CUSTOM START IMPORTS
-import { shaderMaterial } from "@react-three/drei/core/shaderMaterial";
 import { fragment } from "./shaders/fragment";
 import { vertex } from "./shaders/vertex";
-// CUSTOM END IMPORTS
+import { shaderMaterial } from "./materials/shaderMaterial";
 
-const SplatMaterial = /* @__PURE__ */ shaderMaterial(
+const CustomSplatMaterial = /* @__PURE__ */ shaderMaterial(
     {
         alphaTest: 0,
         viewport: /* @__PURE__ */ new THREE.Vector2(1980, 1080),
         focal: 1000.0,
         centerAndScaleTexture: null,
         covAndColorTexture: null,
-        // CUSTOM START UNIFORMS
+        // CUSTOM START
         yOcclude: 0,
         time: 0,
-        // CUSTOM END UNIFORMS
+        // CUSTOM END
     },
-    // CUSTOM START SHADERS
     vertex,
     fragment,
-    // CUSTOM END SHADERS
 );
 
 function createWorker(self: any) {
     let matrices: any = null;
     let offset = 0;
+
     function sortSplats(view: any, hashed = false) {
         const vertexCount = matrices.length / 16;
         const threshold = -0.0001;
@@ -98,11 +96,10 @@ function createWorker(self: any) {
         }
     };
 }
+
 class SplatLoader extends THREE.Loader {
-    // CUSTOM START
-    gl: any;
-    chunkSize: number;
-    // CUSTOM END
+    gl = null;
+    chunkSize = 0;
 
     constructor(...args: any) {
         super(...args);
@@ -111,7 +108,7 @@ class SplatLoader extends THREE.Loader {
         // Default chunk size for lazy loading
         this.chunkSize = 25000;
     }
-    load(url: any, onLoad: any, onProgress: any, onError: any) {
+    load(url: string, onLoad: any, onProgress: any, onError: any) {
         const shared = {
             gl: this.gl,
             url: this.manager.resolveURL(url),
@@ -376,7 +373,7 @@ function connect(shared: any, target: any) {
     positions.needsUpdate = true;
     geometry.setAttribute("splatIndex", splatIndexes);
     geometry.instanceCount = 1;
-    function listener(e) {
+    function listener(e: any) {
         if (target && e.data.key === target.uuid) {
             let indexes = new Uint32Array(e.data.indices);
             // @ts-ignore
@@ -544,42 +541,39 @@ function pushDataBuffer(shared: any, buffer: any, vertexCount: any) {
     }
     return matrices;
 }
-
-// CUSTOM NEXT-LINE CLASS NAME
 function CustomSplat({
-    src,
+    src = "",
     toneMapped = false,
     alphaTest = 0,
     alphaHash = false,
     chunkSize = 25000,
     ...props
-}: any) {
+}) {
     extend({
-        SplatMaterial,
+        CustomSplatMaterial,
     });
     const ref = React.useRef(null);
     const gl = useThree((state) => state.gl);
     const camera = useThree((state) => state.camera);
 
     // Shared state, globally memoized, the same url re-uses the same daza
-    const shared = useLoader(SplatLoader, src, (loader) => {
+    const shared = useLoader(SplatLoader, src, (loader: any) => {
         loader.gl = gl;
         loader.chunkSize = chunkSize;
     }) as any;
 
     // Listen to worker results, apply them to the target mesh
     React.useLayoutEffect(() => shared.connect(ref.current), [src]);
-
     // Update the worker
     useFrame((state) => {
-        // CUSTOM START UNIFORM UPDATE
+        // CUSTOM START
         if (!ref.current) return;
         const mesh = ref.current as THREE.Mesh;
         const { uniforms } = mesh.material as THREE.ShaderMaterial;
 
         uniforms.time.value = state.clock.elapsedTime;
         uniforms.yOcclude.value = Math.sin(Date.now() / 5000) / 2 - 0.2;
-        // CUSTOM END UNIFORM UPDATE
+        // CUSTOM END
 
         shared.update(ref.current, camera, alphaHash);
     });
@@ -592,8 +586,8 @@ function CustomSplat({
             },
             props,
         ),
-        /*#__PURE__*/ React.createElement("splatMaterial", {
-            key: `${src}/${alphaTest}/${alphaHash}${SplatMaterial.key}`,
+        /*#__PURE__*/ React.createElement("customSplatMaterial", {
+            key: `${src}/${alphaTest}/${alphaHash}${CustomSplatMaterial.key}`,
             transparent: !alphaHash,
             depthTest: true,
             alphaTest: alphaHash ? 0 : alphaTest,
@@ -608,6 +602,4 @@ function CustomSplat({
     );
 }
 
-// CUSTOM START NAME
 export { CustomSplat };
-// CUSTOM END NAME

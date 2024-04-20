@@ -7,14 +7,13 @@ import { NoToneMapping } from "three";
 
 const GL_PARAMS = {
     alpha: false,
-    toneMapping: NoToneMapping,
 };
 
 const Bubbles = () => {
     const progress = useMotionValue(0);
 
     return (
-        <Canvas dpr={1} gl={GL_PARAMS}>
+        <Canvas dpr={1} gl={GL_PARAMS} linear>
             <BubblesScene progress={progress} />
         </Canvas>
     );

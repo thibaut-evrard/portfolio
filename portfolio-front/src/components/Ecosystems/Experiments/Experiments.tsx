@@ -20,7 +20,7 @@ const Experiments = () => {
                             key={index}
                             title={project.title}
                             thumbnailSrc={project.thumbnailSrc}
-                            url={`/experiment/${project.slug}`}
+                            url={`/experiments/${project.slug}`}
                         />
                     );
                 })}
