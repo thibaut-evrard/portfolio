@@ -1,48 +1,46 @@
 import { COLORS } from "@/constants/style";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { IOpenContainer } from "./ExperimentsFooter.types";
 
 export const Container = styled.div`
     // position
     position: fixed;
     bottom: 0;
-    height: 30px;
     width: 100%;
 
     // display
     display: flex;
     align-items: center;
-    padding: 0 20px;
+    justify-content: flex-end;
+    gap: 20px;
+    padding: 20px 20px;
 
     // cosmetic
     backdrop-filter: blur(10px);
-`;
 
-export const CodeIcon = styled.a`
-    // position
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-
-    // display
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    // cosmetics
-    opacity: 0.6;
-    background-color: ${COLORS.WHITE};
-    color: ${COLORS.BLACK};
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 600;
-    border-radius: 50%;
-
-    transition: 0.5s ease-in-out;
-
-    &:hover {
-        background-color: ${COLORS.BLACK};
-        color: ${COLORS.WHITE};
+    a {
+        text-decoration: none;
     }
 `;
+
+export const InfoContainer = styled.div<IOpenContainer>(
+    ({ $open }) => css`
+        // position
+        position: relative;
+        border-radius: 0 0 20px 20px;
+
+        // display
+        padding: 2px 5px;
+
+        // cosmetic
+        background-color: transparent;
+
+        ${$open &&
+        css`
+            background-color: ${COLORS.GREY};
+        `}
+
+        // animation
+        transition: background-color 0.3s;
+    `,
+);

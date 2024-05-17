@@ -1,6 +1,5 @@
 import { COLORS } from "@/constants/style";
 import styled from "styled-components";
-import ReactMarkdown from "react-markdown";
 import { MOBILE_BREAKPOINT } from "@/constants/devices";
 import { H2 } from "@/components/Atoms/Typography/Typography.styles";
 
