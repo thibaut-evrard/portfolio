@@ -19,7 +19,7 @@ const Scene = () => {
     const envMap = useLoader(RGBELoader, "/wgl/common/hdr/env.hdr");
     envMap.mapping = EquirectangularReflectionMapping;
 
-    const ref = useRef<any>();
+    const ref = useRef<any>(null);
     const gltf = useGLTF(content.hatSrc);
     const { geometry, material } = gltf.scene.children[0] as any;
 
