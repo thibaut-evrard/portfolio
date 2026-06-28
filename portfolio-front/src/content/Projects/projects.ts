@@ -1,4 +1,4 @@
-import { IProjectContent, ProjectName } from './projects.types';
+import type { IProjectContent, ProjectName } from './projects.types';
 import { dmsIconWall } from './Project/dms-icon-wall';
 import { finecastWebgl } from './Project/finecast-webgl';
 import { oysterDisaster } from './Project/oyster-disaster';

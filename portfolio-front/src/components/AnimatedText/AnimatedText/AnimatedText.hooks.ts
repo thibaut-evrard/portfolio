@@ -1,3 +1,4 @@
+'use client';
 export const useParsedNodes = () => {
   const getHtmlNodes = (htmlString: string): HTMLElement[] => {
     const parser = new DOMParser();

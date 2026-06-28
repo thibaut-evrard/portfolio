@@ -9,9 +9,9 @@ interface Props {
   };
 }
 
-const Page = ({ params }: Props) => {
-  const slug = params.project;
-  const content = ProjectsContent[slug];
+const Page = async ({ params }: Props) => {
+  const { project } = await params;
+  const content = ProjectsContent[project];
 
   if (!content) notFound();
 

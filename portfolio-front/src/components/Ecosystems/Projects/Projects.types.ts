@@ -1,11 +1,11 @@
-import { IProjectContent } from "@/content/Projects/projects.types";
-import { MobileLayoutStates } from "@/content/Projects/projects.types";
+import type { IProjectContent } from '@/content/Projects/projects.types';
+import { MobileLayoutStates } from '@/content/Projects/projects.types';
 
 export interface IProject {
-    project: IProjectContent;
+  project: IProjectContent;
 }
 
 export interface ICarouselMedia {
-    src: string;
-    mobileLayout: MobileLayoutStates;
+  src: string;
+  mobileLayout: MobileLayoutStates;
 }

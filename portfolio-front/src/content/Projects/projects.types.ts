@@ -1,12 +1,13 @@
 import { ICarouselMedia } from '@/components/Ecosystems/Projects/Projects.types';
 import { PROJECT_NAMES } from './projects';
 
-export type ProjectName = (typeof PROJECT_NAMES)[number];
-
 export enum MobileLayoutStates {
   CONTAIN = 'contain',
   COVER = 'cover',
 }
+
+export type ProjectName = (typeof PROJECT_NAMES)[number];
+
 export interface IProjectContent {
   title: string;
   year: string;
