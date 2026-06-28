@@ -1,6 +1,6 @@
-import { MobileLayoutStates } from '../projects.types';
+import { IProjectContent, MobileLayoutStates } from '../projects.types';
 
-export const dmsIconWall = {
+export const dmsIconWall: IProjectContent = {
   slug: 'dms-icon-wall',
   title: "DM's Icon Wall",
   year: '2021',
