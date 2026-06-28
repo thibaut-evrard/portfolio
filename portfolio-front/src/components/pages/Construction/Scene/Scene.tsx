@@ -3,7 +3,7 @@ import { useFrame, useLoader } from "@react-three/fiber";
 import { content } from "./Scene.content";
 import { useMouse } from "@/hooks/mouse/useMouse";
 import { useRef } from "react";
-import { EquirectangularReflectionMapping, Texture } from "three";
+import { BufferGeometry, EquirectangularReflectionMapping, Mesh, MeshBasicMaterial } from "three";
 import { lerp } from "three/src/math/MathUtils.js";
 import {
     ROTATION_INTENSITY,
@@ -11,17 +11,17 @@ import {
     HAT_SCALE,
 } from "./Scene.constants";
 import Simplex from "ts-perlin-simplex";
-import { RGBELoader } from "three/examples/jsm/Addons.js";
+import { HDRLoader } from "three/examples/jsm/Addons.js";
 
 const noise = new Simplex.SimplexNoise();
 
 const Scene = () => {
-    const envMap = useLoader(RGBELoader, "/wgl/common/hdr/env.hdr");
-    envMap.mapping = EquirectangularReflectionMapping;
+    const envMap = useLoader(HDRLoader, "/wgl/common/hdr/env.hdr");
+    envMap.setValues({mapping: EquirectangularReflectionMapping});
 
-    const ref = useRef<any>(null);
+    const ref = useRef<Mesh | null>(null);
     const gltf = useGLTF(content.hatSrc);
-    const { geometry, material } = gltf.scene.children[0] as any;
+    const { geometry, material } = gltf.scene.children[0] as Mesh<BufferGeometry, MeshBasicMaterial>;
 
     const { positionRef } = useMouse();
 
@@ -69,7 +69,7 @@ const Scene = () => {
                         <bufferGeometry {...geometry} attach="geometry" />
                         <meshStandardMaterial
                             roughness={0.8}
-                            map={material.map as Texture}
+                            map={material.map}
                             attach="material"
                         />
                     </mesh>

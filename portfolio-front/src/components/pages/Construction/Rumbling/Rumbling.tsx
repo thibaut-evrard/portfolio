@@ -4,7 +4,7 @@ import {HTMLMotionProps, motion} from 'framer-motion';
 import {TextAnimation} from './Rumbling.animations';
 
 const Rambling: FC<HTMLMotionProps<'div'>> = ({...props}) => {
-    const interval = useRef<NodeJS.Timeout | undefined>();
+    const interval = useRef<NodeJS.Timeout | undefined>(undefined);
     const [rambles, setRambles] = useState<number[]>([]);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ const Rambling: FC<HTMLMotionProps<'div'>> = ({...props}) => {
     return (
         <Container {...props}>
             {rambles.map((_, i) => (
-                <motion.p {...(TextAnimation as any)} key={i}>
+                <motion.p {...(TextAnimation)} key={i}>
                     [rumble]
                 </motion.p>
             ))}

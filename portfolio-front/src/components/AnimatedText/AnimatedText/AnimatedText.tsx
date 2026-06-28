@@ -1,5 +1,4 @@
 "use client";
-import { motion } from "framer-motion";
 import { Container, Letter, Space, Word, Words } from "./AnimatedText.styles";
 import * as animations from "./AnimatedText.animations";
 import { EVariants, EMarkup, IAnimatedText } from "./AnimatedText.types";

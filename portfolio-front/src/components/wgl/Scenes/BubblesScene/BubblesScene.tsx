@@ -6,22 +6,21 @@ import PointerCamera from "./PointerCamera/PointerCamera";
 import { IBubblesScene } from "./BubblesScene.types";
 import { content } from "./BubblesScene.content";
 import { useLoader } from "@react-three/fiber";
-import { RGBELoader } from "three/examples/jsm/Addons.js";
+import { HDRLoader } from "three/examples/jsm/Addons.js";
 import { EquirectangularReflectionMapping } from "three";
-import { COLORS } from "@/constants/style";
 
 const BubblesScene: FC<IBubblesScene> = ({ progress }) => {
-    const envMap = useLoader(RGBELoader, content.hdri);
-    envMap.mapping = EquirectangularReflectionMapping;
+  const envMap = useLoader(HDRLoader, content.hdri);
+  envMap.setValues({mapping: EquirectangularReflectionMapping})
 
-    return (
-        <>
-            <BackgroundTexture path={content.background} />
-            <Environment map={envMap} />
-            <PointerCamera progress={progress} />
-            <Bubbles text3d={content.model} />
-        </>
-    );
+  return (
+    <>
+      <BackgroundTexture path={content.background} />
+      <Environment map={envMap} />
+      <PointerCamera progress={progress} />
+      <Bubbles text3d={content.model} />
+    </>
+  );
 };
 
 export default BubblesScene;

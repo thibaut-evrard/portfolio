@@ -12,14 +12,16 @@ import ProjectHeadline from "./ProjectHeadline/ProjectHeadline";
 import { motion } from "framer-motion";
 import { EVariants } from "@/constants/animations/animations.types";
 import * as animations from "./Project.animations";
-import AnimatedText from "@/components/AnimatedText/AnimatedText/AnimatedText";
 
 const Project: FC<IProject> = ({ project }) => {
     const [variant, setVariant] = useState(EVariants.Before);
     const isMobile = useIsMobile();
 
     useEffect(() => {
-        setVariant(EVariants.Primary);
+        function callback() {
+                    setVariant(EVariants.Primary);
+        }
+        callback();
     }, []);
 
     return (

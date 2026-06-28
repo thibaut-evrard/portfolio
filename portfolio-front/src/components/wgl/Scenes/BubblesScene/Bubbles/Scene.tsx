@@ -1,4 +1,4 @@
-import { FC, createContext, useRef } from 'react';
+import { FC, createContext, useEffect, useMemo, useRef, useState } from 'react';
 import { Group, Texture } from 'three';
 import { useCustomRenderer } from '@/hooks/wgl/bubbles/useCustomRenderer';
 import { useGLTF } from '@react-three/drei';
@@ -14,8 +14,8 @@ export const LayerContext = createContext({
 
 const Bubbles: FC<IBubbles> = ({ text3d }) => {
   const isMobile = useIsMobile();
-  const gltf = useGLTF(text3d) as any;
-  const { t, i, b, o } = gltf.nodes as ILetterAssets;
+  const gltf = useGLTF(text3d);
+  const { t, i, b, o } = gltf.nodes as unknown as ILetterAssets;
 
   const foreground = useRef({} as Group);
   const background = useRef({} as Group);
@@ -24,6 +24,15 @@ const Bubbles: FC<IBubbles> = ({ text3d }) => {
     background,
     foreground
   );
+
+  const [texture, setTexture] = useState<Texture>(new Texture());
+
+  useEffect(() => {
+    function callback() {
+      setTexture(sceneBackgroundTextureRef.current);
+    }
+    callback();
+  }, []);
 
   return (
     <>
@@ -46,7 +55,7 @@ const Bubbles: FC<IBubbles> = ({ text3d }) => {
           <LayerContext.Provider
             value={{
               layer: 'background',
-              transmissionMap: sceneBackgroundTextureRef.current,
+              transmissionMap: texture,
               blur: 0
             }}
           >

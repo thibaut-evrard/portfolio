@@ -1,29 +1,37 @@
 {
-    "name": "portfolio-front",
-    "version": "0.1.0",
-    "private": true,
-    "scripts": {
-        "dev": "next dev",
-        "build": "next build",
-        "start": "next start -p $PORT"
-    },
-    "dependencies": {
-        "@react-three/drei": "^10.7.7",
-        "@react-three/fiber": "^9.6.1",
-        "framer-motion": "^11.18.2",
-        "next": "^16.2.9",
-        "react": "^19.2.7",
-        "react-dom": "^19.2.7",
-        "react-markdown": "^9.1.0",
-        "styled-components": "^6.4.3",
-        "three": "^0.185.0",
-        "ts-perlin-simplex": "^0.0.3"
-    },
-    "devDependencies": {
-        "@types/node": "^22.20.0",
-        "@types/react": "^19.2.17",
-        "@types/react-dom": "^19.2.3",
-        "@types/three": "^0.185.0",
-        "typescript": "^5.9.3"
-    }
+  "name": "portfolio-front",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p $PORT",
+    "lint": "eslint .",
+    "lint:fix": "next lint --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@react-three/drei": "^10.7.7",
+    "@react-three/fiber": "^9.6.1",
+    "framer-motion": "^11.18.2",
+    "next": "^16.2.9",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "react-markdown": "^9.1.0",
+    "styled-components": "^6.4.3",
+    "three": "^0.185.0",
+    "ts-perlin-simplex": "^0.0.3"
+  },
+  "devDependencies": {
+    "@next/eslint-plugin-next": "^16.2.9",
+    "@types/node": "^22.20.0",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.185.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.62.0"
+  }
 }
