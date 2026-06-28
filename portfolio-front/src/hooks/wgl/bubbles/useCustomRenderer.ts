@@ -1,12 +1,12 @@
 import {useFrame, useThree} from '@react-three/fiber';
-import {MutableRefObject, useEffect, useRef} from 'react';
+import {RefObject, useEffect, useRef} from 'react';
 import {Group, Texture, Vector2, WebGLRenderTarget} from 'three';
 
 const emptyRt = new WebGLRenderTarget(0, 0);
 
 function useCustomRenderer(
-    backgroundRef: MutableRefObject<Group>,
-    foregroundRef: MutableRefObject<Group>
+    backgroundRef: RefObject<Group>,
+    foregroundRef: RefObject<Group>
 ) {
     const sceneBackgroundTextureRef = useRef({} as Texture);
 

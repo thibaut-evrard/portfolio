@@ -2,8 +2,8 @@ export const frag = /* glsl */ `
 #define STANDARD
 
 #ifdef PHYSICAL
-	#define IOR
-	#define SPECULAR
+    #define IOR
+    #define SPECULAR
 #endif
 
 uniform vec3 diffuse;
@@ -22,16 +22,16 @@ varying vec2 vUv;
 varying vec3 vWorldPosition;
 
 #ifdef SPECULAR
-	uniform float specularIntensity;
-	uniform vec3 specularColor;
+    uniform float specularIntensity;
+    uniform vec3 specularColor;
 
-	#ifdef USE_SPECULARINTENSITYMAP
-		uniform sampler2D specularIntensityMap;
-	#endif
+    #ifdef USE_SPECULARINTENSITYMAP
+        uniform sampler2D specularIntensityMap;
+    #endif
 
-	#ifdef USE_SPECULARCOLORMAP
-		uniform sampler2D specularColorMap;
-	#endif
+    #ifdef USE_SPECULARCOLORMAP
+        uniform sampler2D specularColorMap;
+    #endif
 #endif
 
 varying vec3 vViewPosition;
@@ -103,7 +103,6 @@ vec3 bubbleGradient(vec3 normal, vec2 uv, float time) {
 
     float hueBias = time / 5.;
     float hueVal = (fresnel + thickness * noiseBias + hueBias) / 2.;
-    // float hueVal = fresnel;
     vec3 col = hsv2rgb(vec3(1. - hueVal, .5, 1.));
 
     return col * map(fresnel, 0.2, 1., 0., .7) / 1.;
@@ -129,62 +128,56 @@ vec4 applyBlur(sampler2D blurSampler, vec2 baseCoords) {
 }
 
 void main() {
-	#include <clipping_planes_fragment>
+    #include <clipping_planes_fragment>
 
-	vec4 diffuseColor = vec4( diffuse, opacity );
-	ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );
-	vec3 totalEmissiveRadiance = emissive;
+    vec4 diffuseColor = vec4( diffuse, opacity );
+    ReflectedLight reflectedLight = ReflectedLight( vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ), vec3( 0.0 ) );
+    vec3 totalEmissiveRadiance = emissive;
 
-	#include <logdepthbuf_fragment>
-	#include <map_fragment>
-	#include <color_fragment>
-	#include <alphamap_fragment>
-	#include <alphatest_fragment>
-	#include <roughnessmap_fragment>
-	#include <metalnessmap_fragment>
-	#include <normal_fragment_begin>
-	#include <normal_fragment_maps>
-	#include <emissivemap_fragment>
+    #include <logdepthbuf_fragment>
+    #include <map_fragment>
+    #include <color_fragment>
+    #include <alphamap_fragment>
+    #include <alphatest_fragment>
+    #include <roughnessmap_fragment>
+    #include <metalnessmap_fragment>
+    #include <normal_fragment_begin>
+    #include <normal_fragment_maps>
+    #include <emissivemap_fragment>
 
-	// accumulation
-	#include <lights_physical_fragment>
-	#include <lights_fragment_begin>
-	#include <lights_fragment_maps>
-	#include <lights_fragment_end>
+    // accumulation
+    #include <lights_physical_fragment>
+    #include <lights_fragment_begin>
+    #include <lights_fragment_maps>
+    #include <lights_fragment_end>
 
-	// modulation
-	#include <aomap_fragment>
+    // modulation
+    #include <aomap_fragment>
 
     // adding fresnel
     float fresnel = 1. - abs(pow(vNormal.z, 3.));
-	vec3 totalDiffuse = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse;
-	vec3 totalSpecular = reflectedLight.directSpecular + reflectedLight.indirectSpecular;
+    vec3 totalDiffuse = reflectedLight.directDiffuse + reflectedLight.indirectDiffuse;
+    vec3 totalSpecular = reflectedLight.directSpecular + reflectedLight.indirectSpecular;
 
-	// #include <transmission_fragment>
+    // Custom transmission calculations
     vec4 coords = projectionMatrix * viewMatrix * vec4( vWorldPosition, 1.0 );
     vec2 refractionCoords = coords.xy / coords.w;
-	refractionCoords += 1.0;
-	refractionCoords /= 2.0;
+    refractionCoords += 1.0;
+    refractionCoords /= 2.0;
 
     vec3 gradient = bubbleGradient(vNormal, vUv, time);
-
     vec4 transmissionColor = texture2D(customTransmissionSampler, refractionCoords, 1.);
     #ifdef BLUR
         transmissionColor = applyBlur(customTransmissionSampler, refractionCoords);
     #endif
 
-    vec3 baseCol = vec3(.0,.0,.0);
-    vec3 col = baseCol + transmissionColor.rgb + (gradient / 2.) + totalSpecular;
-    // vec3 col = gradient;
-    float alpha = 1.;
+    vec3 outgoingLight = transmissionColor.rgb + (gradient / 2.) + totalSpecular;
+    diffuseColor.a = 1.0;
 
-    gl_FragColor = vec4(col,alpha);
-    
-	// #include <output_fragment>
-	#include <tonemapping_fragment>
-	#include <encodings_fragment>
-	#include <fog_fragment>
-	#include <premultiplied_alpha_fragment>
-	// #include <dithering_fragment>
-
+    // Modern output chunk composition
+    #include <opaque_fragment>
+    #include <tonemapping_fragment>
+    #include <colorspace_fragment>
+    #include <fog_fragment>
+    #include <premultiplied_alpha_fragment>
 }`;
