@@ -29,6 +29,9 @@ export interface ImageContentType extends ContentItemBase {
 export interface VideoContentType extends ContentItemBase {
   type: 'video';
   src: string;
+  controls?: boolean;
+  autoplay?: boolean;
+  muted?: boolean;
 }
 
 export interface CarouselContentType extends ContentItemBase {
@@ -44,13 +47,9 @@ export type ContentItem =
 
 export interface IProjectContent {
   title: string;
-  headline: string;
+  // headline: string;
   year: string;
-  content?: ContentItem[];
-  media?: ICarouselMedia[];
-  description?: string;
-  role?: string;
-  tools?: string;
+  content: ContentItem[];
   thumbnail?: string;
   slug: string;
 }

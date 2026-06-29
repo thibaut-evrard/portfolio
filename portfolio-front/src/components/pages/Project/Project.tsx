@@ -32,15 +32,15 @@ const Project: FC<IProject> = ({ project }) => {
       <Title as={motion.h2} {...animations.child}>
         {project.title}
       </Title>
-      <ProjectHeadline text={project.headline} />
       <Caption as={motion.p} {...animations.child}>
         {project.year}
       </Caption>
+
       {project.content && <ProjectContent content={project.content} />}
-      <Spacer height={'30px'} />
+      {/* <Spacer height={'30px'} />
       <Spacer height={'30px'} />
       {project.media && <Carousel media={project.media} />}
-      <ProjectDescription project={project} />
+      <ProjectDescription project={project} /> */}
     </Container>
   );
 };

@@ -26,7 +26,10 @@ const ProjectContent: FC<Props> = ({ content }) => {
         switch (item.type) {
           case 'text':
             return (
-              <Markdown key={index} className={'markdown'}>
+              <Markdown
+                key={index}
+                className={`markdown ${getSizeClass(item)}`}
+              >
                 {item.text}
               </Markdown>
             );
@@ -46,7 +49,10 @@ const ProjectContent: FC<Props> = ({ content }) => {
                 src={item.src}
                 className={getSizeClass(item)}
                 playsInline
-                controls
+                controls={item.controls}
+                autoPlay={item.autoplay}
+                muted={item.muted}
+                loop={item.autoplay}
               ></video>
             );
           case 'carousel':
