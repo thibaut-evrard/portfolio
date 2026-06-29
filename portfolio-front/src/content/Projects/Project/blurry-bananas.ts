@@ -11,7 +11,29 @@ For me, this project was the opportunity to explore custom shaders in Unity HDRP
 - Azure Kinect
 - Obi Softbody`,
   role: `- Development of the interactive experience`,
-  content: [{ type: 'text', text: 'Hello world' }],
+  content: [
+    {
+      type: 'text',
+      text: `## Role`,
+    },
+    {
+      type: 'video',
+      src: '/projects/blurry-bananas/video.mp4',
+      size: 'l',
+    },
+    {
+      type: 'image',
+      src: '/projects/blurry-bananas/thumbnail.jpg',
+      alt: 'screen with bananas',
+      size: 'm',
+    },
+    {
+      type: 'image',
+      src: '/projects/blurry-bananas/thumbnail.jpg',
+      alt: 'screen with bananas',
+      size: 'm',
+    },
+  ],
   media: [
     {
       src: '/projects/blurry-bananas/video.mp4',

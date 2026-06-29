@@ -12,6 +12,7 @@ import ProjectHeadline from './ProjectHeadline/ProjectHeadline';
 import { motion } from 'framer-motion';
 import { EVariants } from '@/constants/animations/animations.types';
 import * as animations from './Project.animations';
+import ProjectContent from './ProjectContent/ProjectContent';
 
 const Project: FC<IProject> = ({ project }) => {
   const [variant, setVariant] = useState(EVariants.Before);
@@ -35,9 +36,10 @@ const Project: FC<IProject> = ({ project }) => {
       <Caption as={motion.p} {...animations.child}>
         {project.year}
       </Caption>
+      {project.content && <ProjectContent content={project.content} />}
       <Spacer height={'30px'} />
       <Spacer height={'30px'} />
-      <Carousel media={project.media} />
+      {project.media && <Carousel media={project.media} />}
       <ProjectDescription project={project} />
     </Container>
   );

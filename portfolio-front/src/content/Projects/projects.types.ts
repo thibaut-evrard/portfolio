@@ -2,6 +2,7 @@ import { ICarouselMedia } from '@/components/Ecosystems/Projects/Projects.types'
 import { PROJECT_NAMES } from './projects';
 
 export type ContentType = 'text' | 'image' | 'image' | 'video' | 'carousel';
+export type ContentItemSize = 's' | 'm' | 'l';
 
 export enum MobileLayoutStates {
   CONTAIN = 'contain',
@@ -10,28 +11,32 @@ export enum MobileLayoutStates {
 
 export type ProjectName = (typeof PROJECT_NAMES)[number];
 
-interface RichTextContentItem {
+interface ContentItemBase {
+  size?: ContentItemSize;
+}
+
+export interface RichTextContentItem extends ContentItemBase {
   type: 'text';
   text: string;
 }
 
-interface ImageContentType {
+export interface ImageContentType extends ContentItemBase {
   type: 'image';
   src: string;
   alt: string;
 }
 
-interface VideoContentType {
+export interface VideoContentType extends ContentItemBase {
   type: 'video';
   src: string;
 }
 
-interface CarouselContentType {
+export interface CarouselContentType extends ContentItemBase {
   type: 'carousel';
   media: ICarouselMedia[];
 }
 
-type ContentItem =
+export type ContentItem =
   | RichTextContentItem
   | ImageContentType
   | VideoContentType
