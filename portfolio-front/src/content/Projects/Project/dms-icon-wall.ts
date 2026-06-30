@@ -1,4 +1,4 @@
-import { IProjectContent, MobileLayoutStates } from '../projects.types';
+import { IProjectContent } from '../projects.types';
 
 function assetPath(src: string) {
   return `/projects/dms-icon-wall/${src}`;

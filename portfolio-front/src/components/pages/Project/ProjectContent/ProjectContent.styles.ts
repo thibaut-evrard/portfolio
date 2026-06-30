@@ -39,8 +39,11 @@ export const Container = styled.div`
 
   img,
   video {
+    min-width: 100%;
     border-radius: 12rem;
     max-width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   .size {

@@ -1,36 +1,87 @@
 import { IProjectContent, MobileLayoutStates } from '../projects.types';
 
+function assetPath(src: string) {
+  return `/projects/oyster-disaster/${src}`;
+}
+const INTRO_TEXT = `# Experimental Art / Design Duo with Songyee Kim
+For Song and I Oyster disaster is an experimental playground to bring our crazy ideas to life.
+
+## Executions
+Over the years, our work took different forms
+- Augmented exhibition for artist Lydia Chan
+- WebGL and AR experimenation
+- Merch
+- Web projects
+- Food
+
+## Roles
+Song handles the design tools, I write the code. All the creative and ideation is made together.
+`;
+
 export const oysterDisaster: IProjectContent = {
   slug: 'oyster-disaster',
   title: 'Oyster Disaster',
-  year: '2020',
-  headline:
-    'Pairing up with Songyee Kim to create AR monsters and bringing them to life',
-  description: `Oyster Disaster is a creative duo Designer Songyee Kim and myself founded in 2020. We create experiments and experiences that explore the intersection of art and technology.  
-In 2022 we collaborated with artist Lydia Chan the exhibition [Your Ship Has Landed](https://nowgallery.co.uk/exhibitions/your-ship-has-landed) at Now Gallery in London.  
-Our contribution to the exhibition came in the form of a series of instagram AR filters bringing the monstruous creates of the exhibition to life. The project also intends to offer a different way to experience the exhibition remotely.`,
-  tools: `- Spark AR
-- Blender`,
-  role: `- Collaborate on concept design
-- Development of the AR filters
-- Interaction design / animation of the assets`,
-  media: [
+  year: 'Since 2020',
+  content: [
+    { type: 'text', text: INTRO_TEXT },
     {
-      src: '/projects/oyster-disaster/video.mp4',
-      mobileLayout: MobileLayoutStates.COVER,
+      type: 'video',
+      src: assetPath('video.mp4'),
+      autoplay: true,
+      muted: true,
+      size: 's',
     },
     {
-      src: '/projects/oyster-disaster/video1.mp4',
-      mobileLayout: MobileLayoutStates.COVER,
+      type: 'video',
+      src: assetPath('video1.mp4'),
+      autoplay: true,
+      muted: true,
+      size: 's',
     },
     {
-      src: '/projects/oyster-disaster/video2.mp4',
-      mobileLayout: MobileLayoutStates.COVER,
+      type: 'video',
+      src: assetPath('video3.mp4'),
+      autoplay: true,
+      muted: true,
+      size: 's',
     },
     {
-      src: '/projects/oyster-disaster/video3.mp4',
-      mobileLayout: MobileLayoutStates.COVER,
+      type: 'image',
+      src: assetPath('landscape.jpg'),
+      alt: '3d render of abstract plants in surrealist landscape',
+      size: 's',
+    },
+    {
+      type: 'image',
+      src: assetPath('water.jpg'),
+      alt: 'A woman with a 3D Rendered mask bathing in a pond',
+      size: 's',
+    },
+    {
+      type: 'image',
+      src: assetPath('eyes.jpg'),
+      alt: '3d render of multi eyed blob on floral backgound',
+      size: 's',
+    },
+    {
+      type: 'image',
+      src: assetPath('t-shirt.jpg'),
+      alt: 'Print t-shirt on sofa',
+      size: 'm',
+    },
+    {
+      type: 'image',
+      src: assetPath('stickers-1.jpg'),
+      alt: 'Stickers on coffee table',
+      size: 'm',
+    },
+    {
+      type: 'video',
+      src: assetPath('jello.webm'),
+      autoplay: true,
+      muted: true,
+      size: 'l',
     },
   ],
-  thumbnail: '/projects/oyster-disaster/thumbnail.jpeg',
+  thumbnail: assetPath('thumbnail.jpeg'),
 };

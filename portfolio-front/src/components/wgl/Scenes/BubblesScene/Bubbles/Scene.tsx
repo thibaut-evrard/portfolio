@@ -1,4 +1,4 @@
-import { FC, createContext, useEffect, useMemo, useRef, useState } from 'react';
+import { FC, createContext, useEffect, useRef, useState } from 'react';
 import { Group, Texture } from 'three';
 import { useCustomRenderer } from '@/hooks/wgl/bubbles/useCustomRenderer';
 import { useGLTF } from '@react-three/drei';
@@ -9,7 +9,7 @@ import { useIsMobile } from '@/hooks/device/useIsMobile';
 export const LayerContext = createContext({
   layer: undefined as 'foreground' | 'background' | undefined,
   transmissionMap: undefined as undefined | Texture,
-  blur: 0 as number
+  blur: 0 as number,
 });
 
 const Bubbles: FC<IBubbles> = ({ text3d }) => {
@@ -42,7 +42,7 @@ const Bubbles: FC<IBubbles> = ({ text3d }) => {
             value={{
               layer: 'foreground',
               transmissionMap: transmissionRt.current.texture,
-              blur: 3
+              blur: 3,
             }}
           >
             <group rotation={[1.5, 0, 0]} scale={[2, 2, 2]}>
@@ -56,7 +56,7 @@ const Bubbles: FC<IBubbles> = ({ text3d }) => {
             value={{
               layer: 'background',
               transmissionMap: texture,
-              blur: 0
+              blur: 0,
             }}
           >
             <group rotation={[1.5, 0, 0]} scale={[2, 2, 2]}>
