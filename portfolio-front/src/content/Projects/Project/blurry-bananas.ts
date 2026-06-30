@@ -1,52 +1,51 @@
-import { IProjectContent, MobileLayoutStates } from '../projects.types';
+import { IProjectContent } from '../projects.types';
+
+const INTRO_TEXT = `## A swirling fruit salad that finds you attractive. Wherever you go, the fruits try and get closer...`;
+
+const TECH_TEXT = `
+I worked on this prototype to teach myself unity, shaders and particle systems.
+
+## Technology
+- Unity HDRP
+- Kinect
+- Custom Shaders
+`;
+
+function assetPath(src: string) {
+  return `/projects/blurry-bananas/${src}`;
+}
 
 export const blurryBananas: IProjectContent = {
   slug: 'blurry-bananas',
   title: 'Blurry Bananas',
   year: '2023',
-  headline: 'A bouncy fruit salad created during down time at the office',
-  description: `Blurry Bananas is a fun little experiement I collaborated on with one of my creative director colleagues during our down time at work. We imagined a lively salad of bouncy fruits that would jump around at you if you dare approaching.  
-For me, this project was the opportunity to explore custom shaders in Unity HDRP, specifically the depth blur effect. I then collated these learnings with bits of code we had written for previous projects and gave it a fresh look and feel`,
-  tools: `- Unity HDRP
-- Azure Kinect
-- Obi Softbody`,
-  role: `- Development of the interactive experience`,
   content: [
     {
       type: 'text',
-      text: `## Role`,
+      text: INTRO_TEXT,
     },
     {
       type: 'video',
-      src: '/projects/blurry-bananas/video.mp4',
+      src: assetPath('video.mp4'),
+      autoplay: true,
       size: 'l',
     },
     {
-      type: 'image',
-      src: '/projects/blurry-bananas/thumbnail.jpg',
-      alt: 'screen with bananas',
+      type: 'text',
+      text: TECH_TEXT,
+    },
+    {
+      type: 'video',
+      src: assetPath('video2.mp4'),
+      controls: true,
       size: 'm',
     },
     {
-      type: 'image',
-      src: '/projects/blurry-bananas/thumbnail.jpg',
-      alt: 'screen with bananas',
+      type: 'video',
+      src: assetPath('video3.mp4'),
+      controls: true,
       size: 'm',
     },
   ],
-  media: [
-    {
-      src: '/projects/blurry-bananas/video.mp4',
-      mobileLayout: MobileLayoutStates.COVER,
-    },
-    {
-      src: '/projects/blurry-bananas/video3.mp4',
-      mobileLayout: MobileLayoutStates.COVER,
-    },
-    {
-      src: '/projects/blurry-bananas/video2.mp4',
-      mobileLayout: MobileLayoutStates.COVER,
-    },
-  ],
-  thumbnail: '/projects/blurry-bananas/thumbnail.jpg',
+  thumbnail: assetPath('thumbnail.jpg'),
 };
