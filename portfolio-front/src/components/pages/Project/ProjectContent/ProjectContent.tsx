@@ -14,6 +14,8 @@ function getSizeClass(content: ContentItem) {
       return 'size--s';
     case 'm':
       return 'size--m';
+    case 'm-l':
+      return 'size--m-l';
     default:
       return 'size--l';
   }

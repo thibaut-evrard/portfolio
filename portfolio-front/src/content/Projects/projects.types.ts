@@ -2,7 +2,7 @@ import { ICarouselMedia } from '@/components/Ecosystems/Projects/Projects.types'
 import { PROJECT_NAMES } from './projects';
 
 export type ContentType = 'text' | 'image' | 'image' | 'video' | 'carousel';
-export type ContentItemSize = 's' | 'm' | 'l';
+export type ContentItemSize = 's' | 'm' | 'm-l' | 'l';
 
 export enum MobileLayoutStates {
   CONTAIN = 'contain',

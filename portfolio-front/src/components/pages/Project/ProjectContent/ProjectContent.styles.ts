@@ -55,6 +55,10 @@ export const Container = styled.div`
       grid-column: span 3;
     }
 
+    &--m-l {
+      grid-column: span 4;
+    }
+
     &--l {
       grid-column: span 6;
     }
