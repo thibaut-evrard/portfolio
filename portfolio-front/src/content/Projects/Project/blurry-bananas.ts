@@ -1,6 +1,6 @@
 import { IProjectContent } from '../projects.types';
 
-const INTRO_TEXT = `## A swirling fruit salad that finds you attractive. Wherever you go, the fruits try and get closer...`;
+const INTRO_TEXT = `# A swirling fruit salad that finds you attractive. Wherever you go, the fruits try and get closer...`;
 
 const TECH_TEXT = `
 I worked on this prototype to teach myself unity, shaders and particle systems.
@@ -37,13 +37,13 @@ export const blurryBananas: IProjectContent = {
     {
       type: 'video',
       src: assetPath('video2.mp4'),
-      controls: true,
+      autoplay: true,
       size: 'm',
     },
     {
       type: 'video',
       src: assetPath('video3.mp4'),
-      controls: true,
+      autoplay: true,
       size: 'm',
     },
   ],

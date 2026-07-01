@@ -39,33 +39,6 @@ export const dmsIconWall: IProjectContent = {
       size: 'l',
     },
     {
-      type: 'image',
-      src: assetPath('thumbnail.jpg'),
-      alt: 'Woman holding a shoe standing in front of an interactive kiosk',
-      size: 'l',
-    },
-    {
-      type: 'video',
-      src: assetPath('showcase.mp4'),
-      size: 'l',
-      controls: true,
-    },
-    {
-      type: 'text',
-      text: ROLE_COPY,
-      size: 'l',
-    },
-    {
-      type: 'text',
-      text: FEATURES_COPY,
-      size: 'm',
-    },
-    {
-      type: 'text',
-      text: TECHNOLOGY_COPY,
-      size: 'm',
-    },
-    {
       type: 'video',
       src: assetPath('idle.webm'),
       size: 's',
@@ -85,6 +58,33 @@ export const dmsIconWall: IProjectContent = {
       size: 's',
       autoplay: true,
       muted: true,
+    },
+    {
+      type: 'text',
+      text: ROLE_COPY,
+      size: 'l',
+    },
+    {
+      type: 'video',
+      src: assetPath('showcase.mp4'),
+      size: 'l',
+      controls: true,
+    },
+    {
+      type: 'text',
+      text: FEATURES_COPY,
+      size: 'm',
+    },
+    {
+      type: 'text',
+      text: TECHNOLOGY_COPY,
+      size: 'm',
+    },
+    {
+      type: 'image',
+      src: assetPath('thumbnail.jpg'),
+      alt: 'Woman holding a shoe standing in front of an interactive kiosk',
+      size: 'l',
     },
   ],
   thumbnail: '/projects/dms-icon-wall/thumbnail.jpg',
