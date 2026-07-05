@@ -25,7 +25,7 @@ function assetPath(src: string) {
 export const aiTool: IProjectContent = {
   slug: 'ai-tool',
   title: 'Ai Tooling',
-  year: '2025',
+  year: '2026',
   content: [
     {
       type: 'text',
