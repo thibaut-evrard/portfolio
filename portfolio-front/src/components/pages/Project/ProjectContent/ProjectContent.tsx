@@ -3,6 +3,7 @@ import Markdown from 'react-markdown';
 import { FC } from 'react';
 import { Container } from './ProjectContent.styles';
 import Carousel from '@/components/Ecosystems/Carousel/Carousel';
+import Video from '@/components/Video';
 
 interface Props {
   content: ContentItem[];
@@ -46,16 +47,16 @@ const ProjectContent: FC<Props> = ({ content }) => {
             );
           case 'video':
             return (
-              <video
+              <Video
                 key={index}
                 src={item.src}
                 className={getSizeClass(item)}
                 playsInline
                 controls={item.controls}
-                autoPlay={item.autoplay}
+                customAutoPlay={item.autoplay || false}
                 muted={item.muted}
                 loop={item.autoplay}
-              ></video>
+              ></Video>
             );
           case 'carousel':
             return <Carousel key={index} media={item.media} />;
