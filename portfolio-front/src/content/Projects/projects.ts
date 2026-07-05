@@ -6,6 +6,7 @@ import { mediapipeExperiments } from './Project/mediapipe-experiments';
 import { kineticSculpture } from './Project/kinetic-sculpture';
 import { clothInstallation } from './Project/cloth-installation';
 import { aiQuests } from './Project/ai-quests';
+import { rcade } from './Project/rcade';
 
 export const PROJECT_NAMES = [
   'dms-icon-wall',
@@ -15,6 +16,7 @@ export const PROJECT_NAMES = [
   'kinetic-sculpture',
   'cloth-installation',
   'ai-quests',
+  'rcade',
 ] as const;
 
 export const ProjectsContent: Record<ProjectName, IProjectContent> = {
@@ -25,6 +27,7 @@ export const ProjectsContent: Record<ProjectName, IProjectContent> = {
   ['kinetic-sculpture']: kineticSculpture,
   ['cloth-installation']: clothInstallation,
   ['ai-quests']: aiQuests,
+  ['rcade']: rcade,
 };
 
 export const ProjectList: IProjectContent[] = [
@@ -35,4 +38,5 @@ export const ProjectList: IProjectContent[] = [
   ProjectsContent['kinetic-sculpture'],
   ProjectsContent['cloth-installation'],
   ProjectsContent['ai-quests'],
+  ProjectsContent['rcade'],
 ];
