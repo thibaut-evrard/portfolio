@@ -8,6 +8,7 @@ import { clothInstallation } from './Project/cloth-installation';
 import { aiQuests } from './Project/ai-quests';
 import { rcade } from './Project/rcade';
 import { footBoo } from './Project/foot-boo';
+import { aiTool } from './Project/ ai-tool';
 
 export const PROJECT_NAMES = [
   'dms-icon-wall',
@@ -19,6 +20,7 @@ export const PROJECT_NAMES = [
   'ai-quests',
   'rcade',
   'foot-boo',
+  'ai-tool',
 ] as const;
 
 export const ProjectsContent: Record<ProjectName, IProjectContent> = {
@@ -31,6 +33,7 @@ export const ProjectsContent: Record<ProjectName, IProjectContent> = {
   ['ai-quests']: aiQuests,
   ['rcade']: rcade,
   ['foot-boo']: footBoo,
+  ['ai-tool']: aiTool,
 };
 
 export const ProjectList: IProjectContent[] = [
@@ -43,4 +46,5 @@ export const ProjectList: IProjectContent[] = [
   ProjectsContent['ai-quests'],
   ProjectsContent['rcade'],
   ProjectsContent['foot-boo'],
+  ProjectsContent['ai-tool'],
 ];
