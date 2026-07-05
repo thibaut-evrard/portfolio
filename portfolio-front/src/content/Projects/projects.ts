@@ -5,6 +5,7 @@ import { blurryBananas } from './Project/blurry-bananas';
 import { mediapipeExperiments } from './Project/mediapipe-experiments';
 import { kineticSculpture } from './Project/kinetic-sculpture';
 import { clothInstallation } from './Project/cloth-installation';
+import { aiQuests } from './Project/ai-quests';
 
 export const PROJECT_NAMES = [
   'dms-icon-wall',
@@ -13,6 +14,7 @@ export const PROJECT_NAMES = [
   'mediapipe-experiments',
   'kinetic-sculpture',
   'cloth-installation',
+  'ai-quests',
 ] as const;
 
 export const ProjectsContent: Record<ProjectName, IProjectContent> = {
@@ -22,6 +24,7 @@ export const ProjectsContent: Record<ProjectName, IProjectContent> = {
   ['mediapipe-experiments']: mediapipeExperiments,
   ['kinetic-sculpture']: kineticSculpture,
   ['cloth-installation']: clothInstallation,
+  ['ai-quests']: aiQuests,
 };
 
 export const ProjectList: IProjectContent[] = [
@@ -31,4 +34,5 @@ export const ProjectList: IProjectContent[] = [
   ProjectsContent['mediapipe-experiments'],
   ProjectsContent['kinetic-sculpture'],
   ProjectsContent['cloth-installation'],
+  ProjectsContent['ai-quests'],
 ];
