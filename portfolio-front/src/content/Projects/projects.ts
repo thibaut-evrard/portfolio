@@ -7,6 +7,7 @@ import { kineticSculpture } from './Project/kinetic-sculpture';
 import { clothInstallation } from './Project/cloth-installation';
 import { aiQuests } from './Project/ai-quests';
 import { rcade } from './Project/rcade';
+import { footBoo } from './Project/foot-boo';
 
 export const PROJECT_NAMES = [
   'dms-icon-wall',
@@ -17,6 +18,7 @@ export const PROJECT_NAMES = [
   'cloth-installation',
   'ai-quests',
   'rcade',
+  'foot-boo',
 ] as const;
 
 export const ProjectsContent: Record<ProjectName, IProjectContent> = {
@@ -28,6 +30,7 @@ export const ProjectsContent: Record<ProjectName, IProjectContent> = {
   ['cloth-installation']: clothInstallation,
   ['ai-quests']: aiQuests,
   ['rcade']: rcade,
+  ['foot-boo']: footBoo,
 };
 
 export const ProjectList: IProjectContent[] = [
@@ -39,4 +42,5 @@ export const ProjectList: IProjectContent[] = [
   ProjectsContent['cloth-installation'],
   ProjectsContent['ai-quests'],
   ProjectsContent['rcade'],
+  ProjectsContent['foot-boo'],
 ];
