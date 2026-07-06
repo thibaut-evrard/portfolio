@@ -5,30 +5,51 @@ export const Container = styled.div`
   grid-template-columns: repeat(6, 1fr);
   grid-template-rows: auto;
   gap: 12rem;
-  margin-top: 20rem;
 
   .markdown {
     white-space: pre-line;
     display: flex;
     flex-direction: column;
     gap: 0;
+    margin-block: 50rem;
+    max-width: 600px;
 
     h1 {
-      font-size: 32rem;
-      font-weight: 500;
+      font-size: 34rem;
+      font-weight: 300;
+      line-height: 1.5;
+      margin-block: 15rem;
     }
 
     h2 {
       font-size: 24rem;
+      font-weight: 300;
+      line-height: 1.5;
+      margin-block: 20rem;
+    }
+
+    h3 {
+      font-size: 24rem;
       font-weight: 500;
+      line-height: 1.5;
     }
 
     p,
+    a,
     ul,
     li {
-      font-size: 18rem;
+      font-size: 17rem;
       font-weight: 300;
+      letter-spacing: 2%;
       line-height: 1.5;
+    }
+
+    p {
+      margin-block: 10rem;
+    }
+
+    a {
+      color: #95f0fc;
     }
 
     ul {
