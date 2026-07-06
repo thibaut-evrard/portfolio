@@ -41,14 +41,14 @@ export const ProjectsContent: Record<ProjectName, IProjectContent> = {
 
 export const ProjectList: IProjectContent[] = [
   ProjectsContent['ai-quests'],
-  ProjectsContent['take-me-tasty'],
   ProjectsContent['kinetic-sculpture'],
-  ProjectsContent['ai-tool'],
   ProjectsContent['oyster-disaster'],
   ProjectsContent['cloth-installation'],
+  ProjectsContent['take-me-tasty'],
+  ProjectsContent['ai-tool'],
   ProjectsContent['dms-icon-wall'],
   ProjectsContent['foot-boo'],
   ProjectsContent['rcade'],
-  ProjectsContent['mediapipe-experiments'],
   ProjectsContent['blurry-bananas'],
+  ProjectsContent['mediapipe-experiments'],
 ];

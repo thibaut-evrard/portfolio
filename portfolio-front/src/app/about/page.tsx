@@ -1,5 +1,4 @@
 import { Container } from '@/components/About/About.styles';
-import { Spacer } from '@/components/Atoms/Structure.styles';
 import Markdown from 'react-markdown';
 
 const CONTENT = `

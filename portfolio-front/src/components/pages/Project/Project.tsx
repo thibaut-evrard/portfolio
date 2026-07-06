@@ -3,12 +3,9 @@ import { type FC, useEffect, useState } from 'react';
 import { type IProject } from '@/components/Ecosystems/Projects/Projects.types';
 import { Container, Title } from './Project.styles';
 import { Caption } from '@/components/Atoms/Typography/Typography.styles';
-import Carousel from '@/components/Ecosystems/Carousel/Carousel';
 import BackButton from '@/components/Atoms/BackButton/BackButton';
 import { Spacer } from '@/components/Atoms/Structure.styles';
 import { useIsMobile } from '@/hooks/device/useIsMobile';
-import ProjectDescription from './ProjectDescription/ProjectDescription';
-import ProjectHeadline from './ProjectHeadline/ProjectHeadline';
 import { motion } from 'framer-motion';
 import { EVariants } from '@/constants/animations/animations.types';
 import * as animations from './Project.animations';
@@ -37,10 +34,6 @@ const Project: FC<IProject> = ({ project }) => {
       </Caption>
 
       {project.content && <ProjectContent content={project.content} />}
-      {/* <Spacer height={'30px'} />
-      <Spacer height={'30px'} />
-      {project.media && <Carousel media={project.media} />}
-      <ProjectDescription project={project} /> */}
     </Container>
   );
 };
