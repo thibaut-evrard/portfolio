@@ -70,14 +70,24 @@ export const Container = styled.div`
   .size {
     &--s {
       grid-column: span 2;
+
+      @media screen and (max-width: 768px) {
+        grid-column: span 3;
+      }
     }
 
     &--m {
       grid-column: span 3;
+      @media screen and (max-width: 768px) {
+        grid-column: span 6;
+      }
     }
 
     &--m-l {
       grid-column: span 4;
+      @media screen and (max-width: 768px) {
+        grid-column: span 6;
+      }
     }
 
     &--l {
