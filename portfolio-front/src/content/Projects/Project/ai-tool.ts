@@ -1,8 +1,8 @@
 import { IProjectContent } from '../projects.types';
 
 const INTRO_TEXT = `
-# Currently workink on Ai tooling and processes
-# 🔐🤐🤫🛠️
+## Currently workink on Ai tooling and processes
+## 🔐🤐🤫🛠️
 
 A lot of my current projects are focusing on Leveraging LLM's to create interactive experiences.
 I cannot share any live case studies yet, but I have built my own tooling on the way, which I can share.

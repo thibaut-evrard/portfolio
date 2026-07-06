@@ -1,7 +1,7 @@
 import { IProjectContent } from '../projects.types';
 
 const INTRO_TEXT = `
-# Ai Powered football card generator
+## Ai Powered football card generator
 `;
 
 const PROCESS = `

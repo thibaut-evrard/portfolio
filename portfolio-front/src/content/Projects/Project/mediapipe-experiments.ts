@@ -1,6 +1,6 @@
 import { IProjectContent } from '../projects.types';
 
-const INTRO_TEXT = `# A collection of experiments exploring movement based interactions using Mediapipe Js`;
+const INTRO_TEXT = `## A collection of experiments exploring movement based interactions using Mediapipe Js`;
 
 function assetPath(src: string) {
   return `/projects/mediapipe-experiments/${src}`;

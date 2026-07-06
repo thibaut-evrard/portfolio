@@ -1,15 +1,16 @@
 import { IProjectContent } from '../projects.types';
 
-const INTRO_TEXT = `# A Cloth simulation based interactive installation showcased in the Edmonton Mall.
-Our brief was to create an interactive installation reactive to it's environment to be showcased on the Vuse Store facia in the Edmonton Mall.
-Our creative solution was to create a cloth that has a life of its own but that gets affected by passers by. As if movement in space genenrated wind that affected the cloth.
+const INTRO_TEXT = `## An ambient interactive installation onn the Vuse Store fascia in the Edmonton mall (Canada)
 
+The brief on this one was simple. Take a look at our brand guidelines, ignore them completely and make something cool.
+
+After research and experimentation, we landed on an ambient cloth sculpture that has a life of its own but that passers-by can affect through movement.
 `;
 
 const TECH_APPROACH_TEXT = `
 ## Technological approach
 My main challenge on this project was to create a seemingly living object that would be affected by the environment.
-I ended up landing on a cloth simulation solution. I ended up applying 3 set of force fields to the cloth to make it interesting:
+I ended up designing a system of adding forces to achieve the perfect balance between ambient movement and interactivity
 
 - Container forces to prevent the forces from escaping the canvas
 - Ambient forces to keep a constant movement to the cloth
@@ -34,7 +35,7 @@ function assetPath(src: string) {
 
 export const clothInstallation: IProjectContent = {
   slug: 'cloth-installation',
-  title: 'Edmonton Cloth installation',
+  title: 'Vuse Fascia Interactive Installation',
   year: '2023',
   content: [
     {

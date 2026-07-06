@@ -4,7 +4,7 @@ function assetPath(src: string) {
   return `/projects/dms-icon-wall/${src}`;
 }
 const INTRO_COPY = `
-# An in-store interactive experience for Dr Martens in Carnaby Street. Users place a boot on the stand and can explore features, get style inspiration and maintenance tips.
+## An in-store interactive experience for Dr. Martens on Carnaby Street. Users place a boot onto a physical stand to explore its features, discover style inspiration, and get maintenance tips.
 `;
 
 const FEATURES_COPY = `
@@ -20,12 +20,11 @@ const TECHNOLOGY_COPY = `
 - Framer Motion`;
 
 const ROLE_COPY = `
-# Role
-Leading the Frontend and WebGL development of the experience. 
+## Role: Frontend Lead
 
-I got to spend a lot of time finessing the WebGL scene: Optimising 3D assets using Blender, Animating scene objects and adding blur and particles systems to make the scene feel more alive.
+I spent a significant amount of time finessing the WebGL scene: optimizing 3D assets using Blender, animating scene objects, and adding depth-of-field blur and particle systems to bring the environment to life.
 
-I knew this project was going to run on a custom machine, I was able to go all in with the transitions and CSS animations to try and make the experience as engaging as possible.
+Because I knew this project would run on a custom, high-performance machine, I was able to go all-in on the transitions and CSS animations to make the experience as immersive and engaging as possible.
 `;
 
 export const dmsIconWall: IProjectContent = {

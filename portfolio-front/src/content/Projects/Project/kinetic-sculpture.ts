@@ -1,11 +1,12 @@
 import { IProjectContent } from '../projects.types';
 
-const INTRO_TEXT = `# A kinetic sculpture designed to showcase bp's pivot from the oil industry to a more global energy industry.`;
+const INTRO_TEXT = `## A kinetic sculpture designed to showcase efforts to pivot away from oil into a more diversified conception of energy.`;
 const ROLE_TEXT = `
-## Role
-My main role on this project was to implement the front-end of the exprerience.
-The most iteresting part of this work for me was designing a process that allowed designers to create animation files that could then be translated into visual output for the kinetic installation.
-The process I designed was based on exporting low resolution 16bit textures that would then be processed and converted in data files consumable by the installation hardware.
+## Role: Kietic software / Frontend implementation
+
+My biggest impact on this project was to design a set of tool and processes allowing designers to create animations that could be processed by the kinetic sculpture.
+
+I ended up creating a script that transformed png sequences into JSON Data. Designers would export a PNG sequence for colours and a 16bit height map sequence, my script then pixelated the frames and extracted the image data to generate arrays. These arrays would then be transformed into buffers and sent to the microcontroller driver to action the kinetic part of the sculpture.
 `;
 
 function assetPath(src: string) {

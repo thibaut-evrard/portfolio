@@ -1,14 +1,9 @@
 import { IProjectContent } from '../projects.types';
 
-const INTRO_TEXT = `# A swirling fruit salad that finds you attractive. Wherever you go, the fruits try and get closer...`;
+const INTRO_TEXT = `## A swirling fruit salad that finds you attractive. Wherever you go, the fruits try and get closer...`;
 
 const TECH_TEXT = `
-I worked on this prototype to teach myself unity, shaders and particle systems.
-
-## Technology
-- Unity HDRP
-- Kinect
-- Custom Shaders
+I worked on this prototype to teach myself unity, shaders and particle systems. I used Unitty HDRP and The Kinect SDK as a base setup and crafted my own custom shaders to create the depth blur effect.
 `;
 
 function assetPath(src: string) {

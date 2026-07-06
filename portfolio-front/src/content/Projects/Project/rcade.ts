@@ -1,20 +1,15 @@
 import { IProjectContent } from '../projects.types';
 
 const INTRO_TEXT = `
-# Launch Trailer experience for Rcade Network
+## Launch Trailer experience for Rcade Network
 
 See it live [here](https://rcade.network/)
 `;
 
 const ROLE = `
-# Creating a Wow effect landing page to immerse users into the RCADE universe.
+## Creating a Wow effect landing page to immerse users into the RCADE universe.
 
 My role on this project was very focused on developing a hyper immersive and engaging animated sequence to make the landing page as engaging as possible.
-
-## Technology
-- Three
-- React
-- GSAP
 `;
 
 function assetPath(src: string) {
