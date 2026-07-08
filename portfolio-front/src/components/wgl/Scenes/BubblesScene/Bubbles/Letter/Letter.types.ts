@@ -1,6 +1,6 @@
-import {GroupProps} from '@react-three/fiber';
+import { ThreeElements } from '@react-three/fiber';
 import {BufferGeometry} from 'three';
 
-export interface ILetter extends GroupProps {
+export type ILetter = ThreeElements['group'] & {
     geometry: BufferGeometry;
 }

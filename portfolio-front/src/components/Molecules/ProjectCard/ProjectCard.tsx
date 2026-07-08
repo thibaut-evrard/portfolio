@@ -1,5 +1,4 @@
 import { FC, useState } from "react";
-import { IProjectContent } from "@/content/Projects/projects.types";
 import { content } from "./ProjectCard.content";
 import {
     BackgroundImage,
@@ -7,7 +6,7 @@ import {
     ContentContainer,
     HeadlineContainer,
 } from "./ProjectCard.styles";
-import { H3, P } from "../../Atoms/Typography/Typography.styles";
+import { H3 } from "../../Atoms/Typography/Typography.styles";
 import { Button } from "@/components/Atoms/Button/Button.styles";
 import { useRouter } from "next/navigation";
 import { IProjectCard } from "./ProjectCard.types";

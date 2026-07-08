@@ -1,25 +1,90 @@
-import { MobileLayoutStates } from "../projects.types";
+import { IProjectContent } from '../projects.types';
 
-export const dmsIconWall = {
-    slug: "dms-icon-wall",
-    title: "DM's Icon Wall",
-    year: "2021",
-    headline: "An in-store interactive experience for Dr. Martens",
-    description: `This in-store interactive experience allows DM's customers to explore the brand's products and see how they are styled locally and globally  
-My main challenge on this project was to optimise the 3D assets of the shoes to get them to run smoothly on this 4K WebGL app.`,
-    tools: `- Blender
+function assetPath(src: string) {
+  return `/projects/dms-icon-wall/${src}`;
+}
+const INTRO_COPY = `
+## An in-store interactive experience for Dr. Martens on Carnaby Street. Users place a boot onto a physical stand to explore its features, discover style inspiration, and get maintenance tips.
+`;
+
+const FEATURES_COPY = `
+## Core features
+- NFC driven interaction
+- Interactive kiosk
+- Social API Itegration`;
+
+const TECHNOLOGY_COPY = `
+## Technology
+- WebGL (Three Js)
 - React
-- RFID Reader / Tag`,
-    role: `- Collaborate with strategy and design teams to create concept
-- 3D Asset Optimisation for WebGL
-- Front-end development
-- WebGL development
-- CMS integration`,
-    media: [
-        {
-            src: "/projects/dms-icon-wall/showcase.mp4",
-            mobileLayout: MobileLayoutStates.COVER,
-        },
-    ],
-    thumbnail: "/projects/dms-icon-wall/thumbnail.jpg",
+- Framer Motion`;
+
+const ROLE_COPY = `
+## Role: Frontend Lead
+
+I spent a significant amount of time finessing the WebGL scene: optimizing 3D assets using Blender, animating scene objects, and adding depth-of-field blur and particle systems to bring the environment to life.
+
+Because I knew this project would run on a custom, high-performance machine, I was able to go all-in on the transitions and CSS animations to make the experience as immersive and engaging as possible.
+`;
+
+export const dmsIconWall: IProjectContent = {
+  slug: 'dms-icon-wall',
+  title: "DM's Icon Wall",
+  year: '2021',
+  content: [
+    {
+      type: 'text',
+      text: INTRO_COPY,
+      size: 'l',
+    },
+    {
+      type: 'video',
+      src: assetPath('idle.webm'),
+      size: 's',
+      autoplay: true,
+      muted: true,
+    },
+    {
+      type: 'video',
+      src: assetPath('shoe.webm'),
+      size: 's',
+      autoplay: true,
+      muted: true,
+    },
+    {
+      type: 'video',
+      src: assetPath('style.webm'),
+      size: 's',
+      autoplay: true,
+      muted: true,
+    },
+    {
+      type: 'text',
+      text: ROLE_COPY,
+      size: 'l',
+    },
+    {
+      type: 'video',
+      src: assetPath('showcase.mp4'),
+      size: 'l',
+      controls: true,
+    },
+    {
+      type: 'text',
+      text: FEATURES_COPY,
+      size: 'm',
+    },
+    {
+      type: 'text',
+      text: TECHNOLOGY_COPY,
+      size: 'm',
+    },
+    {
+      type: 'image',
+      src: assetPath('thumbnail.jpg'),
+      alt: 'Woman holding a shoe standing in front of an interactive kiosk',
+      size: 'l',
+    },
+  ],
+  thumbnail: '/projects/dms-icon-wall/thumbnail.jpg',
 };

@@ -1,22 +1,54 @@
-import { IProjectContent } from "./projects.types";
-import { dmsIconWall } from "./Project/dms-icon-wall";
-import { finecastWebgl } from "./Project/finecast-webgl";
-import { oysterDisaster } from "./Project/oyster-disaster";
-import { blurryBananas } from "./Project/blurry-bananas";
-import { mediapipeExperiments } from "./Project/mediapipe-experiments";
+import type { IProjectContent, ProjectName } from './projects.types';
+import { dmsIconWall } from './Project/dms-icon-wall';
+import { oysterDisaster } from './Project/oyster-disaster';
+import { blurryBananas } from './Project/blurry-bananas';
+import { mediapipeExperiments } from './Project/mediapipe-experiments';
+import { kineticSculpture } from './Project/kinetic-sculpture';
+import { clothInstallation } from './Project/cloth-installation';
+import { aiQuests } from './Project/ai-quests';
+import { rcade } from './Project/rcade';
+import { footBoo } from './Project/foot-boo';
+import { aiTool } from './Project/ai-tool';
+import { takeMeTasty } from './Project/take-me-tasty';
 
-export const ProjectsContent: any = {
-    ["dms-icon-wall"]: dmsIconWall,
-    ["finecast-webgl"]: finecastWebgl,
-    ["oyster-disaster"]: oysterDisaster,
-    ["blurry-bananas"]: blurryBananas,
-    ["mediapipe-experiments"]: mediapipeExperiments,
+export const PROJECT_NAMES = [
+  'dms-icon-wall',
+  'oyster-disaster',
+  'blurry-bananas',
+  'mediapipe-experiments',
+  'kinetic-sculpture',
+  'cloth-installation',
+  'ai-quests',
+  'rcade',
+  'foot-boo',
+  'ai-tool',
+  'take-me-tasty',
+] as const;
+
+export const ProjectsContent: Record<ProjectName, IProjectContent> = {
+  ['dms-icon-wall']: dmsIconWall,
+  ['oyster-disaster']: oysterDisaster,
+  ['blurry-bananas']: blurryBananas,
+  ['mediapipe-experiments']: mediapipeExperiments,
+  ['kinetic-sculpture']: kineticSculpture,
+  ['cloth-installation']: clothInstallation,
+  ['ai-quests']: aiQuests,
+  ['rcade']: rcade,
+  ['foot-boo']: footBoo,
+  ['ai-tool']: aiTool,
+  ['take-me-tasty']: takeMeTasty,
 };
 
 export const ProjectList: IProjectContent[] = [
-    ProjectsContent["dms-icon-wall"],
-    ProjectsContent["oyster-disaster"],
-    ProjectsContent["finecast-webgl"],
-    ProjectsContent["blurry-bananas"],
-    ProjectsContent["mediapipe-experiments"],
+  ProjectsContent['ai-quests'],
+  ProjectsContent['kinetic-sculpture'],
+  ProjectsContent['oyster-disaster'],
+  ProjectsContent['cloth-installation'],
+  ProjectsContent['take-me-tasty'],
+  ProjectsContent['ai-tool'],
+  ProjectsContent['dms-icon-wall'],
+  ProjectsContent['foot-boo'],
+  ProjectsContent['rcade'],
+  ProjectsContent['blurry-bananas'],
+  ProjectsContent['mediapipe-experiments'],
 ];

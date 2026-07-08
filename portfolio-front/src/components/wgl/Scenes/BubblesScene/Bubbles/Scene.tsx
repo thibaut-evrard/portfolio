@@ -1,4 +1,4 @@
-import { FC, createContext, useRef } from 'react';
+import { FC, createContext, useEffect, useRef, useState } from 'react';
 import { Group, Texture } from 'three';
 import { useCustomRenderer } from '@/hooks/wgl/bubbles/useCustomRenderer';
 import { useGLTF } from '@react-three/drei';
@@ -9,13 +9,13 @@ import { useIsMobile } from '@/hooks/device/useIsMobile';
 export const LayerContext = createContext({
   layer: undefined as 'foreground' | 'background' | undefined,
   transmissionMap: undefined as undefined | Texture,
-  blur: 0 as number
+  blur: 0 as number,
 });
 
 const Bubbles: FC<IBubbles> = ({ text3d }) => {
   const isMobile = useIsMobile();
-  const gltf = useGLTF(text3d) as any;
-  const { t, i, b, o } = gltf.nodes as ILetterAssets;
+  const gltf = useGLTF(text3d);
+  const { t, i, b, o } = gltf.nodes as unknown as ILetterAssets;
 
   const foreground = useRef({} as Group);
   const background = useRef({} as Group);
@@ -25,6 +25,15 @@ const Bubbles: FC<IBubbles> = ({ text3d }) => {
     foreground
   );
 
+  const [texture, setTexture] = useState<Texture>(new Texture());
+
+  useEffect(() => {
+    function callback() {
+      setTexture(sceneBackgroundTextureRef.current);
+    }
+    callback();
+  }, []);
+
   return (
     <>
       <group position={[0, -1, 0]} scale={isMobile ? 0.6 : 1}>
@@ -33,7 +42,7 @@ const Bubbles: FC<IBubbles> = ({ text3d }) => {
             value={{
               layer: 'foreground',
               transmissionMap: transmissionRt.current.texture,
-              blur: 3
+              blur: 3,
             }}
           >
             <group rotation={[1.5, 0, 0]} scale={[2, 2, 2]}>
@@ -46,8 +55,8 @@ const Bubbles: FC<IBubbles> = ({ text3d }) => {
           <LayerContext.Provider
             value={{
               layer: 'background',
-              transmissionMap: sceneBackgroundTextureRef.current,
-              blur: 0
+              transmissionMap: texture,
+              blur: 0,
             }}
           >
             <group rotation={[1.5, 0, 0]} scale={[2, 2, 2]}>

@@ -1,27 +1,29 @@
-import type { Metadata } from "next";
-// import "src/styles/globals.css";
-import StyledComponentsRegistry from "../components/StyledComponents/StyledComponentRegistry";
-import TopNav from "@/components/Ecosystems/Navigation/TopNav/TopNav";
-import GlobalStyles from "@/components/StyledComponents/GlobalStyles";
+import type { Metadata } from 'next';
+import StyledComponentsRegistry from '../components/StyledComponents/StyledComponentRegistry';
+import TopNav from '@/components/Ecosystems/Navigation/TopNav/TopNav';
+import GlobalStyles from '@/components/StyledComponents/GlobalStyles';
+import AppContextProvider from '@/components/AppContextProvider/AppContextProvider';
 
 export const metadata: Metadata = {
-    title: "Tibo's portfolio",
+  title: "Tibo's portfolio",
 };
 
 export default function RootLayout({
-    children,
+  children,
 }: {
-    children: React.ReactNode;
+  children: React.ReactNode;
 }) {
-    return (
-        <html>
-            <body>
-                <StyledComponentsRegistry>
-                    <GlobalStyles />
-                    <TopNav />
-                    {children}
-                </StyledComponentsRegistry>
-            </body>
-        </html>
-    );
+  return (
+    <html>
+      <body>
+        <AppContextProvider>
+          <StyledComponentsRegistry>
+            <GlobalStyles />
+            <TopNav />
+            {children}
+          </StyledComponentsRegistry>
+        </AppContextProvider>
+      </body>
+    </html>
+  );
 }

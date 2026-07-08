@@ -1,44 +1,44 @@
-import { MobileLayoutStates } from "../projects.types";
+import { IProjectContent } from '../projects.types';
 
-export const mediapipeExperiments = {
-    slug: "mediapipe-experiments",
-    title: "Mediapipe Experiments",
-    year: "2021",
-    headline:
-        "A collection of fun little sketches using Google's Mediapipe library",
-    description: `This is a collection of experiments I did with Google's [Mediapipe](https://mediapipe.dev/) library.  
-This was my way to occupy my week nights during the lockdown. Making silly experiments trying to imagine new fun ways to interact with websites`,
-    tools: `- React
-- Mediapipe
-- Tensorflow.js
-- Three.js`,
-    role: `- Occupying tibo's free time
-- Having fun`,
-    media: [
-        {
-            src: "/projects/mediapipe-experiments/video.mp4",
-            mobileLayout: MobileLayoutStates.CONTAIN,
-        },
-        {
-            src: "/projects/mediapipe-experiments/video1.mp4",
-            mobileLayout: MobileLayoutStates.CONTAIN,
-        },
-        {
-            src: "/projects/mediapipe-experiments/video2.mp4",
-            mobileLayout: MobileLayoutStates.CONTAIN,
-        },
-        {
-            src: "/projects/mediapipe-experiments/video3.mp4",
-            mobileLayout: MobileLayoutStates.CONTAIN,
-        },
-        {
-            src: "/projects/mediapipe-experiments/video4.mp4",
-            mobileLayout: MobileLayoutStates.CONTAIN,
-        },
-        {
-            src: "/projects/mediapipe-experiments/video5.mp4",
-            mobileLayout: MobileLayoutStates.CONTAIN,
-        },
-    ],
-    thumbnail: "/projects/mediapipe-experiments/thumbnail.jpg",
+const INTRO_TEXT = `## A collection of experiments exploring movement based interactions using Mediapipe Js`;
+
+function assetPath(src: string) {
+  return `/projects/mediapipe-experiments/${src}`;
+}
+
+export const mediapipeExperiments: IProjectContent = {
+  slug: 'mediapipe-experiments',
+  title: 'Mediapipe Experiments',
+  year: '2021',
+  content: [
+    {
+      type: 'text',
+      text: INTRO_TEXT,
+    },
+    {
+      type: 'video',
+      src: assetPath('video.mp4'),
+      size: 'm',
+      controls: true,
+    },
+    {
+      type: 'video',
+      src: assetPath('video1.mp4'),
+      size: 'm',
+      controls: true,
+    },
+    {
+      type: 'video',
+      src: assetPath('video4.mp4'),
+      size: 'm',
+      controls: true,
+    },
+    {
+      type: 'video',
+      src: assetPath('video5.mp4'),
+      size: 'm',
+      controls: true,
+    },
+  ],
+  thumbnail: '/projects/mediapipe-experiments/thumbnail.jpg',
 };
