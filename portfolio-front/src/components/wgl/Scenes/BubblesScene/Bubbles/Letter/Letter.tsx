@@ -1,10 +1,12 @@
 import { useFrame, useThree } from '@react-three/fiber';
-import { Group, Material, Vector2 } from 'three';
+import { Group, Material, Vector2, Vector3 } from 'three';
 import { MeshBubbleMaterial } from '@/components/wgl/TempMaterials/MeshBubbleMaterial/MeshBubbleMaterial';
 import { useContext, useEffect, useRef } from 'react';
 import { LayerContext } from '../Scene';
 import { ILetter } from './Letter.types';
 import { useNoisyMovement } from '@/hooks/wgl/bubbles/useNoisyMovement';
+
+const TARGET_SCALE = new Vector3().addScalar(1);
 
 function Letter({ geometry, ...props }: ILetter) {
   const { transmissionMap, blur } = useContext(LayerContext);
